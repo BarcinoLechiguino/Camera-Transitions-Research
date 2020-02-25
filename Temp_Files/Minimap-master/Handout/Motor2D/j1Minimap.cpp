@@ -10,6 +10,7 @@
 #include "j2Entity.h"
 #include "j2EntityManager.h"
 
+
 #include "p2Log.h"
 
 #include <list>
@@ -192,6 +193,8 @@ void j1Minimap::MinimapBorders()
 void j1Minimap::DrawEntities()
 {
 	int pos_x, pos_y;
+	int player_pos_x;
+	int player_pos_y;
 
 	for (std::list<j2Entity*>::iterator item = App->entity_manager->entities.begin(); item != App->entity_manager->entities.end(); ++item) 
 	{
@@ -205,12 +208,25 @@ void j1Minimap::DrawEntities()
 		pos_x = (*item)->position.x * minimap_scale;
 		pos_y = (*item)->position.y * minimap_scale;
 
+		if ((*item)->type == ENTITY_TYPE::PLAYER)
+		{
+			player_pos_x = (*item)->position.x;
+			player_pos_y = (*item)->position.y;
+		}
+
 		// TODO 7: Fill the missing parameters of DrawQuad() function.
 		// Take into account that it is an isometric map
 		// Uncomment the lines below
 
 		if ((*item)->type == ENTITY_TYPE::ENEMY)
-			App->render->DrawQuad({ pos_x + minimap_width / 2, pos_y - y_offset, 4, 4 }, 255, 0, 0, 255, true, false);
+		{
+			//App->render->DrawQuad({ pos_x + minimap_width / 2, pos_y - y_offset, 4, 4 }, 255, 0, 0, 255, true, false);
+			
+			if (sqrt(abs((*item)->position.x * player_pos_x + (*item)->position.y * player_pos_y)) <= abs(App->render->camera.w * 0.5))
+			{
+				App->render->DrawQuad({ pos_x + minimap_width / 2, pos_y - y_offset, 4, 4 }, 255, 0, 0, 255, true, false);
+			}
+		}
 
 		else if ((*item)->type == ENTITY_TYPE::PLAYER)
 			App->render->DrawQuad({ pos_x + minimap_width / 2, pos_y - y_offset, 4, 4 }, 0, 255, 0, 255, true, false);
