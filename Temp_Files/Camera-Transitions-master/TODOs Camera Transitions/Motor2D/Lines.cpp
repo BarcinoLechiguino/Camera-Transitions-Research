@@ -47,7 +47,17 @@ void Lines::Start() {
 
 	// TODO 6: Make that the lines do the effect of crossing through the screen
 	// Take into account that some of them are in the left of the screen and some others in the right
-
+	for (int i = 0; i < 11; i++)
+	{
+		if (i % 2 == 0)
+		{
+			lines[i].x = Interpolation(-(int)w, 0, percentage);
+		}
+		else
+		{
+			lines[i].x = Interpolation(w, 0, percentage);
+		}
+	}
 
 	SDL_SetRenderDrawColor(App->render->renderer, color.r, color.g, color.b, 255);
 	for (int i = 0; i < 11; i++)
@@ -73,7 +83,17 @@ void Lines::Exit() {
 	j1Transitions::Exit();
 
 	// TODO 7: The lines have to disappear from the screen
-	
+	for (int i = 0; i < 11; i++)
+	{
+		if (i % 2 == 0)
+		{
+			lines[i].x = Interpolation(0, w, percentage);
+		}
+		else
+		{
+			lines[i].x = Interpolation(0, -(int)w, percentage);
+		}
+	}
 
 	SDL_SetRenderDrawColor(App->render->renderer, color.r, color.g, color.b, 255);
 	for (int i = 0; i < 11; i++)
