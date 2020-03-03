@@ -54,6 +54,8 @@ void j1Map::Draw()
 			}
 		}
 	}
+
+	//DrawGrid();
 }
 
 int Properties::Get(const char* value, int default_value) const
