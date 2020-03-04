@@ -83,6 +83,9 @@ bool j1Minimap::Update(float dt)
 			App->render->camera.x = -(map_x - App->render->camera.w / 2);
 			App->render->camera.y = -(map_y - App->render->camera.h / 2);
 		}
+
+		minimapCounter++;
+		if (minimapCounter > 400) minimapCounter = 0;
 	}
 
 	return true;
@@ -90,7 +93,11 @@ bool j1Minimap::Update(float dt)
 
 bool j1Minimap::PostUpdate()
 {	
-	App->render->Blit(minimap_tex, 0, 0, NULL, false);
+	SDL_Rect rect = { 0, 0, minimapCounter, 400 };
+	//SDL_Rect rect2 = { 0, 0, 300, 300 };
+
+	App->render->Blit(minimap_tex, 0, 0, &rect, false);
+
 	MinimapBorders();
 	DrawEntities();
 	DrawCamera();

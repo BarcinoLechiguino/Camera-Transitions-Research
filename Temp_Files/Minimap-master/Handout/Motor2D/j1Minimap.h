@@ -34,6 +34,8 @@ private:
 	SDL_Surface*		map_surface = nullptr;
 	SDL_Renderer*		map_renderer = nullptr;
 
+	int minimapCounter = 0;
+
 	float minimap_scale;
 
 	int x_offset;
