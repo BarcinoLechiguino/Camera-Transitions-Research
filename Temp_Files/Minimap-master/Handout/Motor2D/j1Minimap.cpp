@@ -15,7 +15,7 @@
 
 #include <list>
 
-j1Minimap::j1Minimap()
+j1Minimap::j1Minimap() : minimapCounter(0), reached_max(false)
 {
 	name = "minimap";
 }
@@ -52,7 +52,7 @@ bool j1Minimap::Start()
 		// TODO 2: Use the function SDL_CreateRGBSurface() to allocate a RGB surface to the variable "map_surface"
 		// The last four parameters should be: 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000 in order to be totally transparent
 		// You have to add the x & y offsets
-		map_surface = SDL_CreateRGBSurface(0, minimap_width * x_offset, minimap_height * y_offset, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+		map_surface = SDL_CreateRGBSurface(0, minimap_width * x_offset, minimap_height * y_offset , 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
 
 		// TODO 3: Use the function SDL_CreateSoftwareRenderer() to create a 2D software rendering context for a surface
 		// Assign it to the variable "map_renderer"
@@ -83,20 +83,44 @@ bool j1Minimap::Update(float dt)
 			App->render->camera.x = -(map_x - App->render->camera.w / 2);
 			App->render->camera.y = -(map_y - App->render->camera.h / 2);
 		}
-
-		minimapCounter++;
-		if (minimapCounter > 400) minimapCounter = 0;
 	}
+
+	if (minimapCounter < 400 && !reached_max)
+	{
+		minimapCounter++;
+
+		if (minimapCounter == 400)
+		{
+			reached_max = true;
+		}
+	}
+
+	if (minimapCounter > 0 && reached_max)
+	{
+		minimapCounter--;
+
+		if (minimapCounter == 0)
+		{
+			reached_max = false;
+		}
+	}
+	//if (minimapCounter > 400) minimapCounter = 0;
 
 	return true;
 }
 
 bool j1Minimap::PostUpdate()
 {	
-	SDL_Rect rect = { 0, 0, minimapCounter, 400 };
-	//SDL_Rect rect2 = { 0, 0, 300, 300 };
+	SDL_Rect rect0 = { 0, 0, minimapCounter, 200 };
+	SDL_Rect rect1 = { 0, 0, 400, minimapCounter };
+	SDL_Rect rect2 = { 0, 100, 400, 200 };
+	SDL_Rect rect3 = { 0, 0, 400, 100 };
 
-	App->render->Blit(minimap_tex, 0, 0, &rect, false);
+	App->render->Blit(minimap_tex, 0, 0, &rect0, false);							//Slide In/Out Horizontally
+	App->render->Blit(minimap_tex, 0, 0, &rect1, false);							//Slide In/Out Vertically
+
+	App->render->Blit(minimap_tex, 400 - minimapCounter, 100, &rect2, false);		//Stripes
+	App->render->Blit(minimap_tex, -400 + minimapCounter, 0, &rect3, false);
 
 	MinimapBorders();
 	DrawEntities();

@@ -34,7 +34,8 @@ private:
 	SDL_Surface*		map_surface = nullptr;
 	SDL_Renderer*		map_renderer = nullptr;
 
-	int minimapCounter = 0;
+	int minimapCounter;
+	bool reached_max;
 
 	float minimap_scale;
 
