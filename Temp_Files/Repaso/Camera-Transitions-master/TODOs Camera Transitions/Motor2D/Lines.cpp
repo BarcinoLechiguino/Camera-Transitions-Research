@@ -1,0 +1,80 @@
+#include "j1Render.h"
+#include "Lines.h"
+#include "j1Scene.h"
+#include "j1Scene2.h"
+#include "j1App.h"
+#include "j1Window.h"
+
+Lines::Lines(j1Color color, float time) : j1Transitions(time) {
+	this->color = color;
+
+	App->win->GetWindowSize(w, h);
+	screen = { -(int)w, 0, (int)w, (int)h };
+	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
+
+	initial_x_left = App->render->camera.x;
+	initial_x_right = App->render->camera.x + (int)w;
+	
+	for (int i = 0; i < 11; i++) {
+		// All lines have the window width as width and height/10 as height
+		lines[i].h = ((int)h / 10);
+
+		lines[i].w = (int)w;
+
+		// 6 lines are placed at the left of the screen
+		if (i % 2 == 0)
+			lines[i].x = initial_x_left;
+
+		// 5 lines are placed at the right of the screen
+		else
+			lines[i].x = initial_x_right;
+	}
+
+	// Each one is placed h += h/10 than the previous one
+	for (int i = 0; i < 11; i++) {
+		lines[i].y = height;
+		height += h / 10;
+	}
+
+}
+
+Lines::~Lines()
+{}
+
+void Lines::Start() {
+
+	j1Transitions::Start();
+
+	// TODO 6: Make that the lines do the effect of crossing through the screen
+	// Take into account that some of them are in the left of the screen and some others in the right
+
+	SDL_SetRenderDrawColor(App->render->renderer, color.r, color.g, color.b, 255);
+	for (int i = 0; i < 11; i++)
+		SDL_RenderFillRect(App->render->renderer, &lines[i]);
+}
+
+void Lines::Change() {
+
+	j1Transitions::Change();
+
+	SDL_SetRenderDrawColor(App->render->renderer, color.r, color.g, color.b, 255);
+	SDL_RenderFillRect(App->render->renderer, &screen);
+
+	if (App->scene->active)
+		App->scene->ChangeScene();
+
+	else
+		App->scene2->ChangeScene();
+}
+
+void Lines::Exit() {
+
+	j1Transitions::Exit();
+
+	// TODO 7: The lines have to disappear from the screen
+	
+
+	SDL_SetRenderDrawColor(App->render->renderer, color.r, color.g, color.b, 255);
+	for (int i = 0; i < 11; i++)
+		SDL_RenderFillRect(App->render->renderer, &lines[i]);
+}

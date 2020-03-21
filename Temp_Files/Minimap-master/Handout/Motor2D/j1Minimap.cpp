@@ -111,16 +111,16 @@ bool j1Minimap::Update(float dt)
 
 bool j1Minimap::PostUpdate()
 {	
-	SDL_Rect rect0 = { 0, 0, minimapCounter, 200 };
-	SDL_Rect rect1 = { 0, 0, 400, minimapCounter };
-	SDL_Rect rect2 = { 0, 100, 400, 200 };
-	SDL_Rect rect3 = { 0, 0, 400, 100 };
+	SDL_Rect rect0 = { 0, 0, minimapCounter, 200 };									//Left to Right
+	SDL_Rect rect1 = { 0, 0, 400, minimapCounter * 0.5 };									//Top to Bottom
+	SDL_Rect rect2 = { 0, 100, 400, 200 };											//Stripe: Right to Left
+	SDL_Rect rect3 = { 0, 0, 400, 100 };											//Stripe: Left to Right
 
 	App->render->Blit(minimap_tex, 0, 0, &rect0, false);							//Slide In/Out Horizontally
 	App->render->Blit(minimap_tex, 0, 0, &rect1, false);							//Slide In/Out Vertically
 
-	App->render->Blit(minimap_tex, 400 - minimapCounter, 100, &rect2, false);		//Stripes
-	App->render->Blit(minimap_tex, -400 + minimapCounter, 0, &rect3, false);
+	App->render->Blit(minimap_tex, 400 - minimapCounter * 2, 100, &rect2, false);	//Stripes
+	App->render->Blit(minimap_tex, -400 + minimapCounter * 2, 0, &rect3, false);
 
 	MinimapBorders();
 	DrawEntities();
