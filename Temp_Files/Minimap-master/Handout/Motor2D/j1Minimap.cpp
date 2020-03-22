@@ -122,6 +122,10 @@ bool j1Minimap::PostUpdate()
 	App->render->Blit(minimap_tex, 400 - minimapCounter * 2, 100, &rect2, false);	//Stripes
 	App->render->Blit(minimap_tex, -400 + minimapCounter * 2, 0, &rect3, false);
 
+	SDL_SetRenderDrawColor(App->render->renderer, 0, 0, 0, minimapCounter * 0.5);	//Fade To Black
+	SDL_RenderFillRect(App->render->renderer, &rect0);
+	//SDL_RenderClear(App->render->renderer);
+
 	MinimapBorders();
 	DrawEntities();
 	DrawCamera();
