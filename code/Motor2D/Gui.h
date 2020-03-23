@@ -3,7 +3,6 @@
 
 #include "Module.h"
 #include "Textures.h"
-#include "p2List.h"
 #include "UI.h"
 #include "UI_Image.h"
 #include "UI_Text.h"
@@ -47,7 +46,7 @@ public:
 	UI* CreateImage(UI_Element element, int x, int y, SDL_Rect rect, bool isVisible = false, bool isInteractible = false, bool isDraggable = false, UI* parent = nullptr);
 
 	UI* CreateText(UI_Element element, int x, int y, SDL_Rect hitbox, _TTF_Font* font, SDL_Color fontColour, bool isVisible = true, bool isInteractible = false, bool isDraggable = false,
-		UI* parent = nullptr, p2SString* string = nullptr, p2SString* hoverString = nullptr, p2SString* leftClickString = nullptr, p2SString* rightClickString = nullptr);
+		UI* parent = nullptr, std::string* string = nullptr, std::string* hoverString = nullptr, std::string* leftClickString = nullptr, std::string* rightClickString = nullptr);
 
 	UI* CreateButton(UI_Element element, int x, int y, bool isVisible = true, bool isInteractible = true, bool isDraggable = false, UI* parent = nullptr,
 		SDL_Rect* idle = nullptr, SDL_Rect* hover = nullptr, SDL_Rect* clicked = nullptr);
@@ -55,7 +54,7 @@ public:
 	UI* CreateUI_Window(UI_Element element, int x, int y, SDL_Rect hitbox, bool isVisible = true, bool isInteractible = false, bool isDraggable = false, UI* parent = nullptr);
 
 	UI* CreateInputBox(UI_Element element, int x, int y, SDL_Rect hitbox, _TTF_Font* font, SDL_Color fontColour, SDL_Rect cursor, SDL_Color cursorColour, iPoint textOffset,
-		float blinkFrequency = 0.0f, bool isVisible = true, bool isInteractible = true, bool isDraggable = false, UI* parent = nullptr, p2SString* defaultString = nullptr);
+		float blinkFrequency = 0.0f, bool isVisible = true, bool isInteractible = true, bool isDraggable = false, UI* parent = nullptr, std::string* defaultString = nullptr);
 
 	UI* CreateScrollbar(UI_Element element, int x, int y, SDL_Rect hitbox, SDL_Rect thumbSize, iPoint thumbOffset, SDL_Rect dragArea, float dragFactor, bool dragXAxis = false,
 		bool dragYAxis = true, bool invertedScrolling = false, bool isVisible = true, bool isInteractible = true, bool isDraggable = false,
@@ -76,17 +75,17 @@ public:
 	void Debug_UI();													//Shows on screen the different rects that compose the UI Display.
 
 public:
-	UI*					focusedElement;					//Change to list item
-	p2List_item<UI*>*	iteratedElement;
+	UI*							focusedElement;							//Change to list item
+	std::list<UI*>::iterator	iteratedElement;
 
-	bool escape;										//When this bool is true the game is exited.
-	bool ui_debug;										//When this bool is true, debug mode is activated.
+	bool						escape;									//When this bool is true the game is exited.
+	bool						ui_debug;								//When this bool is true, debug mode is activated.
 
 private:
-	SDL_Texture* atlas;									//Texture of the atlas (UI Spritesheet)
-	p2SString atlas_file_name;							//Name of the atlas in the xml file.
+	SDL_Texture*				atlas;									//Texture of the atlas (UI Spritesheet)
+	std::string					atlas_file_name;						//Name of the atlas in the xml file.
 
-	p2List<UI*> elements;								//List where all the UI elements in a scene will be stored at.
+	std::list<UI*>				elements;								//List where all the UI elements in a scene will be stored at.
 };
 
 #endif // __GUI_H__

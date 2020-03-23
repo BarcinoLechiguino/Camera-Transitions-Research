@@ -165,14 +165,14 @@ void UI_Scrollbar::DrawScrollbarElements()
 
 void UI_Scrollbar::LinkScroll(UI* element)
 {
-	linkedElements.add(element);
+	linkedElements.push_back(element);
 }
 
 void UI_Scrollbar::UpdateLinkedElements()
 {
-	for (p2List_item<UI*>* element = linkedElements.start; element != NULL; element = element->next)
+	for (std::list<UI*>::iterator element; element != linkedElements.end(); ++element)
 	{
-		UI* elem = element->data;
+		UI* elem = (*element);
 
 		if (thumb->GetScreenPos() != thumb->initialPosition)
 		{

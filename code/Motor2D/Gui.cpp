@@ -10,7 +10,7 @@
 
 Gui::Gui() : Module()
 {
-	name.create("gui");
+	name = "gui";
 }
 
 // Destructor
@@ -31,10 +31,12 @@ bool Gui::Awake(pugi::xml_node& conf)
 // Called before the first frame
 bool Gui::Start()
 {
-	atlas = App->tex->Load(atlas_file_name.GetString());
+	atlas = App->tex->Load(atlas_file_name.c_str());
 
 	ui_debug = false;
 	escape = true;
+
+	iteratedElement = elements.end();
 
 	return true;
 }
@@ -69,51 +71,13 @@ bool Gui::PreUpdate()
 // Called after all Updates
 bool Gui::PostUpdate()
 {	
-	//escape = true;
-	
-	for (p2List_item<UI*>* element_iterator = elements.start; element_iterator != NULL; element_iterator = element_iterator->next)
+	std::list<UI*>::iterator elem = elements.begin();
+
+	for (; elem != elements.end(); ++elem)
 	{
-		switch (element_iterator->data->element)
+		if ((*elem)->isVisible)
 		{
-		case UI_Element::IMAGE:
-			if (element_iterator->data->isVisible)
-			{
-				element_iterator->data->Draw();
-			}
-
-			break;
-
-		case UI_Element::TEXT:
-			if (element_iterator->data->isVisible)
-			{
-				element_iterator->data->Draw();
-			}
-
-			break;
-
-		case UI_Element::BUTTON:
-			if (element_iterator->data->isVisible)
-			{
-				element_iterator->data->Draw();
-			}
-
-			break;
-
-		case UI_Element::SCROLLBAR:
-			if (element_iterator->data->isVisible)
-			{
-				element_iterator->data->Draw();
-			}
-
-			break;
-
-		case UI_Element::INPUTBOX:
-			if (element_iterator->data->isVisible)
-			{
-				element_iterator->data->Draw();
-			}
-			
-			break;
+			(*elem)->Draw();
 		}
 	}
 
@@ -128,10 +92,12 @@ bool Gui::CleanUp()
 	LOG("Freeing GUI");
 
 	//Iterate the elements list and frees all allocated memory.
-	for (p2List_item<UI*>* element_iterator = elements.start; element_iterator != NULL; element_iterator = element_iterator->next)
+	std::list<UI*>::iterator elem = elements.begin();
+
+	for (; elem != elements.end(); ++elem)
 	{
-		element_iterator->data->CleanUp();
-		RELEASE(element_iterator->data);
+		(*elem)->CleanUp();
+		RELEASE((*elem));
 	}
 
 	elements.clear();
@@ -154,14 +120,14 @@ UI* Gui::CreateImage(UI_Element element, int x, int y, SDL_Rect hitbox, bool isV
 
 	if (elem != nullptr)
 	{
-		elements.add(elem);
+		elements.push_back(elem);
 	}
 
 	return elem;
 }
 
 UI* Gui::CreateText(UI_Element element, int x, int y, SDL_Rect hitbox, _TTF_Font* font, SDL_Color fontColour, bool isVisible, bool isInteractible, bool isDraggable,
-					UI* parent, p2SString* string, p2SString* hoverString, p2SString* leftClickString, p2SString* rightClickString)
+					UI* parent, std::string* string, std::string* hoverString, std::string* leftClickString, std::string* rightClickString)
 {
 	UI* elem = nullptr;
 
@@ -169,7 +135,7 @@ UI* Gui::CreateText(UI_Element element, int x, int y, SDL_Rect hitbox, _TTF_Font
 
 	if (elem != nullptr)
 	{
-		elements.add(elem);
+		elements.push_back(elem);
 	}
 
 	return elem;
@@ -183,7 +149,7 @@ UI* Gui::CreateButton(UI_Element element, int x, int y, bool isVisible, bool isI
 
 	if (elem != nullptr)
 	{
-		elements.add(elem);
+		elements.push_back(elem);
 	}
 
 	return elem;
@@ -197,14 +163,14 @@ UI* Gui::CreateUI_Window(UI_Element element, int x, int y, SDL_Rect hitbox, bool
 
 	if (elem != nullptr)
 	{
-		elements.add(elem);
+		elements.push_back(elem);
 	}
 
 	return elem;
 }
 
 UI* Gui::CreateInputBox(UI_Element element, int x, int y, SDL_Rect hitbox, _TTF_Font* font, SDL_Color fontColour, SDL_Rect cursor, SDL_Color cursorColour, iPoint textOffset, 
-					float blinkFrequency, bool isVisible, bool isInteractible, bool isDraggable, UI* parent, p2SString* defaultString)
+					float blinkFrequency, bool isVisible, bool isInteractible, bool isDraggable, UI* parent, std::string* defaultString)
 {
 	UI* elem = nullptr;
 
@@ -212,7 +178,7 @@ UI* Gui::CreateInputBox(UI_Element element, int x, int y, SDL_Rect hitbox, _TTF_
 
 	if (elem != nullptr)
 	{
-		elements.add(elem);
+		elements.push_back(elem);
 	}
 
 	return elem;
@@ -228,7 +194,7 @@ UI* Gui::CreateScrollbar(UI_Element element, int x, int y, SDL_Rect hitbox, SDL_
 
 	if (elem != nullptr)
 	{
-		elements.add(elem);
+		elements.push_back(elem);
 	}
 
 	return elem;
@@ -237,12 +203,12 @@ UI* Gui::CreateScrollbar(UI_Element element, int x, int y, SDL_Rect hitbox, SDL_
 //--------------------------------- INPUT PROCESSING METHODS ---------------------------------
 void Gui::OnEventCall(UI* element, UI_Event ui_event)
 {
-	if (element == App->scene->button && ui_event == UI_Event::UNCLICKED)				//If the pointer received is the UI_Button* button pointer of Scene.h and event = clicked. 
+	if (element == App->scene->button && ui_event == UI_Event::UNCLICKED)					//If the pointer received is the UI_Button* button pointer of Scene.h and event = clicked. 
 	{
-		App->gui->ui_debug = !App->gui->ui_debug;										//Enables / Disables UI Debug Mode.
+		App->gui->ui_debug = !App->gui->ui_debug;											//Enables / Disables UI Debug Mode.
 	}
 
-	if (element == App->scene->escButton && ui_event == UI_Event::UNCLICKED)			//If the pointer received is the UI_Button* escbutton pointer of Scene.h and event = clicked.
+	if (element == App->scene->escButton && ui_event == UI_Event::UNCLICKED)				//If the pointer received is the UI_Button* escbutton pointer of Scene.h and event = clicked.
 	{
 		escape = false;
 	}
@@ -263,17 +229,19 @@ UI* Gui::FirstElementUnderMouse() const
 {
 	UI* firstElement = nullptr;
 
-	for (p2List_item<UI*>* iterator = elements.start; iterator != NULL; iterator = iterator->next)
+	std::list<UI*>::const_iterator elem = elements.cbegin();
+
+	for (; elem != elements.cend(); ++elem)
 	{
-		if (ElementCanBeClicked(iterator->data))													//Checks that the element being iterated has the mouse on it.
+		if (ElementCanBeClicked((*elem)))													//Checks that the element being iterated has the mouse on it.
 		{
-			firstElement = iterator->data;															//The element being iterated is assigned to firstElement.
+			firstElement = (*elem);															//The element being iterated is assigned to firstElement.
 		}
 	}
 
 	if (firstElement != nullptr)
 	{
-		return firstElement;																		//The last element that was checked to have the mouse on it will be returned.
+		return firstElement;																//The last element that was checked to have the mouse on it will be returned.
 	}
 }
 
@@ -296,41 +264,41 @@ bool Gui::ElementCanBeClicked(UI* clickedElement) const
 // --- Method that will pass the focus from focuseable UI Element to the next.
 void Gui::PassFocus()
 {
-	if (iteratedElement == nullptr)
+	if (iteratedElement == elements.end())
 	{
-		iteratedElement = elements.start;
+		iteratedElement = elements.begin();
 	}
 	
 	if (focusedElement == nullptr)
 	{
-		for (iteratedElement; iteratedElement != NULL; iteratedElement = iteratedElement->next)		//Loop that is used to find the first interactible element of the elments list.
+		for (iteratedElement; iteratedElement != elements.end(); ++iteratedElement)			//Loop that is used to find the first interactible element of the elments list.
 		{
-			if (ElementCanBeFocused(iteratedElement->data))											//If the element being iterated fulfills all focus conditions.
+			if (ElementCanBeFocused((*iteratedElement)))									//If the element being iterated fulfills all focus conditions.
 			{
-				focusedElement = iteratedElement->data;												//UI* focusedElement is set with the UI* of the element being iterated.
-				break;																				//The loop is stopped.
+				focusedElement = (*iteratedElement);										//UI* focusedElement is set with the UI* of the element being iterated.
+				break;																		//The loop is stopped.
 			}
 		}
 
-		return;																						//Stops the function here so the focus remains in the first interactible element.
+		return;																				//Stops the function here so the focus remains in the first interactible element.
 	}
 
-	for (iteratedElement; iteratedElement != NULL; iteratedElement = iteratedElement->next)			//Loop that is used to find the next interactible element of the elments list.
+	for (iteratedElement; iteratedElement != elements.end(); ++iteratedElement)				//Loop that is used to find the next interactible element of the elments list.
 	{
-		if (iteratedElement->next != NULL)															//If the next element of the list is not NULL.
+		if (*next(iteratedElement) != nullptr)												//If the next element of the list is not NULL.
 		{
-			if (ElementCanBeFocused(iteratedElement->next->data))									//If the next element of the list fulfills all focus conditions.
+			if (ElementCanBeFocused(*next(iteratedElement)))								//If the next element of the list fulfills all focus conditions.
 			{
-				focusedElement = iteratedElement->next->data;										//UI* focusedElement is set with the UI* of the element next to the element being iterated. 
-				iteratedElement = iteratedElement->next;											//The element being iterated is set to the next element in the list.
-				break;																				//The loop is stopped so the focus remains in the interactible element that now has the focus.
+				focusedElement = *next(iteratedElement);									//UI* focusedElement is set with the UI* of the element next to the element being iterated. 
+				++iteratedElement;															//The element being iterated is set to the next element in the list.
+				break;																		//The loop is stopped so the focus remains in the interactible element that now has the focus.
 			}
 		}
-		else																						//If the next element of the list is NULL.
+		else																				//If the next element of the list is NULL.
 		{
-			iteratedElement = nullptr;																//The list_item is set to nullptr.
-			focusedElement = nullptr;																//The UI* focused element is set to nullptr, which efectively disables the focus.
-			break;																					//The loop is stopped so no element regains the focus.
+			iteratedElement = elements.end();												//The list_item is set to nullptr.
+			focusedElement	= nullptr;														//The UI* focused element is set to nullptr, which efectively disables the focus.
+			break;																			//The loop is stopped so no element regains the focus.
 		}
 	}
 }
@@ -358,9 +326,11 @@ bool Gui::ElementHasChilds(UI* parentElement) const
 {
 	bool ret = false;
 	
-	for (p2List_item<UI*>* iterator = elements.start; iterator != NULL; iterator = iterator->next)
+	std::list<UI*>::const_iterator elem = elements.cbegin();
+
+	for (; elem != elements.cend(); ++elem)
 	{
-		if (iterator->data->parent == parentElement)
+		if ((*elem)->parent == parentElement)
 		{
 			ret = true;
 			break;
@@ -372,36 +342,36 @@ bool Gui::ElementHasChilds(UI* parentElement) const
 
 void Gui::UpdateChilds(UI* parentElement)
 {
-	//Check ElementHasChilds() here instead than in the elements?
-	for (p2List_item<UI*>* child = elements.start; child != NULL; child = child->next)
+	std::list<UI*>::iterator child = elements.begin();
+	
+	for (; child != elements.end(); ++child)
 	{
-		if (child->data->parent == parentElement)
+		if ((*child)->parent == parentElement)
 		{
-			child->data->prevMousePos = child->data->parent->prevMousePos;			//The prevMousePos of the element being iterated is set with the parent's prev mouse pos.
-			child->data->DragElement();												//The child is also dragged, just as the parent.
+			(*child)->prevMousePos = (*child)->parent->prevMousePos;				//The prevMousePos of the element being iterated is set with the parent's prev mouse pos.
+			(*child)->DragElement();												//The child is also dragged, just as the parent.
 
-			if (ElementHasChilds(child->data))										//If the first child also has child elements, then they are updated the same way.
+			if (ElementHasChilds((*child)))											//If the first child also has child elements, then they are updated the same way.
 			{
-				UpdateChilds(child->data);											//Recursive function, maybe avoid?
+				UpdateChilds((*child));												//Recursive function, maybe avoid?
 			}
-
-			/*child->data->SetScreenPos(child->data->GetLocalPos() + child->data->parent->GetScreenPos());
-			child->data->SetHitbox({ child->data->GetScreenPos().x, child->data->GetScreenPos().y , child->data->GetHitbox().w, child->data->GetHitbox().h});*/
 		}
 	}
 }
 
 void Gui::SetElementsVisibility(UI* parentElement, bool state)
 {	
-	for (p2List_item<UI*>* child = elements.start; child != NULL; child = child->next)
+	std::list<UI*>::iterator child = elements.begin();
+	
+	for (; child != elements.end(); ++child)
 	{
-		if (child->data->parent == parentElement)									//If the parent of the iterated element is parentElement.
+		if ((*child)->parent == parentElement)										//If the parent of the iterated element is parentElement.
 		{
-			child->data->isVisible = state;											//Enables/Disables the iterated child's visibility. Changes isVisible from true to false and viceversa.
+			(*child)->isVisible = state;											//Enables/Disables the iterated child's visibility. Changes isVisible from true to false and viceversa.
 
-			if (ElementHasChilds(child->data))										//If the first child also has child elements, then they are updated the same way.
+			if (ElementHasChilds((*child)))											//If the first child also has child elements, then they are updated the same way.
 			{
-				SetElementsVisibility(child->data, state);							//Recursive function, maybe avoid?
+				SetElementsVisibility((*child), state);								//Recursive function, maybe avoid?
 			}
 		}
 	}
@@ -415,37 +385,37 @@ void Gui::Debug_UI()
 {
 	if (ui_debug == true)
 	{
-		for (p2List_item<UI*>* element_iterator = elements.start; element_iterator != NULL; element_iterator = element_iterator->next)
+		for (std::list<UI*>::iterator elem = elements.begin(); elem != elements.end(); ++elem)
 		{	
-			if (element_iterator->data->isVisible)
+			if ((*elem)->isVisible)
 			{
-				switch (element_iterator->data->element)
+				switch ((*elem)->element)
 				{
 				case UI_Element::EMPTY:
-					App->render->DrawQuad(element_iterator->data->GetHitbox(), 255, 255, 255, 255, false, false);		//UI_Empty will be WHITE.
+					App->render->DrawQuad((*elem)->GetHitbox(), 255, 255, 255, 255, false, false);		//UI_Empty will be WHITE.
 						break;
 				
 				case UI_Element::IMAGE:
-					App->render->DrawQuad(element_iterator->data->GetHitbox(), 0, 0, 255, 255, false, false);			//UI_Image will be BLUE.
+					App->render->DrawQuad((*elem)->GetHitbox(), 0, 0, 255, 255, false, false);			//UI_Image will be BLUE.
 
 					break;
 
 				case UI_Element::TEXT:
-					App->render->DrawQuad(element_iterator->data->GetHitbox(), 0, 255, 0, 255, false, false);			//UI_Text will be GREEN.
+					App->render->DrawQuad((*elem)->GetHitbox(), 0, 255, 0, 255, false, false);			//UI_Text will be GREEN.
 
 					break;
 
 				case UI_Element::BUTTON:
-					App->render->DrawQuad(element_iterator->data->GetHitbox(), 255, 0, 0, 255, false, false);			//UI_Button will be RED.
+					App->render->DrawQuad((*elem)->GetHitbox(), 255, 0, 0, 255, false, false);			//UI_Button will be RED.
 
 					break;
 
 				case UI_Element::SCROLLBAR:
-					App->render->DrawQuad(element_iterator->data->GetHitbox(), 255, 255, 0, 255, false, false);			//UI_Scrollbar will be YELLOW.
+					App->render->DrawQuad((*elem)->GetHitbox(), 255, 255, 0, 255, false, false);		//UI_Scrollbar will be YELLOW.
 					break;
 
 				case UI_Element::INPUTBOX:
-					App->render->DrawQuad(element_iterator->data->GetHitbox(), 255, 0, 255, 255, false, false);			//UI_Input Box will be PURPLE.
+					App->render->DrawQuad((*elem)->GetHitbox(), 255, 0, 255, 255, false, false);		//UI_Input Box will be PURPLE.
 					break;
 				}
 			}

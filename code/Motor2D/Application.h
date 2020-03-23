@@ -1,7 +1,7 @@
 #ifndef __APPLICATION_H__
 #define __APPLICATION_H__
 
-#include "p2List.h"
+#include <list>
 #include "Module.h"
 #include "PerfTimer.h"
 #include "Timer.h"
@@ -50,10 +50,6 @@ public:
 	const char* GetOrganization() const;
 	float GetDT() const;
 
-	void LoadGame(const char* file);
-	void SaveGame(const char* file) const;
-	void GetSaveGames(p2List<p2SString>& list_to_fill) const;
-
 private:
 
 	// Load config file
@@ -74,10 +70,6 @@ private:
 	// Call modules after each loop iteration
 	bool PostUpdate();
 
-	// Load / Save
-	bool LoadGameNow();
-	bool SavegameNow() const;
-
 public:
 
 	// Modules
@@ -93,17 +85,12 @@ public:
 
 private:
 
-	p2List<Module*>	modules;
+	std::list<Module*>	modules;
 	int					argc;
 	char**				args;
 
-	p2SString			title;
-	p2SString			organization;
-
-	mutable bool		want_to_save = false;
-	bool				want_to_load = false;
-	p2SString			load_game;
-	mutable p2SString	save_game;
+	std::string			title;
+	std::string			organization;
 
 	PerfTimer			ptimer;
 	uint64				frame_count = 0;

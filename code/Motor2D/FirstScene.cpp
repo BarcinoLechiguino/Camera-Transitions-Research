@@ -13,7 +13,7 @@
 
 FirstScene::FirstScene() : Module()
 {
-	name.create("scene");
+	name = "scene";
 }
 
 // Destructor
@@ -44,8 +44,8 @@ bool FirstScene::Start()
 	// TODO 4: Create the text "Hello World" as a UI element
 	SDL_Rect textHitbox{ 432, 75, 65, 20};
 	SDL_Rect interactibleTextHitbox{ 432, 75, 134, 20};
-	p2SString bufferString = "Hello World";
-	p2SString interactibleString = "This string is interactible.";
+	std::string bufferString = "Hello World";
+	std::string interactibleString = "This string is interactible.";
 	_TTF_Font* font = App->font->Load("fonts/open_sans/OpenSans-SemiboldItalic.ttf");
 	SDL_Color fontRgb = { 255, 255, 255, 255 };
 
@@ -60,7 +60,7 @@ bool FirstScene::Start()
 	SDL_Rect clicked		= { 411,169,229,69 };
 
 	SDL_Rect buttonLabelHitbox{ 432, 75, 45, 18 };
-	p2SString buttonString = "BUTTON";
+	std::string buttonString = "BUTTON";
 
 	button = (UI_Button*)App->gui->CreateButton(UI_Element::BUTTON, 350, 205, true, true, false, window, &idle, &hover, &clicked);
 	escButton = (UI_Button*)App->gui->CreateButton(UI_Element::BUTTON, 350, 280, true, true, false, window, &idle, &hover, &clicked);
@@ -79,7 +79,7 @@ bool FirstScene::Start()
 	SDL_Color cursorColour	= { 255, 255, 255, 255 };
 	float blinkFrequency	= 0.5f;
 
-	p2SString defaultTxt	= "Input Text Here";
+	std::string defaultTxt	= "Input Text Here";
 	_TTF_Font* inputFont	= App->font->Load("fonts/open_sans/OpenSans-SemiboldItalic.ttf", 30);
 	iPoint textOffset		= { 10, 9 };
 
@@ -97,7 +97,7 @@ bool FirstScene::Start()
 	float dragFactor			= 0.2f;
 
 	char* txt = "Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.\n Integer blandit arcu turpis,\n vitae blandit lacus \n malesuada commodo.";
-	p2SString scrollTxt = "Lorem ipsum dolor sit amet";
+	std::string scrollTxt = "Lorem ipsum dolor sit amet";
 	_TTF_Font* scrollFont = App->font->Load("fonts/open_sans/OpenSans-Regular.ttf", 24);
 	SDL_Color scrollFontColour = { 255, 255, 255, 255 };
 

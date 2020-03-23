@@ -12,7 +12,7 @@
 
 Input::Input() : Module()
 {
-	name.create("input");
+	name = "input";
 
 	keyboard = new KeyState[MAX_KEYS];
 	memset(keyboard, KEY_IDLE, sizeof(KeyState) * MAX_KEYS);

@@ -6,7 +6,8 @@
 #ifndef __MODULE_H__
 #define __MODULE_H__
 
-#include "p2SString.h"
+#include <list>
+#include <vector>
 #include "PugiXml\src\pugixml.hpp"
 
 class App;
@@ -64,16 +65,6 @@ public:
 		return true;
 	}
 
-	virtual bool Load(pugi::xml_node&)
-	{
-		return true;
-	}
-
-	virtual bool Save(pugi::xml_node&) const
-	{
-		return true;
-	}
-
 	virtual void OnEventCall(UI* element, UI_Event ui_event)
 	{
 		return;
@@ -81,7 +72,7 @@ public:
 
 public:
 
-	p2SString	name;
+	std::string	name;
 	bool		active;
 
 };

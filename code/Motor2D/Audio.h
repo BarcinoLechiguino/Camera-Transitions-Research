@@ -35,7 +35,7 @@ public:
 private:
 
 	_Mix_Music*			music = NULL;
-	p2List<Mix_Chunk*>	fx;
+	std::vector<Mix_Chunk*>	fx;
 };
 
 #endif // __AUDIO_H__
