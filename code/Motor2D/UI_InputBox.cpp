@@ -283,7 +283,7 @@ void UI_InputBox::CheckCursorInputs()														// --------------------------
 		}
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)			//See j1Input			// --------------------------------------------------------------------------
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)			//See Input				// --------------------------------------------------------------------------
 	{
 		int nextIndex = GetCurrentCursorIndex();											//Gets the current cursor index. Named nextIndex to improve readability.
 
@@ -293,7 +293,7 @@ void UI_InputBox::CheckCursorInputs()														// --------------------------
 		}
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN)		//See j1Input			// --------------------------------------------------------------------------
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN)		//See Input				// --------------------------------------------------------------------------
 	{
 		//currentIndex = GetCurrentCursorIndex();
 
@@ -309,7 +309,7 @@ void UI_InputBox::CheckCursorInputs()														// --------------------------
 		//}
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_DELETE) == KEY_DOWN)	//See j1Input				// --------------------------------------------------------------------------
+	if (App->input->GetKey(SDL_SCANCODE_DELETE) == KEY_DOWN)	//See Input					// --------------------------------------------------------------------------
 	{
 		currentIndex = GetCurrentCursorIndex();												//Gets the current cursor index. In this case current index will be 0. See j1Input.
 		SetCursorPosWithCursorIndex(currentIndex);											//Sets the cursor's poition to the one stored in the cursorPositions[] array for the passed index.
@@ -331,14 +331,14 @@ void UI_InputBox::CheckCursorInputs()														// --------------------------
 		}
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_HOME) == KEY_DOWN)		//See j1Input				// --------------------------------------------------------------------------
+	if (App->input->GetKey(SDL_SCANCODE_HOME) == KEY_DOWN)		//See Input					// --------------------------------------------------------------------------
 	{
 		currentIndex = GetCurrentCursorIndex();												//Gets the current cursor index. In this case current index will be 0. See j1Input.
 
 		SetCursorPosWithCursorIndex(currentIndex);											//Sets the cursor's poition to the one stored in the cursorPositions[] array for the passed index.
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_END) == KEY_DOWN)		//See j1Input				// --------------------------------------------------------------------------
+	if (App->input->GetKey(SDL_SCANCODE_END) == KEY_DOWN)		//See Input					// --------------------------------------------------------------------------
 	{
 		currentIndex = GetCurrentCursorIndex();												//Gets the current cursor index. In this case current index will be the length of the input_string.
 		

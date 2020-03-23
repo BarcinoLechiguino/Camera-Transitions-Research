@@ -1,5 +1,5 @@
 // ----------------------------------------------------
-// j1PerfTimer.cpp
+// PerfTimer.cpp
 // Slow timer with microsecond precision
 // ----------------------------------------------------
 
