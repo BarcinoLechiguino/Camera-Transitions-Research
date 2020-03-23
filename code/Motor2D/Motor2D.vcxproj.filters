@@ -1,50 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="j1Window.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Audio.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="j1App.cpp">
-      <Filter>Desenvolupament  ========</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Input.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Main.cpp">
-      <Filter>Desenvolupament  ========</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Render.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Textures.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="p2Log.cpp">
       <Filter>Programacio 2 ===========</Filter>
     </ClCompile>
-    <ClCompile Include="j1Scene.cpp">
-      <Filter>Desenvolupament  ========\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="PugiXml\src\pugixml.cpp">
       <Filter>Desenvolupament  ========\Tools\PuguiXML</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Map.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Timer.cpp">
-      <Filter>Desenvolupament  ========\Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="j1PerfTimer.cpp">
-      <Filter>Desenvolupament  ========\Tools</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Fonts.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Gui.cpp">
-      <Filter>Desenvolupament  ========\Modules\Gui</Filter>
     </ClCompile>
     <ClCompile Include="UI.cpp">
       <Filter>Desenvolupament  ========\Modules\Gui</Filter>
@@ -56,9 +17,6 @@
       <Filter>Desenvolupament  ========\Modules\Gui</Filter>
     </ClCompile>
     <ClCompile Include="UI_Button.cpp">
-      <Filter>Desenvolupament  ========\Modules\Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Console.cpp">
       <Filter>Desenvolupament  ========\Modules\Gui</Filter>
     </ClCompile>
     <ClCompile Include="UI_Window.cpp">
@@ -73,29 +31,62 @@
     <ClCompile Include="UI_Scrollbar.cpp">
       <Filter>Desenvolupament  ========\Modules\Gui</Filter>
     </ClCompile>
+    <ClCompile Include="TransitionManager.cpp">
+      <Filter>Desenvolupament  ========\Modules\Transitions</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>Desenvolupament  ========\Modules\Transitions</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeToColour.cpp">
+      <Filter>Desenvolupament  ========\Modules\Transitions\Transition Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Wipe.cpp">
+      <Filter>Desenvolupament  ========\Modules\Transitions\Transition Types</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Desenvolupament  ========\Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui.cpp">
+      <Filter>Desenvolupament  ========\Modules\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Fonts.cpp">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstScene.cpp">
+      <Filter>Desenvolupament  ========\Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Render.cpp">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Desenvolupament  ========\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfTimer.cpp">
+      <Filter>Desenvolupament  ========\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Desenvolupament  ========</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Desenvolupament  ========</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="j1Window.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Audio.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="j1App.h">
-      <Filter>Desenvolupament  ========</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Input.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Module.h">
-      <Filter>Desenvolupament  ========</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Render.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Textures.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="p2Defs.h">
       <Filter>Programacio 2 ===========</Filter>
     </ClInclude>
@@ -114,29 +105,11 @@
     <ClInclude Include="p2DynArray.h">
       <Filter>Programacio 2 ===========</Filter>
     </ClInclude>
-    <ClInclude Include="j1Scene.h">
-      <Filter>Desenvolupament  ========\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="PugiXml\src\pugiconfig.hpp">
       <Filter>Desenvolupament  ========\Tools\PuguiXML</Filter>
     </ClInclude>
     <ClInclude Include="PugiXml\src\pugixml.hpp">
       <Filter>Desenvolupament  ========\Tools\PuguiXML</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Map.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Timer.h">
-      <Filter>Desenvolupament  ========\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="j1PerfTimer.h">
-      <Filter>Desenvolupament  ========\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Fonts.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Gui.h">
-      <Filter>Desenvolupament  ========\Modules\Gui</Filter>
     </ClInclude>
     <ClInclude Include="UI.h">
       <Filter>Desenvolupament  ========\Modules\Gui</Filter>
@@ -148,9 +121,6 @@
       <Filter>Desenvolupament  ========\Modules\Gui</Filter>
     </ClInclude>
     <ClInclude Include="UI_Button.h">
-      <Filter>Desenvolupament  ========\Modules\Gui</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Console.h">
       <Filter>Desenvolupament  ========\Modules\Gui</Filter>
     </ClInclude>
     <ClInclude Include="UI_Window.h">
@@ -165,6 +135,60 @@
     <ClInclude Include="UI_Scrollbar.h">
       <Filter>Desenvolupament  ========\Modules\Gui</Filter>
     </ClInclude>
+    <ClInclude Include="TransitionManager.h">
+      <Filter>Desenvolupament  ========\Modules\Transitions</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>Desenvolupament  ========\Modules\Transitions</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeToColour.h">
+      <Filter>Desenvolupament  ========\Modules\Transitions\Transition Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Wipe.h">
+      <Filter>Desenvolupament  ========\Modules\Transitions\Transition Types</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Desenvolupament  ========\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui.h">
+      <Filter>Desenvolupament  ========\Modules\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Fonts.h">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstScene.h">
+      <Filter>Desenvolupament  ========\Modules\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Render.h">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Desenvolupament  ========\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Desenvolupament  ========\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="PerfTimer.h">
+      <Filter>Desenvolupament  ========\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Desenvolupament  ========</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Desenvolupament  ========</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -176,9 +200,6 @@
     <Filter Include="Desenvolupament  ========\Tools">
       <UniqueIdentifier>{42c748be-4a37-49de-970f-5be811d06b38}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Desenvolupament  ========\Scenes">
-      <UniqueIdentifier>{e07660eb-d36f-4cc9-af59-324d31c2f2f6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Desenvolupament  ========\Modules">
       <UniqueIdentifier>{244722d1-90ce-423d-8e7a-556211865a32}</UniqueIdentifier>
     </Filter>
@@ -187,6 +208,18 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Modules\Gui">
       <UniqueIdentifier>{650d251d-d0b2-4bb7-808c-90d3eac460ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\Core">
+      <UniqueIdentifier>{beb9e6e6-b048-4d09-b7ca-ec2687b9d974}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\Transitions">
+      <UniqueIdentifier>{67bae023-cf95-4050-b2b8-9205ec80c7cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\Transitions\Transition Types">
+      <UniqueIdentifier>{3b3636ae-a28f-456b-99fc-8858a2155262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\Scenes">
+      <UniqueIdentifier>{e07660eb-d36f-4cc9-af59-324d31c2f2f6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

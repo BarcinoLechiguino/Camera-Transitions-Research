@@ -1,6 +1,6 @@
-#include "j1App.h"
-#include "j1Input.h"
-#include "j1Gui.h"
+#include "Application.h"
+#include "Input.h"
+#include "Gui.h"
 #include "UI_Button.h"
 
 //UI_Button can be interactible (will almost always be) and draggable. Can potentially receive all events.

@@ -2,7 +2,7 @@
 #define __UI_TEXT_H__
 
 #include "p2SString.h"
-#include "j1Fonts.h"
+#include "Fonts.h"
 #include "UI.h"
 
 class UI_Text : public UI

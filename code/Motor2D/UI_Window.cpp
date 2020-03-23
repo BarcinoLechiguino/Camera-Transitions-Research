@@ -1,5 +1,5 @@
-#include "j1App.h"
-#include "j1Gui.h"
+#include "Application.h"
+#include "Gui.h"
 #include "UI.h"
 #include "UI_Window.h"
 
