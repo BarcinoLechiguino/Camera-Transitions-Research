@@ -1,7 +1,8 @@
-#ifndef __SCENE_H__
-#define __SCENE_H__
+#ifndef __FIRSTSCENE_H__
+#define __FIRSTSCENE_H__
 
 #include "Module.h"
+#include "Scene.h"
 
 struct SDL_Texture;
 class GuiImage;
@@ -14,32 +15,29 @@ class UI_Button;
 class UI_InputBox;
 class UI_Scrollbar;
 
-class FirstScene : public Module
+class FirstScene : public Scene
 {
 public:
 
-	FirstScene();
+	FirstScene(SCENE scene);						// Constructor
 
-	// Destructor
-	virtual ~FirstScene();
+	virtual ~FirstScene();							// Destructor
 
-	// Called before render is available
-	bool Awake();
+	
+	bool Awake();									// Called before render is available
 
-	// Called before the first frame
-	bool Start();
+	bool Start();									// Called before the first frame
 
-	// Called before all Updates
-	bool PreUpdate();
+	bool PreUpdate();								// Called before all Updates
 
-	// Called each loop iteration
-	bool Update(float dt);
+	bool Update(float dt);							// Called each loop iteration
 
-	// Called before all Updates
-	bool PostUpdate();
+	bool PostUpdate();								// Called before all Updates
 
-	// Called before quitting
-	bool CleanUp();
+	bool CleanUp();									// Called before quitting
+
+
+	void LoadGuiElements();							// Method that will load all the Gui Elements present in this scene.
 
 public:
 	bool escape;
@@ -61,11 +59,14 @@ public:
 	UI_Image*		thumbo;
 
 private:
-	SDL_Texture* debug_tex;
-	UI_Image* banner;
-	UI_Text* text;
+	std::string		name;
+	int				index;
+	
+	SDL_Texture*	debug_tex;
+	UI_Image*		banner;
+	UI_Text*		text;
 
-	Module* listener;
+	Module*			listener;
 };
 
-#endif // __SCENE_H__
+#endif // __FIRSTSCENE_H__

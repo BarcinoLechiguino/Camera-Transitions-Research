@@ -13,38 +13,31 @@ class Input;
 class Render;
 class Textures;
 class Audio;
-class FirstScene;
 class Map;
 class Fonts;
 class Gui;
+class SceneManager;
 
 class Application
 {
 public:
 
-	// Constructor
-	Application(int argc, char* args[]);
+	Application(int argc, char* args[]);					// Constructor
+	
+	virtual ~Application();									// Destructor
 
-	// Destructor
-	virtual ~Application();
+	bool Awake();											// Called before render is available
+	
+	bool Start();											// Called before render is available
+	
+	bool Update();											// Called each loop iteration
+	
+	bool CleanUp();											// Called before quitting
 
-	// Called before render is available
-	bool Awake();
 
-	// Called before the first frame
-	bool Start();
+	void AddModule(Module* module);							// Add a new module to handle
 
-	// Called each loop iteration
-	bool Update();
-
-	// Called before quitting
-	bool CleanUp();
-
-	// Add a new module to handle
-	void AddModule(Module* module);
-
-	// Exposing some properties for reading
-	int GetArgc() const;
+	int GetArgc() const;									// Exposing some properties for reading
 	const char* GetArgv(int index) const;
 	const char* GetTitle() const;
 	const char* GetOrganization() const;
@@ -52,36 +45,30 @@ public:
 
 private:
 
-	// Load config file
-	pugi::xml_node LoadConfig(pugi::xml_document&) const;
+	pugi::xml_node LoadConfig(pugi::xml_document&) const;	// Load config file
 
-	// Call modules before each loop iteration
-	void PrepareUpdate();
+	void PrepareUpdate();									// Call modules before each loop iteration
 
-	// Call modules before each loop iteration
-	void FinishUpdate();
+	void FinishUpdate();									// Call modules before each loop iteration
 
-	// Call modules before each loop iteration
-	bool PreUpdate();
+	bool PreUpdate();										// Call modules before each loop iteration
 
-	// Call modules on each loop iteration
-	bool DoUpdate();
+	bool DoUpdate();										// Call modules on each loop iteration
 
-	// Call modules after each loop iteration
-	bool PostUpdate();
+	bool PostUpdate();										// Call modules after each loop iteration
 
 public:
 
 	// Modules
-	Window*				win = NULL;
-	Input*				input = NULL;
-	Render*				render = NULL;
-	Textures*			tex = NULL;
-	Audio*				audio = NULL;
-	FirstScene*			scene = NULL;
-	Map*				map = NULL;
-	Fonts*				font = NULL;
-	Gui*				gui = NULL;
+	Window*				win;
+	Input*				input;
+	Render*				render;
+	Textures*			tex;
+	Audio*				audio;
+	Map*				map;
+	Fonts*				font;
+	Gui*				gui;
+	SceneManager*		scene_manager;
 
 private:
 

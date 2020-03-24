@@ -6,7 +6,7 @@
 #include "Fonts.h"
 #include "Input.h"
 #include "Gui.h"
-#include "FirstScene.h"
+#include "SceneManager.h"
 
 Gui::Gui() : Module()
 {
@@ -61,8 +61,8 @@ bool Gui::PreUpdate()
 	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
 	{
 		//ShowElement(App->scene->draggableButton2);
-		SetElementsVisibility(App->scene->window, !App->scene->window->isVisible);
-		SetElementsVisibility(App->scene->scrollWindow, !App->scene->scrollWindow->isVisible);
+		/*SetElementsVisibility(App->scene_manager->current_scene, !App->scene_manager->current_scene->window);
+		SetElementsVisibility(App->scene->scrollWindow, !App->scene->scrollWindow->isVisible);*/
 	}
 	
 	return true;
@@ -203,25 +203,25 @@ UI* Gui::CreateScrollbar(UI_Element element, int x, int y, SDL_Rect hitbox, SDL_
 //--------------------------------- INPUT PROCESSING METHODS ---------------------------------
 void Gui::OnEventCall(UI* element, UI_Event ui_event)
 {
-	if (element == App->scene->button && ui_event == UI_Event::UNCLICKED)					//If the pointer received is the UI_Button* button pointer of Scene.h and event = clicked. 
-	{
-		App->gui->ui_debug = !App->gui->ui_debug;											//Enables / Disables UI Debug Mode.
-	}
+	//if (element == App->scene->button && ui_event == UI_Event::UNCLICKED)					//If the pointer received is the UI_Button* button pointer of Scene.h and event = clicked. 
+	//{
+	//	App->gui->ui_debug = !App->gui->ui_debug;											//Enables / Disables UI Debug Mode.
+	//}
 
-	if (element == App->scene->escButton && ui_event == UI_Event::UNCLICKED)				//If the pointer received is the UI_Button* escbutton pointer of Scene.h and event = clicked.
-	{
-		escape = false;
-	}
+	//if (element == App->scene->escButton && ui_event == UI_Event::UNCLICKED)				//If the pointer received is the UI_Button* escbutton pointer of Scene.h and event = clicked.
+	//{
+	//	escape = false;
+	//}
 
-	if (element == App->scene->draggableButton && ui_event == UI_Event::UNCLICKED)
-	{
-		App->gui->ui_debug = !App->gui->ui_debug;
-	}
+	//if (element == App->scene->draggableButton && ui_event == UI_Event::UNCLICKED)
+	//{
+	//	App->gui->ui_debug = !App->gui->ui_debug;
+	//}
 
-	if (element == App->scene->interactibleText && ui_event == UI_Event::UNCLICKED)
-	{
-		App->gui->ui_debug = !App->gui->ui_debug;
-	}
+	//if (element == App->scene->interactibleText && ui_event == UI_Event::UNCLICKED)
+	//{
+	//	App->gui->ui_debug = !App->gui->ui_debug;
+	//}
 } 
 
 // --- Method to return the foremost element of the UI. (First in inverse order of draw)

@@ -6,31 +6,40 @@
 #include "p2Defs.h"
 #include "p2Log.h"
 
+#include "Application.h"
 #include "Window.h"
 #include "Input.h"
 #include "Render.h"
 #include "Textures.h"
 #include "Audio.h"
-#include "FirstScene.h"
 #include "Map.h"
 #include "Fonts.h"
 #include "Gui.h"
-#include "Application.h"
+#include "SceneManager.h"
 
 // Constructor
 Application::Application(int argc, char* args[]) : argc(argc), args(args)
+, win(nullptr)
+, input(nullptr)
+, render(nullptr)
+, tex(nullptr)
+, audio(nullptr)
+, map(nullptr)
+, font(nullptr)
+, gui(nullptr)
+, scene_manager(nullptr)
 {
 	PERF_START(ptimer);
 
-	input	= new Input();
-	win		= new Window();
-	render	= new Render();
-	tex		= new Textures();
-	audio	= new Audio();
-	scene	= new FirstScene();
-	map		= new Map();
-	font	= new Fonts();
-	gui		= new Gui();
+	win				= new Window();
+	input			= new Input();
+	render			= new Render();
+	tex				= new Textures();
+	audio			= new Audio();
+	map				= new Map();
+	font			= new Fonts();
+	gui				= new Gui();
+	scene_manager	= new SceneManager();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -42,8 +51,8 @@ Application::Application(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(font);
 	AddModule(gui);
 
-	// scene last
-	AddModule(scene);
+	// scene_manager last
+	AddModule(scene_manager);
 
 	// render last to swap buffer
 	AddModule(render);

@@ -116,4 +116,4 @@ private:
 	iPoint		mouseMotion;						//Motion of the mouse. Used to move a dragged element around.
 };
 
-#endif // !__UI_IMAGE_H__
+#endif // !__UI_H__

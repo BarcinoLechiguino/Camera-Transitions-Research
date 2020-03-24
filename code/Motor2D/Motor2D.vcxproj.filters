@@ -88,6 +88,9 @@
     <ClCompile Include="FirstScene.cpp">
       <Filter>Engine  ==============\Modules\Scenes\In-Game Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="SecondScene.cpp">
+      <Filter>Engine  ==============\Modules\Scenes\In-Game Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="p2Defs.h">
@@ -184,6 +187,9 @@
       <Filter>Engine  ==============\Modules\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="FirstScene.h">
+      <Filter>Engine  ==============\Modules\Scenes\In-Game Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondScene.h">
       <Filter>Engine  ==============\Modules\Scenes\In-Game Scenes</Filter>
     </ClInclude>
   </ItemGroup>

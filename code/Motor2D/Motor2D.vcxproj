@@ -88,6 +88,7 @@
     <ClCompile Include="PerfTimer.cpp" />
     <ClCompile Include="FirstScene.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SecondScene.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="p2Log.cpp" />
     <ClCompile Include="Render.cpp" />
@@ -115,6 +116,7 @@
     <ClInclude Include="PerfTimer.h" />
     <ClInclude Include="FirstScene.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SecondScene.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Input.h" />

@@ -10,6 +10,10 @@
 #include <vector>
 #include "PugiXml\src\pugixml.hpp"
 
+#include "p2Defs.h"
+#include "p2Log.h"
+
+
 class App;
 class UI;
 enum class UI_Event;
@@ -29,38 +33,32 @@ public:
 		active = true;
 	}
 
-	// Called before render is available
-	virtual bool Awake(pugi::xml_node&)
+	virtual bool Awake(pugi::xml_node&)							// Called before render is available
 	{
 		return true;
 	}
 
-	// Called before the first frame
-	virtual bool Start()
+	virtual bool Start()										// Called before the first frame
 	{
 		return true;
 	}
 
-	// Called each loop iteration
-	virtual bool PreUpdate()
+	virtual bool PreUpdate()									// Called each loop iteration
 	{
 		return true;
 	}
 
-	// Called each loop iteration
-	virtual bool Update(float dt)
+	virtual bool Update(float dt)								// Called each loop iteration
 	{
 		return true;
 	}
 
-	// Called each loop iteration
-	virtual bool PostUpdate()
+	virtual bool PostUpdate()									// Called each loop iteration
 	{
 		return true;
 	}
 
-	// Called before quitting
-	virtual bool CleanUp()
+	virtual bool CleanUp()										// Called before quitting
 	{
 		return true;
 	}
@@ -77,4 +75,4 @@ public:
 
 };
 
-#endif // __MODULE_H__
+#endif // !__MODULE_H__
