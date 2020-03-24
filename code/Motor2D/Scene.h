@@ -4,7 +4,9 @@
 #include <string>
 #include "PugiXml\src\pugixml.hpp"
 
-enum class SCENE
+#include "Application.h"								// Watch out with unnecessary includes.
+
+enum class SCENES
 {
 	FIRST_SCENE,
 	SECOND_SCENE,
@@ -14,7 +16,8 @@ enum class SCENE
 class Scene
 {
 public:
-	Scene(SCENE scene);
+
+	Scene(SCENES scene_name);
 	virtual ~Scene();
 
 	virtual bool Awake(pugi::xml_node& config);			// Called before render is available
@@ -29,15 +32,11 @@ public:
 
 	virtual bool CleanUp();								// Called before quitting
 
-
-	//virtual void LoadGuiElements();					// Method that will load all the Gui Elements present in this scene.
-
-private:
-
+public:
+	void CameraDebugMovement(float dt);
 
 public:
-	std::string name;
-	SCENE		scene;									// SCENE will be both the name and the index of the scene.
+	SCENES		scene_name;								// SCENE will be both the name and the index of the scene.
 
 };
 

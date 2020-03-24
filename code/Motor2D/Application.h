@@ -43,6 +43,8 @@ public:
 	const char* GetOrganization() const;
 	float GetDT() const;
 
+	void ExitApplication(bool& ret);
+
 private:
 
 	pugi::xml_node LoadConfig(pugi::xml_document&) const;	// Load config file

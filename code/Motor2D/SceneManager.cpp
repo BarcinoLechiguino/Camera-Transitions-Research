@@ -16,10 +16,10 @@ bool SceneManager::Awake(pugi::xml_node& config)
 {
 	bool ret = true;
 
-	CreateScene(SCENE::FIRST_SCENE);
-	CreateScene(SCENE::SECOND_SCENE);
+	CreateScene(SCENES::FIRST_SCENE);
+	CreateScene(SCENES::SECOND_SCENE);
 	
-	LoadInitialScene(SCENE::FIRST_SCENE);
+	LoadInitialScene(SCENES::FIRST_SCENE);
 
 	//current_scene = new FirstScene(SCENE::FIRST_SCENE);
 
@@ -84,12 +84,12 @@ bool SceneManager::CleanUp()
 	return ret;
 }
 
-void SceneManager::LoadInitialScene(SCENE scene)
+void SceneManager::LoadInitialScene(SCENES scene_name)
 {
-	SwitchScene(scene);
+	SwitchScene(scene_name);
 }
 
-void SceneManager::SwitchScene(SCENE scene)
+void SceneManager::SwitchScene(SCENES scene_name)
 {	
 	if (current_scene != nullptr)
 	{
@@ -100,13 +100,13 @@ void SceneManager::SwitchScene(SCENE scene)
 	{
 	case SCENE::FIRST_SCENE:
 		
-		current_scene = new FirstScene(scene);
+		current_scene = new FirstScene(scene_name);
 
 		break;
 
 	case SCENE::SECOND_SCENE:
 
-		current_scene = new SecondScene(scene);
+		current_scene = new SecondScene(scene_name);
 
 		break;
 	}*/
@@ -115,7 +115,7 @@ void SceneManager::SwitchScene(SCENE scene)
 
 	for (; item != scenes.end(); ++item)
 	{
-		if ((*item)->scene == scene)
+		if ((*item)->scene_name == scene_name)
 		{
 			current_scene = (*item);
 		}
@@ -124,21 +124,21 @@ void SceneManager::SwitchScene(SCENE scene)
 	//current_scene->Start();
 }
 
-Scene* SceneManager::CreateScene(SCENE scene)
+Scene* SceneManager::CreateScene(SCENES scene_name)
 {
 	Scene* item = nullptr;
 
-	switch (scene)
+	switch (scene_name)
 	{
-	case SCENE::FIRST_SCENE:
+	case SCENES::FIRST_SCENE:
 
-		item = new FirstScene(scene);
+		item = new FirstScene(scene_name);
 		
 		break;
 
-	case SCENE::SECOND_SCENE:
+	case SCENES::SECOND_SCENE:
 		
-		item = new SecondScene(scene);
+		item = new SecondScene(scene_name);
 		
 	break;
 	}

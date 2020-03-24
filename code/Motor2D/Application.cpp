@@ -333,3 +333,11 @@ const char* Application::GetOrganization() const
 {
 	return organization.c_str();
 }
+
+void Application::ExitApplication(bool& ret)
+{
+	if (ret)
+	{
+		ret = !ret;
+	}
+}

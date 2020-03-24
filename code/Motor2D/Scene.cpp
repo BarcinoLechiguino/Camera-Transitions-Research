@@ -1,6 +1,8 @@
 #include "Scene.h"
+#include "Render.h"
+#include "Input.h"
 
-Scene::Scene(SCENE scene) : scene(scene)
+Scene::Scene(SCENES scene_name) : scene_name(scene_name)
 {
 
 }
@@ -38,4 +40,27 @@ bool Scene::PostUpdate()
 bool Scene::CleanUp()
 {
 	return true;
+}
+
+void Scene::CameraDebugMovement(float dt)
+{
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	{
+		App->render->camera.y += floor(200.0f * dt);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	{
+		App->render->camera.y -= floor(200.0f * dt);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+	{
+		App->render->camera.x += floor(200.0f * dt);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+	{
+		App->render->camera.x -= floor(200.0f * dt);
+	}
 }

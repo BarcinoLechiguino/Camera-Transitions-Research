@@ -24,14 +24,17 @@ public:
 
 
 public:
-	void	LoadInitialScene(SCENE name);
+	void	LoadInitialScene(SCENES scene_name);
 	
-	void	SwitchScene(SCENE name);
+	void	SwitchScene(SCENES scene_name);
+
+	void	CaseSwitchScene(SCENES scene_name);
 	
-	Scene*	CreateScene(SCENE name);
+	Scene*	CreateScene(SCENES scene_name);
 
 public:
 	Scene*					current_scene;		// The scene that is being currently loaded.
+	Scene*					next_scene;
 
 private:
 	std::vector<Scene*>		scenes;				// All the scenes of the game.

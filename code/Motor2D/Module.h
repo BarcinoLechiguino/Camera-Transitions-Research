@@ -14,7 +14,7 @@
 #include "p2Log.h"
 
 
-class App;
+class Application;
 class UI;
 enum class UI_Event;
 

@@ -19,12 +19,13 @@ class FirstScene : public Scene
 {
 public:
 
-	FirstScene(SCENE scene);						// Constructor
+	FirstScene();
+	FirstScene(SCENES scene);						// Constructor
 
-	virtual ~FirstScene();							// Destructor
+	~FirstScene();									// Destructor
 
 	
-	bool Awake();									// Called before render is available
+	bool Awake(pugi::xml_node& config);				// Called before render is available
 
 	bool Start();									// Called before the first frame
 
