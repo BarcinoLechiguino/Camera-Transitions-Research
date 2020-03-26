@@ -25,10 +25,10 @@ public:
 	void SetTitle(const char* new_title);
 
 	// Retrive window size
-	void GetWindowSize(uint& width, uint& height) const;
+	void GetWindowSize(int& width, int& height) const;
 
 	// Retrieve window scale
-	uint GetScale() const;
+	int GetScale() const;
 
 public:
 	//The window we'll be rendering to
@@ -39,9 +39,9 @@ public:
 
 private:
 	std::string	title;
-	uint		width;
-	uint		height;
-	uint		scale;
+	int		width;
+	int		height;
+	int		scale;
 };
 
 #endif // __WINDOW_H__

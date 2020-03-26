@@ -16,6 +16,7 @@
 #include "Fonts.h"
 #include "Gui.h"
 #include "SceneManager.h"
+#include "TransitionManager.h"
 
 // Constructor
 Application::Application(int argc, char* args[]) : argc(argc), args(args)
@@ -28,18 +29,20 @@ Application::Application(int argc, char* args[]) : argc(argc), args(args)
 , font(nullptr)
 , gui(nullptr)
 , scene_manager(nullptr)
+, transition_manager(nullptr)
 {
 	PERF_START(ptimer);
 
-	win				= new Window();
-	input			= new Input();
-	render			= new Render();
-	tex				= new Textures();
-	audio			= new Audio();
-	map				= new Map();
-	font			= new Fonts();
-	gui				= new Gui();
-	scene_manager	= new SceneManager();
+	win					= new Window();
+	input				= new Input();
+	render				= new Render();
+	tex					= new Textures();
+	audio				= new Audio();
+	map					= new Map();
+	font				= new Fonts();
+	gui					= new Gui();
+	transition_manager	= new TransitionManager();
+	scene_manager		= new SceneManager();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -50,6 +53,7 @@ Application::Application(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(font);
 	AddModule(gui);
+	AddModule(transition_manager);
 
 	// scene_manager last
 	AddModule(scene_manager);

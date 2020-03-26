@@ -64,6 +64,7 @@ private:
 	int				index;
 	
 	SDL_Texture*	debug_tex;
+	SDL_Texture*	tex;
 	UI_Image*		banner;
 	UI_Text*		text;
 

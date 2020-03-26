@@ -11,10 +11,12 @@
 #include "Gui.h"
 #include "SceneManager.h"
 #include "FirstScene.h"
+#include "Transition.h"
+#include "TransitionManager.h"
 
 FirstScene::FirstScene() : Scene(SCENES::FIRST_SCENE)
 {
-
+	name = "first_scene";
 }
 
 FirstScene::FirstScene(SCENES scene) : Scene(scene)
@@ -43,10 +45,30 @@ bool FirstScene::Start()
 	bool ret = true;
 
 	name = "FirstScene";
-
+	
 	App->map->Load("First_Scene_Flooded.tmx");
 
 	LoadGuiElements();
+
+	/*int win_width = 0;
+	int win_height = 0;
+
+	App->win->GetWindowSize(win_width, win_height);
+
+	uint r = 0x00ff0000;
+	uint g = 0x0000ff00;
+	uint b = 0x000000ff;
+	uint a = 0xff000000;
+	
+	SDL_Surface* sur	= SDL_CreateRGBSurface(0, win_width, win_height, 32, r, g, b, a);
+
+	SDL_Renderer* rend	= SDL_CreateSoftwareRenderer(sur);
+
+	SDL_Texture* tex	= App->tex->Load("gui/atlas.png", rend);
+
+	//App->render->Blit(tex, 0, 0, NULL, false, rend);
+
+	debug_tex = SDL_CreateTextureFromSurface(App->render->renderer, sur);*/
 
 	return ret;
 }
@@ -55,11 +77,6 @@ bool FirstScene::Start()
 bool FirstScene::PreUpdate()
 {
 	bool ret = true;
-	
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-	{
-		App->scene_manager->SwitchScene(SCENES::SECOND_SCENE);
-	}
 
 	return ret;
 }
@@ -88,6 +105,9 @@ bool FirstScene::Update(float dt)
 	// Map ---
 	App->map->Draw();
 
+	//App->render->Blit(debug_tex, 0, 0, NULL);
+	//App->render->Blit(tex, 0, 0, NULL);
+
 	return ret;
 }
 
@@ -96,9 +116,11 @@ bool FirstScene::PostUpdate()
 {
 	bool ret = true;
 
-	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && !is_transitioning)
 	{
-		ret = false;
+		/*App->scene_manager->SwitchScene(SCENES::SECOND_SCENE);*/
+
+		App->transition_manager->CreateFadeToColour(SCENES::SECOND_SCENE, 1.0f, White);
 	}
 
 	return ret;
@@ -110,7 +132,9 @@ bool FirstScene::CleanUp()
 	LOG("Freeing scene");
 	bool ret = true;
 
-	App->gui->CleanUp();
+	//App->gui->CleanUp();
+
+	App->map->CleanUp();
 
 	return ret;
 }

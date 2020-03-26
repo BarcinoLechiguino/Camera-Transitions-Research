@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Window.h"
 #include "Render.h"
+#include "Map.h"
 
 #define VSYNC true
 
@@ -45,8 +46,8 @@ bool Render::Awake(pugi::xml_node& config)
 	{
 		camera.w = App->win->screen_surface->w;
 		camera.h = App->win->screen_surface->h;
-		camera.x = 0;
-		camera.y = 0;
+		camera.x = /*(App->map->data.width * App->map->data.tile_width) * 0.5f*/ 0;
+		camera.y = /*-40*/ 0;
 	}
 
 	return ret;
@@ -58,6 +59,10 @@ bool Render::Start()
 	LOG("render start");
 	// back background
 	SDL_RenderGetViewport(renderer, &viewport);
+
+	camera.x = (App->map->data.width * App->map->data.tile_width) * 0.30f;
+	camera.y = -40;
+
 	return true;
 }
 
@@ -110,14 +115,23 @@ iPoint Render::ScreenToWorld(int x, int y) const
 }
 
 // Blit to screen
-bool Render::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y) const
+bool Render::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section, bool use_camera, SDL_Renderer* renderer, float scale, bool flip, float speed, double angle, int pivot_x, int pivot_y) const
 {
 	bool ret = true;
-	uint scale = App->win->GetScale();
+	//uint scale = App->win->GetScale();
 
 	SDL_Rect rect;
-	rect.x = (int)(camera.x * speed) + x * scale;
-	rect.y = (int)(camera.y * speed) + y * scale;
+	
+	if (use_camera)
+	{
+		rect.x = (int)(camera.x * speed) + x * scale;
+		rect.y = (int)(camera.y * speed) + y * scale;
+	}
+	else
+	{
+		rect.x = x;
+		rect.y = y;
+	}
 
 	if(section != NULL)
 	{
@@ -127,23 +141,25 @@ bool Render::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section, f
 	else
 	{
 		if (texture != NULL)
+		{
 			SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
+		}
 	}
 
 	rect.w *= scale;
 	rect.h *= scale;
 
-	SDL_Point* p = NULL;
-	SDL_Point pivot;
+	SDL_Point*	p = NULL;
+	SDL_Point	pivot;
 
-	if(pivot_x != INT_MAX && pivot_y != INT_MAX)
+	if (pivot_x != INT_MAX && pivot_y != INT_MAX)
 	{
 		pivot.x = pivot_x;
 		pivot.y = pivot_y;
 		p = &pivot;
 	}
 
-	if(SDL_RenderCopyEx(renderer, texture, section, &rect, angle, p, SDL_FLIP_NONE) != 0)
+	if (SDL_RenderCopyEx(renderer, texture, section, &rect, angle, p, flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 		ret = false;

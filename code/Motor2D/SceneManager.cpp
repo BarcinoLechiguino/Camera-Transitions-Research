@@ -1,6 +1,8 @@
 #include "SceneManager.h"
 #include "FirstScene.h"
 #include "SecondScene.h"
+#include "Render.h"
+#include "Input.h"
 
 SceneManager::SceneManager() : current_scene(nullptr)
 {
@@ -15,13 +17,12 @@ SceneManager::~SceneManager()
 bool SceneManager::Awake(pugi::xml_node& config)
 {
 	bool ret = true;
-
-	CreateScene(SCENES::FIRST_SCENE);
-	CreateScene(SCENES::SECOND_SCENE);
+	
+	ScenePushbacks();
 	
 	LoadInitialScene(SCENES::FIRST_SCENE);
 
-	//current_scene = new FirstScene(SCENE::FIRST_SCENE);
+	current_scene->Awake(config);
 
 	return ret;
 }
@@ -59,6 +60,11 @@ bool SceneManager::PostUpdate()
 
 	current_scene->PostUpdate();
 
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+	{
+		App->ExitApplication(ret);
+	}
+
 	return ret;
 }
 
@@ -71,9 +77,7 @@ bool SceneManager::CleanUp()
 	for (; item != scenes.end(); ++item)
 	{
 		RELEASE((*item));
-		scenes.erase(item);
 	}
-
 	scenes.clear();
 	
 	if (current_scene != nullptr)
@@ -86,7 +90,9 @@ bool SceneManager::CleanUp()
 
 void SceneManager::LoadInitialScene(SCENES scene_name)
 {
-	SwitchScene(scene_name);
+	//SwitchScene(scene_name);
+
+	current_scene = new FirstScene();
 }
 
 void SceneManager::SwitchScene(SCENES scene_name)
@@ -95,21 +101,6 @@ void SceneManager::SwitchScene(SCENES scene_name)
 	{
 		current_scene->CleanUp();
 	}
-	
-	/*switch (scene)
-	{
-	case SCENE::FIRST_SCENE:
-		
-		current_scene = new FirstScene(scene_name);
-
-		break;
-
-	case SCENE::SECOND_SCENE:
-
-		current_scene = new SecondScene(scene_name);
-
-		break;
-	}*/
 
 	std::vector<Scene*>::iterator item = scenes.begin();
 
@@ -121,9 +112,25 @@ void SceneManager::SwitchScene(SCENES scene_name)
 		}
 	}
 
-	//current_scene->Start();
+	current_scene->Start();
 }
 
+void SceneManager::LoadScene(SCENES scene_name)
+{
+	std::vector<Scene*>::iterator item = scenes.begin();
+
+	for (; item != scenes.end(); ++item)
+	{
+		if ((*item)->scene_name == scene_name)
+		{
+			next_scene = (*item);
+		}
+	}
+
+	next_scene->Start();
+}
+
+// ---------------- CREATE SCENE METHODS ----------------
 Scene* SceneManager::CreateScene(SCENES scene_name)
 {
 	Scene* item = nullptr;
@@ -132,13 +139,13 @@ Scene* SceneManager::CreateScene(SCENES scene_name)
 	{
 	case SCENES::FIRST_SCENE:
 
-		item = new FirstScene(scene_name);
+		item = new FirstScene();
 		
 		break;
 
 	case SCENES::SECOND_SCENE:
 		
-		item = new SecondScene(scene_name);
+		item = new SecondScene();
 		
 	break;
 	}
@@ -149,4 +156,57 @@ Scene* SceneManager::CreateScene(SCENES scene_name)
 	}
 
 	return item;
+}
+
+void SceneManager::ScenePushbacks()
+{
+	CreateScene(SCENES::FIRST_SCENE);
+	CreateScene(SCENES::SECOND_SCENE);
+}
+
+// ------------------------------------------------------
+
+void SceneManager::CaseSwitchScene(SCENES scene_name)
+{
+	if (current_scene != nullptr)
+	{
+		current_scene->CleanUp();
+	}
+
+	/*switch (scene)
+	{
+	case SCENE::FIRST_SCENE:
+
+		current_scene = new FirstScene(scene_name);
+
+		break;
+
+	case SCENE::SECOND_SCENE:
+
+		current_scene = new SecondScene(scene_name);
+
+		break;
+	}*/
+
+	current_scene->Start();
+}
+
+void SceneManager::VectorSwitchScene(SCENES scene_name)
+{
+	if (current_scene != nullptr)
+	{
+		current_scene->CleanUp();
+	}
+
+	std::vector<Scene*>::iterator item = scenes.begin();
+
+	for (; item != scenes.end(); ++item)
+	{
+		if ((*item)->scene_name == scene_name)
+		{
+			current_scene = (*item);
+		}
+	}
+
+	current_scene->Start();
 }

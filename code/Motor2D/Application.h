@@ -16,6 +16,7 @@ class Audio;
 class Map;
 class Fonts;
 class Gui;
+class TransitionManager;
 class SceneManager;
 
 class Application
@@ -70,6 +71,7 @@ public:
 	Map*				map;
 	Fonts*				font;
 	Gui*				gui;
+	TransitionManager*	transition_manager;
 	SceneManager*		scene_manager;
 
 private:

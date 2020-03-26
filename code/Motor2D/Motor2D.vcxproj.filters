@@ -76,12 +76,6 @@
     <ClCompile Include="PerfTimer.cpp">
       <Filter>Engine  ==============\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="Application.cpp">
-      <Filter>Engine  ==============</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Engine  ==============</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Engine  ==============\Modules\Scenes</Filter>
     </ClCompile>
@@ -90,6 +84,15 @@
     </ClCompile>
     <ClCompile Include="SecondScene.cpp">
       <Filter>Engine  ==============\Modules\Scenes\In-Game Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeScene.cpp">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Engine  ==============\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Engine  ==============\Modules\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -177,12 +180,6 @@
     <ClInclude Include="PerfTimer.h">
       <Filter>Engine  ==============\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Engine  ==============</Filter>
-    </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>Engine  ==============</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Engine  ==============\Modules\Scenes</Filter>
     </ClInclude>
@@ -191,6 +188,15 @@
     </ClInclude>
     <ClInclude Include="SecondScene.h">
       <Filter>Engine  ==============\Modules\Scenes\In-Game Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeScene.h">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Engine  ==============\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Engine  ==============\Modules\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

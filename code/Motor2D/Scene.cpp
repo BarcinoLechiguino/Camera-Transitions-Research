@@ -2,7 +2,7 @@
 #include "Render.h"
 #include "Input.h"
 
-Scene::Scene(SCENES scene_name) : scene_name(scene_name)
+Scene::Scene(SCENES scene_name) : scene_name(scene_name), is_transitioning(false)
 {
 
 }
