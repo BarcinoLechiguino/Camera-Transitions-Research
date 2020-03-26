@@ -77,7 +77,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
-    <ClCompile Include="FadeScene.cpp" />
+    <ClCompile Include="Cut.cpp" />
     <ClCompile Include="FadeToColour.cpp" />
     <ClCompile Include="Fonts.cpp" />
     <ClCompile Include="Gui.cpp" />
@@ -110,7 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
-    <ClInclude Include="FadeScene.h" />
+    <ClInclude Include="Cut.h" />
     <ClInclude Include="FadeToColour.h" />
     <ClInclude Include="Fonts.h" />
     <ClInclude Include="Gui.h" />

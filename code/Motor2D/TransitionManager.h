@@ -15,20 +15,20 @@ public:
 	TransitionManager();
 	~TransitionManager();
 
-	bool Awake(pugi::xml_node& config);
-	bool Start();
-	bool PreUpdate();
-	bool Update(float dt);
 	bool PostUpdate();
-	bool CleanUp();
 
 public:
+	Transition* CreateCut(SCENES next_scene);
 	Transition* CreateFadeToColour(SCENES next_scene, float step_duration = 1.0f, Color fade_colour = Black);
-	
-	void DeleteTransition(Transition* transition);
+
+	void DeleteActiveTransition();
+
+public:
+	bool						is_transitioning;																	// Will define whether a transition is active or not.
 
 private:
-	std::vector<Transition*> transitions;
+	//std::vector<Transition*>	transitions;
+	Transition*					active_transition;																	// Pointer to the transtion that's active at any given time.
 
 };
 

@@ -41,10 +41,7 @@ bool SecondScene::PreUpdate()
 {
 	bool ret = true;
 
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-	{
-		App->transition_manager->CreateFadeToColour(SCENES::FIRST_SCENE);
-	}
+
 
 	return ret;
 }
@@ -64,10 +61,7 @@ bool SecondScene::PostUpdate()
 {
 	bool ret = true;
 
-	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-	{
-		ret = false;
-	}
+	ExecuteTransition();
 
 	return ret;
 }
@@ -80,4 +74,17 @@ bool SecondScene::CleanUp()
 	App->map->CleanUp();
 
 	return ret;
+}
+
+void SecondScene::ExecuteTransition()
+{
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	{
+		App->transition_manager->CreateCut(SCENES::FIRST_SCENE);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+	{
+		App->transition_manager->CreateFadeToColour(SCENES::FIRST_SCENE);
+	}
 }

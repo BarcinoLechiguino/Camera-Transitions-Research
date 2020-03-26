@@ -1,7 +1,8 @@
 #include "TransitionManager.h"
+#include "Cut.h"
 #include "FadeToColour.h"
 
-TransitionManager::TransitionManager()
+TransitionManager::TransitionManager() : active_transition(nullptr), is_transitioning(false)
 {
 
 }
@@ -11,98 +12,47 @@ TransitionManager::~TransitionManager()
 
 }
 
-bool TransitionManager::Awake(pugi::xml_node& config)
-{
-	bool ret = true;
-	
-	return ret;
-}
-
-bool TransitionManager::Start()
-{
-	bool ret = true;
-
-	std::vector<Transition*>::iterator item = transitions.begin();
-
-	for (; item != transitions.end(); ++item)
-	{
-		(*item)->Start();
-	}
-
-	return ret;
-}
-
-bool TransitionManager::PreUpdate()
-{
-	bool ret = true;
-
-	std::vector<Transition*>::iterator item = transitions.begin();
-
-	for (; item != transitions.end(); ++item)
-	{
-		if (!(*item)->is_initialized)
-		{
-			(*item)->Start();
-		}
-	}
-
-	return ret;
-}
-
-bool TransitionManager::Update(float dt)
-{
-	bool ret = true;
-
-	return ret;
-}
-
 bool TransitionManager::PostUpdate()
 {
 	bool ret = true;
 
-	std::vector<Transition*>::reverse_iterator item = transitions.rbegin();
-
-	for (; item != transitions.rend(); ++item)
+	if (active_transition != nullptr)
 	{
-		(*item)->StepTransition(App->GetDT());
+		active_transition->StepTransition(App->GetDT());
 	}
 
 	return ret;
 }
 
-bool TransitionManager::CleanUp()
+Transition* TransitionManager::CreateCut(SCENES next_scene)
 {
-	bool ret = true;
-	
-	transitions.clear();
+	if (!is_transitioning)
+	{
+		active_transition = new Cut(next_scene);
 
-	return ret;
+		is_transitioning = true;
+	}
+
+	return active_transition;
 }
 
 Transition* TransitionManager::CreateFadeToColour(SCENES next_scene, float step_duration, Color fade_colour)
-{
-	Transition* transition = nullptr;
-
-	transition = new FadeToColour(next_scene, step_duration, fade_colour);
-
-	if (transition != nullptr)
+{	
+	if (!is_transitioning)
 	{
-		transitions.push_back(transition);
+		active_transition = new FadeToColour(next_scene, step_duration, fade_colour);
+
+		is_transitioning = true;
 	}
 
-	return transition;
+	return active_transition;
 }
 
-void TransitionManager::DeleteTransition(Transition* transition)
+void TransitionManager::DeleteActiveTransition()
 {
-	std::vector<Transition*>::iterator item = transitions.begin();
+	is_transitioning = false;
+	
+	delete active_transition;
 
-	for (; item != transitions.end(); ++item)
-	{
-		if ((*item) == transition)
-		{
-			transitions.erase(item);
-			break;
-		}
-	}
+	active_transition = nullptr;
 }

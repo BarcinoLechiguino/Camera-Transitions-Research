@@ -75,7 +75,7 @@ void FadeToColour::Exiting(float dt)
 
 		step = TRANSITION_STEP::NONE;
 
-		App->transition_manager->DeleteTransition(this);
+		App->transition_manager->DeleteActiveTransition();
 	}
 }
 

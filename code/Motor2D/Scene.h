@@ -28,13 +28,12 @@ public:
 	virtual bool CleanUp();								// Called before quitting
 
 public:
-	void CameraDebugMovement(float dt);					// Method that will move the camera around depending on the input.
+	virtual void CameraDebugMovement(float dt);			// Method that will move the camera around depending on the input.
+	virtual void ExecuteTransition();					// Method that will trigger a new transition depending on the input received.
 
 public:
 	std::string	name;
 	SCENES		scene_name;								// SCENE will be both the name and the index of the scene.
-
-	bool		is_transitioning;						//
 };
 
 #endif // !__SCENE_H__

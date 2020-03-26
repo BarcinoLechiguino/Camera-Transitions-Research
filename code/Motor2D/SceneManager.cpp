@@ -20,7 +20,7 @@ bool SceneManager::Awake(pugi::xml_node& config)
 	
 	ScenePushbacks();
 	
-	LoadInitialScene(SCENES::FIRST_SCENE);
+	LoadInitialScene();
 
 	current_scene->Awake(config);
 
@@ -88,11 +88,9 @@ bool SceneManager::CleanUp()
 	return ret;
 }
 
-void SceneManager::LoadInitialScene(SCENES scene_name)
+void SceneManager::LoadInitialScene()
 {
-	//SwitchScene(scene_name);
-
-	current_scene = new FirstScene();
+	current_scene = (*scenes.begin());
 }
 
 void SceneManager::SwitchScene(SCENES scene_name)
@@ -112,7 +110,10 @@ void SceneManager::SwitchScene(SCENES scene_name)
 		}
 	}
 
-	current_scene->Start();
+	if (current_scene != nullptr)
+	{
+		current_scene->Start();
+	}
 }
 
 void SceneManager::LoadScene(SCENES scene_name)

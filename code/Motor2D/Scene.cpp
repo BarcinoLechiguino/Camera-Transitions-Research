@@ -2,7 +2,7 @@
 #include "Render.h"
 #include "Input.h"
 
-Scene::Scene(SCENES scene_name) : scene_name(scene_name), is_transitioning(false)
+Scene::Scene(SCENES scene_name) : scene_name(scene_name)
 {
 
 }
@@ -63,4 +63,9 @@ void Scene::CameraDebugMovement(float dt)
 	{
 		App->render->camera.x -= floor(200.0f * dt);
 	}
+}
+
+void Scene::ExecuteTransition()
+{
+
 }

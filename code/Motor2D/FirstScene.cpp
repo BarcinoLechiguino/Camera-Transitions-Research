@@ -116,12 +116,7 @@ bool FirstScene::PostUpdate()
 {
 	bool ret = true;
 
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && !is_transitioning)
-	{
-		/*App->scene_manager->SwitchScene(SCENES::SECOND_SCENE);*/
-
-		App->transition_manager->CreateFadeToColour(SCENES::SECOND_SCENE, 1.0f, White);
-	}
+	ExecuteTransition();
 
 	return ret;
 }
@@ -137,6 +132,21 @@ bool FirstScene::CleanUp()
 	App->map->CleanUp();
 
 	return ret;
+}
+
+void FirstScene::ExecuteTransition()
+{
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	{
+		App->transition_manager->CreateCut(SCENES::SECOND_SCENE);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+	{
+		/*App->scene_manager->SwitchScene(SCENES::SECOND_SCENE);*/
+
+		App->transition_manager->CreateFadeToColour(SCENES::SECOND_SCENE, 1.0f, White);
+	}
 }
 
 void FirstScene::LoadGuiElements()
