@@ -33,37 +33,8 @@ public:
 public:
 	void ExecuteTransition();						// Method that will trigger a new transition depending on the input received.
 
-	void LoadGuiElements();							// Method that will load all the Gui Elements present in this scene.
-
 public:
-	bool escape;
-	
-	UI_Image*		window;
-	UI_Text*		interactibleText;
-	UI_Text*		buttonLabel;
-	UI_Button*		button;
-	UI_Button*		escButton;
-	UI_Button*		draggableButton;
-	UI_Button*		draggableButton2;
 
-	UI_InputBox*	inputBox;
-
-	UI_Image*		scrollWindow;
-	UI_Text*		scrollText;
-	UI_InputBox*	scrollInputBox;
-	UI_Scrollbar*	scrollbar;
-	UI_Image*		thumbo;
-
-private:
-	std::string		name;
-	int				index;
-	
-	SDL_Texture*	debug_tex;
-	SDL_Texture*	tex;
-	UI_Image*		banner;
-	UI_Text*		text;
-
-	Module*			listener;
 };
 
 #endif // __FIRSTSCENE_H__

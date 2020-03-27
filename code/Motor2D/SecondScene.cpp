@@ -87,4 +87,14 @@ void SecondScene::ExecuteTransition()
 	{
 		App->transition_manager->CreateFadeToColour(SCENES::FIRST_SCENE);
 	}
+
+	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
+	{
+		App->transition_manager->CreateSlide(SCENES::FIRST_SCENE);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
+	{
+		App->transition_manager->CreateWipe(SCENES::FIRST_SCENE);
+	}
 }

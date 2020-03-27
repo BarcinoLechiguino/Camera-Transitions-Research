@@ -26,7 +26,7 @@ bool Map::Awake(pugi::xml_node& config)
 	return ret;
 }
 
-void Map::Draw()
+void Map::Draw(/*SDL_Renderer* renderer*/)
 {
 	if(map_loaded == false)
 		return;
@@ -52,7 +52,7 @@ void Map::Draw()
 					SDL_Rect r = tileset->GetTileRect(tile_id);
 					iPoint pos = MapToWorld(x, y);
 
-					App->render->Blit(tileset->texture, pos.x, pos.y, &r);
+					App->render->Blit(tileset->texture, pos.x, pos.y, &r/*, true, renderer*/);
 				}
 			}
 		}

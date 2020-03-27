@@ -23,6 +23,10 @@ void Wipe::Start() {
 
 	// TODO 4: Make the wipe effect
 	// TIP: You have to change the screen.x value
+	float value = Interpolation(-(float)w, 0, percentage);
+
+	screen.x += value;
+
 
 	SDL_SetRenderDrawColor(App->render->renderer, color.r, color.g, color.b, 255);
 	SDL_RenderFillRect(App->render->renderer, &screen);	
@@ -47,6 +51,9 @@ void Wipe::Exit() {
 	j1Transitions::Exit();
 
 	// TODO 5: Get the effect of the black square exiting from the screen
+	float value = Interpolation(0, (float)w, percentage);
+
+	screen.x += value;
 
 	SDL_SetRenderDrawColor(App->render->renderer, color.r, color.g, color.b, 255);
 	SDL_RenderFillRect(App->render->renderer, &screen);

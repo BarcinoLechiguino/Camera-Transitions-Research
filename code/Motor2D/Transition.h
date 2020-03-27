@@ -21,23 +21,23 @@ enum class TRANSITION_STEP
 class Transition
 {
 public:
-	Transition(SCENES next_scene, float step_duration, float current_cutoff = 0);
+	Transition(SCENES next_scene, float step_duration, float current_cutoff = 0.0f);
 	virtual ~Transition();
 
 	virtual void Start();
 
-	virtual void StepTransition(float dt);
+	virtual void StepTransition();
 
 	virtual void CleanUp();
 
 public:
-	virtual void Entering(float dt);												// Method that will be used to execute the ENTERING transition step.
+	virtual void Entering();														// Method that will be used to execute the ENTERING transition step.
 	virtual void Changing(SCENES next_scene);										// Method that will be used to execute the CHANGING transition step.
-	virtual void Exiting(float dt);													// Method that will be used to execute the EXITING transition step.
+	virtual void Exiting();															// Method that will be used to execute the EXITING transition step.
 	
 	virtual SDL_Texture* CreateTransitionTexture();
-	float Lerp(float start_time, float total_time, float dt);						// Method that will be used to interpolate the speed of a given transition.
-	float GetCutoffRate(float dt, float time);										// Method that returns the cutoff rate for a given transition.
+	float Lerp(float start, float end, float rate);									// Method that will be used to interpolate the speed of a given transition.
+	float GetCutoffRate(float step_duration, float dt = App->GetDT());				// Method that returns the cutoff rate for a given transition. Will use dt as the standard increase.
 
 public:
 	TRANSITION_STEP step;															// All the steps that a given transition will go through.
@@ -46,12 +46,9 @@ public:
 	float			step_duration;													// The duration of each transtion step in seconds.
 	float			current_cutoff;													// The amount of time that has elapsed since the start of the transition step.
 
-	bool			is_initialized;													// Will determine whether or not a transition has been initialized.
-	bool			has_finished;													// Will determine whether or not a transition has finished.
-
 private:
-	float			cutoff_rate;													// The rate at which the transition will elapse. ranges from 0.0f to 1.0f where 0.0 = step_start & 1.0f = step_end.
-
+	float			cutoff_rate;													// The rate at which the transition will elapse.
+																					// Ranges from 0.0f to 1.0f  0.0 == step_start & 1.0f == step_end.
 private:
 	SDL_Surface*	surface;
 	int				win_width;

@@ -14,7 +14,6 @@
 #include "Audio.h"
 #include "Map.h"
 #include "Fonts.h"
-#include "Gui.h"
 #include "SceneManager.h"
 #include "TransitionManager.h"
 
@@ -27,7 +26,6 @@ Application::Application(int argc, char* args[]) : argc(argc), args(args)
 , audio(nullptr)
 , map(nullptr)
 , font(nullptr)
-, gui(nullptr)
 , scene_manager(nullptr)
 , transition_manager(nullptr)
 {
@@ -40,7 +38,6 @@ Application::Application(int argc, char* args[]) : argc(argc), args(args)
 	audio				= new Audio();
 	map					= new Map();
 	font				= new Fonts();
-	gui					= new Gui();
 	transition_manager	= new TransitionManager();
 	scene_manager		= new SceneManager();
 
@@ -52,7 +49,6 @@ Application::Application(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(map);
 	AddModule(font);
-	AddModule(gui);
 	AddModule(transition_manager);
 
 	// scene_manager last
@@ -213,9 +209,13 @@ void Application::FinishUpdate()
 	uint32 last_frame_ms = frame_time.Read();
 	uint32 frames_on_last_update = prev_last_sec_frame_count;
 
+	iPoint mouse_pos(0, 0);
+
+	App->input->GetMousePosition(mouse_pos.x, mouse_pos.y);
+
 	static char title[256];
-	sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %u Last sec frames: %i Last dt: %.3f Time since startup: %.3f Frame Count: %lu ",
-			  avg_fps, last_frame_ms, frames_on_last_update, dt, seconds_since_startup, frame_count);
+	sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %u Last sec frames: %i Last dt: %.3f Time since startup: %.3f Frame Count: %lu  // Mouse Pos: %d, %d, %d",
+		avg_fps, last_frame_ms, frames_on_last_update, dt, seconds_since_startup, frame_count, mouse_pos.x, mouse_pos.y);
 	App->win->SetTitle(title);
 
 	if(capped_ms > 0 && last_frame_ms < capped_ms)

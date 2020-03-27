@@ -73,6 +73,10 @@ void j1Transitions::Start() {
 
 	// TODO 1: Declare a condition that makes the step change when time's over.
 	// You will have to do the same on the Exit() void below.
+	if (percentage >= 1.0f)
+	{
+		state = Transition_Step::CHANGE;
+	}
 }
 
 void j1Transitions::Change() {
@@ -92,4 +96,10 @@ void j1Transitions::Exit() {
 	// TODO 1: The next state of the transition is... no transition.
 	// You also have to clean the transition in some way.
 	// TIP: See TransitionManager (or ask for help :D)
+	if (percentage >= 1.0f)
+	{
+		state = Transition_Step::NONE;
+
+		App->transitions->CleanTransitions(this);
+	}
 }

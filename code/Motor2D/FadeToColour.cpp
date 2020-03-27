@@ -1,10 +1,10 @@
 #include "FadeToColour.h"
 #include "TransitionManager.h"
 
-FadeToColour::FadeToColour(SCENES scene_name, float step_duration, Color fade_colour) : Transition(scene_name, step_duration)
-{
-	GetScreenRect(screen);
-	this->fade_colour = fade_colour;
+FadeToColour::FadeToColour(SCENES next_scene, float step_duration, Color fade_colour) : Transition(next_scene, step_duration)
+, fade_colour(fade_colour)
+{	
+	App->win->GetWindowRect(screen);
 
 	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
 
@@ -16,13 +16,13 @@ FadeToColour::~FadeToColour()
 
 }
 
-void FadeToColour::StepTransition(float dt)
+void FadeToColour::StepTransition()
 {
 	switch (step)
 	{
 	case TRANSITION_STEP::ENTERING:
 		
-		Entering(dt);
+		Entering();
 		
 		break;
 
@@ -34,7 +34,7 @@ void FadeToColour::StepTransition(float dt)
 
 	case TRANSITION_STEP::EXITING:
 		
-		Exiting(dt);
+		Exiting();
 		
 		break;
 	}
@@ -42,9 +42,9 @@ void FadeToColour::StepTransition(float dt)
 	ApplyFade();
 }
 
-void FadeToColour::Entering(float dt)
+void FadeToColour::Entering()
 {
-	current_cutoff += GetCutoffRate(dt, step_duration);
+	current_cutoff += GetCutoffRate(step_duration);
 
 	if (current_cutoff >= MAX_CUTOFF)
 	{
@@ -61,17 +61,13 @@ void FadeToColour::Changing(SCENES next_scene)
 	step = TRANSITION_STEP::EXITING;
 }
 
-void FadeToColour::Exiting(float dt)
+void FadeToColour::Exiting()
 {
-	current_cutoff -= GetCutoffRate(dt, step_duration);
-
-	LOG("Cutoff Rate: %f", GetCutoffRate(dt, step_duration));
+	current_cutoff -= GetCutoffRate(step_duration);
 
 	if (current_cutoff <= MIN_CUTOFF)
 	{
 		current_cutoff = MIN_CUTOFF;
-
-		has_finished = true;
 
 		step = TRANSITION_STEP::NONE;
 
@@ -84,14 +80,4 @@ void FadeToColour::ApplyFade()
 	SDL_SetRenderDrawColor(App->render->renderer, fade_colour.r, fade_colour.g, fade_colour.b, current_cutoff * 255.0f);
 
 	SDL_RenderFillRect(App->render->renderer, &screen);
-}
-
-void FadeToColour::GetScreenRect(SDL_Rect& rect)
-{
-	int win_width	= 0;
-	int win_height = 0;
-
-	App->win->GetWindowSize(win_width, win_height);
-
-	rect = { 0, 0, win_width, win_height };
 }

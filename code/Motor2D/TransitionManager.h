@@ -3,7 +3,9 @@
 
 #include "Module.h"
 #include "Color.h"
+#include "p2Point.h"
 //#include "Transition.h"
+
 
 class		Transition;
 class		FadeToColour;
@@ -17,9 +19,15 @@ public:
 
 	bool PostUpdate();
 
+	bool CleanUp();
+
 public:
 	Transition* CreateCut(SCENES next_scene);
 	Transition* CreateFadeToColour(SCENES next_scene, float step_duration = 1.0f, Color fade_colour = Black);
+	Transition* CreateSlide(SCENES next_scene, float step_duration = 0.5f, bool enter_from_left = true, Color slide_colour = Black);
+	Transition* CreateWipe(SCENES next_scene, float step_duration = 0.5f, bool enter_from_left = true, Color wipe_colour = Black);
+	Transition* CreateAlternateBars(SCENES next_scene, float step_duration = 0.5f);
+	Transition* CreateCameraToMouse(iPoint destination, float travel_time = 1.0f);
 
 	void DeleteActiveTransition();
 

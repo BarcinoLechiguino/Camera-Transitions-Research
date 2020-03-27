@@ -9,7 +9,7 @@ public:
 	Cut(SCENES next_scene);
 	~Cut();
 
-	void StepTransition(float dt);
+	void StepTransition();
 
 private:
 

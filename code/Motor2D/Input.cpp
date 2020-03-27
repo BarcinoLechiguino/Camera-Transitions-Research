@@ -3,7 +3,6 @@
 #include "Application.h"
 #include "Input.h"
 #include "Window.h"
-#include "Gui.h"
 #include "FirstScene.h"
 #include "SDL/include/SDL.h"
 
@@ -115,31 +114,11 @@ bool Input::PreUpdate()
 			case SDL_TEXTINPUT:
 
 				CheckNewTextInput(event.text.text);
-				
-				//LOG("Input String %s", input_text.GetString());
-
-				//for (int i = 0; i < MAX_KEYS; ++i)
-				//{
-				//	if (keys[i] == 1)
-				//	{
-				//		/*strcat_s(input_text, 1, event.text.text);
-				//		input_text = event.text.text;
-				//		LOG("Input String %s", input_text);
-				//		
-				//		if (keyboard[i] == KEY_DOWN)
-				//		{
-				//			input_text = event.text.text;
-				//			LOG("Input String %s", input_text);
-				//		}*/
-				//	}
-				//}
 
 			break;
 
 			case SDL_TEXTEDITING:
-				//composition = event.edit.text;
-				//cursor = event.edit.text;
-				//selection_len = event.edit.length;
+
 			break;
 
 			case SDL_MOUSEBUTTONDOWN:
@@ -153,10 +132,8 @@ bool Input::PreUpdate()
 			break;
 
 			case SDL_MOUSEWHEEL:
-				//event.wheel.direction = SDL_MOUSEWHEEL_FLIPPED;
-				
-				mouse_scroll_x = event.wheel.x;			// +X SCROLL RIGHT / -X SCROLL LEFT.
-				mouse_scroll_y = event.wheel.y;			// +Y SCROLL UP / -Y SCROLL DOWN.
+				mouse_scroll_x = event.wheel.x;											// +X SCROLL RIGHT / -X SCROLL LEFT.
+				mouse_scroll_y = event.wheel.y;											// +Y SCROLL UP / -Y SCROLL DOWN.
 
 			break;
 			
@@ -212,24 +189,24 @@ void Input::GetMousewheelScrolling(int&x, int& y)
 // ---------------------------- TEXT INPUT METHODS ----------------------------
 void Input::TextInput()																// -----------------------------------------------------------------------------
 {	
-	if (App->gui->focusedElement != nullptr)											//If the focused element is not NULL.
-	{
-		if (App->gui->focusedElement->element == UI_Element::INPUTBOX && App->gui->focusedElement->isVisible)	//If the focused element is of the INPUTBOX type and is visible.
-		{
-			SDL_StartTextInput();														//Start to receive/record text input.
-			textInputEnabled = true;													//As text input has started to be received, textInputEnabled is set to true. Manages EditTextInput().
-		}
-		else
-		{
-			SDL_StopTextInput();														//In case the focused element is not of the INPUTBOX type, stop text input.
-			textInputEnabled = false;													//As text input has stopped being received, textInputEnabled is set to true. Manages EditTextInput().
-		}
-	}
-	else
-	{
-		SDL_StopTextInput();															//In case the focused element is NULL. Used when right after focusing the inputbox, the focus changes to nullptr
-		textInputEnabled = false;														//As text input has stopped being received, textInputEnabled is set to true. Manages EditTextInput().
-	}
+	//if (App->gui->focusedElement != nullptr)											//If the focused element is not NULL.
+	//{
+	//	if (App->gui->focusedElement->element == UI_Element::INPUTBOX && App->gui->focusedElement->isVisible)	//If the focused element is of the INPUTBOX type and is visible.
+	//	{
+	//		SDL_StartTextInput();														//Start to receive/record text input.
+	//		textInputEnabled = true;													//As text input has started to be received, textInputEnabled is set to true. Manages EditTextInput().
+	//	}
+	//	else
+	//	{
+	//		SDL_StopTextInput();														//In case the focused element is not of the INPUTBOX type, stop text input.
+	//		textInputEnabled = false;													//As text input has stopped being received, textInputEnabled is set to true. Manages EditTextInput().
+	//	}
+	//}
+	//else
+	//{
+	//	SDL_StopTextInput();															//In case the focused element is NULL. Used when right after focusing the inputbox, the focus changes to nullptr
+	//	textInputEnabled = false;														//As text input has stopped being received, textInputEnabled is set to true. Manages EditTextInput().
+	//}
 
 	if (input_string == nullptr)														// If input_string is NULL.
 	{

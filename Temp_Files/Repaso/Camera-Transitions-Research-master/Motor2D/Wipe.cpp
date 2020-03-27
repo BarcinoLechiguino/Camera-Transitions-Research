@@ -30,6 +30,11 @@ void Wipe::Entering()
 	//The rect must cover the whole screen, so make sure the new value is not bigger than 0.
 	//Assign the value to the x variable of the rect. 
 	//Remember to draw the rect.
+	int current_lerp_value = LerpValue(percent, current_time->ReadSec(), transition_time);
+
+	rect.x = current_lerp_value;
+
+	DrawRect();
 }
 
 void Wipe::Action()
@@ -57,5 +62,7 @@ void Wipe::DrawRect()
 	//TODO 01
 	//FIll the DrawRect() method by setting a render draw color and telling the render to fill the rect.
 	//Remember to use the color and rect variables.
+	SDL_SetRenderDrawColor(App->render->renderer, color.r, color.g, color.b, color.a);
+	SDL_RenderFillRect(App->render->renderer, &rect);
 
 }

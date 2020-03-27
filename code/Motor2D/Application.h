@@ -15,7 +15,6 @@ class Textures;
 class Audio;
 class Map;
 class Fonts;
-class Gui;
 class TransitionManager;
 class SceneManager;
 
@@ -24,15 +23,14 @@ class Application
 public:
 
 	Application(int argc, char* args[]);					// Constructor
-	
 	virtual ~Application();									// Destructor
 
 	bool Awake();											// Called before render is available
-	
+
 	bool Start();											// Called before render is available
-	
+
 	bool Update();											// Called each loop iteration
-	
+
 	bool CleanUp();											// Called before quitting
 
 
@@ -70,7 +68,6 @@ public:
 	Audio*				audio;
 	Map*				map;
 	Fonts*				font;
-	Gui*				gui;
 	TransitionManager*	transition_manager;
 	SceneManager*		scene_manager;
 

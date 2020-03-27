@@ -31,6 +31,10 @@ void FadeToColor::Start() {
 	// TODO 2: Fade to color. A color fades from 0 to 100% opacity.
 	// Call the function FillScreen() and think about which value you pass
 	// TIP: You'll have to use the Interpolation() function
+	float value = Interpolation(0.0f, 255.0f, percentage);
+
+	FillScreen(value);
+
 }
 
 void FadeToColor::Change() {
@@ -52,6 +56,9 @@ void FadeToColor::Exit() {
 	j1Transitions::Exit();
 
 	// TODO 3: Make the fade out effect
+	float value = Interpolation(255.0f, 0.0f, percentage);
+
+	FillScreen(value);
 }
 
 void FadeToColor::FillScreen(float opacity) {

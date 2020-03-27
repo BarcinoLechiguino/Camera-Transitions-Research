@@ -3,7 +3,7 @@
 
 Cut::Cut(SCENES next_scene) : Transition(next_scene, 0.0f)
 {
-	this->next_scene = next_scene;
+	//this->next_scene = next_scene;
 }
 
 Cut::~Cut()
@@ -11,7 +11,7 @@ Cut::~Cut()
 
 }
 
-void Cut::StepTransition(float dt)
+void Cut::StepTransition()
 {
 	App->scene_manager->SwitchScene(next_scene);
 

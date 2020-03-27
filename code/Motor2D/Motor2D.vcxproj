@@ -76,20 +76,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AlternatingBars.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Cut.cpp" />
     <ClCompile Include="FadeToColour.cpp" />
     <ClCompile Include="Fonts.cpp" />
-    <ClCompile Include="Gui.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="CameraToMouse.cpp" />
     <ClCompile Include="PerfTimer.cpp" />
     <ClCompile Include="FirstScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SecondScene.cpp" />
+    <ClCompile Include="Slide.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="p2Log.cpp" />
     <ClCompile Include="Render.cpp" />
@@ -99,26 +101,20 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="TransitionManager.cpp" />
-    <ClCompile Include="UI.cpp" />
-    <ClCompile Include="UI_Button.cpp" />
-    <ClCompile Include="UI_Image.cpp" />
-    <ClCompile Include="UI_InputBox.cpp" />
-    <ClCompile Include="UI_Scrollbar.cpp" />
-    <ClCompile Include="UI_Text.cpp" />
-    <ClCompile Include="UI_Window.cpp" />
     <ClCompile Include="Wipe.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlternatingBars.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Cut.h" />
     <ClInclude Include="FadeToColour.h" />
     <ClInclude Include="Fonts.h" />
-    <ClInclude Include="Gui.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="PerfTimer.h" />
     <ClInclude Include="FirstScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SecondScene.h" />
+    <ClInclude Include="Slide.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Input.h" />
@@ -129,19 +125,13 @@
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="CameraToMouse.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="PugiXml\src\pugiconfig.hpp" />
     <ClInclude Include="PugiXml\src\pugixml.hpp" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="TransitionManager.h" />
-    <ClInclude Include="UI.h" />
-    <ClInclude Include="UI_Button.h" />
-    <ClInclude Include="UI_Image.h" />
-    <ClInclude Include="UI_InputBox.h" />
-    <ClInclude Include="UI_Scrollbar.h" />
-    <ClInclude Include="UI_Text.h" />
-    <ClInclude Include="UI_Window.h" />
     <ClInclude Include="Wipe.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

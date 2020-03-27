@@ -109,7 +109,7 @@ public:
 	bool Awake(pugi::xml_node& conf);
 
 	// Called each loop iteration
-	void Draw();
+	void Draw(/*SDL_Renderer* renderer = App->render->renderer*/);
 
 	// Called before quitting
 	bool CleanUp();
