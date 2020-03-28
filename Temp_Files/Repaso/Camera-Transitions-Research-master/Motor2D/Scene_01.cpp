@@ -43,7 +43,7 @@ bool Scene_01::PreUpdate()
 		//Uncomment this code and introduce a case for your wipe transition.
 		//Try out all transitions, choose one to get for your game and try to design a new one.
 		
-		/*if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 			App->transition_manager->CreateFadeTransition(1.0F, true, SCENE_02, Black);
 
 		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
@@ -61,7 +61,7 @@ bool Scene_01::PreUpdate()
 			App->transition_manager->CreateZoomTransition(3.0F, 2.0F);
 
 		if (App->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
-			App->transition_manager->CreateDissolveTransition(3.0F, SCENE_02);*/
+			App->transition_manager->CreateDissolveTransition(3.0F, SCENE_02);
 	}
 
 	return true;

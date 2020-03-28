@@ -17,21 +17,18 @@ public:
 	void Exiting();
 
 	void ApplyZoom();
+	float GetZoomRate() const;								// Will calculate the zoom rate. Will also check that the float does not get out of bounds.
 
 	void InitZoomToMouse(iPoint mouse_position);
 
 private:
 	iPoint mouse_position;
+	iPoint original_position;
+	iPoint target_position;
 
 	float original_scale;									// Represents the scale previous to being incerased by the zoom.
 	float zoom_scale;										// Represents the increase percentage of the scale. zoom_scale = 1.0f --> 100% scale increase.
 	float zoom_rate;										// Representes the pace at which the zoom will be increased.
-
-	float x_increase_rate;
-	float y_increase_rate;
-
-	SDL_Texture* target_to_zoom;
-
 };
 
 #endif // !__ZOOM_TO_MOUSE_H__

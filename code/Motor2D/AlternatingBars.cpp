@@ -3,8 +3,8 @@
 
 AlternatingBars::AlternatingBars(SCENES next_scene, float step_duration, int bar_number) : Transition(next_scene, step_duration)
 , bar_number(bar_number)
-{
-
+{	
+	Color color = Color((float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f, (float)(std::rand() % 255) / 255.f);
 }
 
 AlternatingBars::~AlternatingBars()

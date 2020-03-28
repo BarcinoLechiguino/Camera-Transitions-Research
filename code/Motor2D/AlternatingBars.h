@@ -19,7 +19,7 @@ public:
 	void TranslateBars();
 
 private:
-	SDL_Rect	bar;
+	std::vector<SDL_Rect> bars;
 	int			bar_number;
 
 };

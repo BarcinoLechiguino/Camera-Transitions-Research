@@ -90,10 +90,10 @@ void SecondScene::InitScene()
 	App->map->GetMapSize(map_width, map_height);
 	App->map->GetTileOffset(x_offset, y_offset);
 
-	App->render->camera.x = map_width * 0.5f;												// This camera position is to have the renderer render all the scene_texture.
+	/*App->render->camera.x = map_width * 0.5f;												// This camera position is to have the renderer render all the scene_texture.
 	App->render->camera.y = 0;
 
-	SceneToTexture();
+	SceneToTexture();*/
 
 	App->render->camera.x = map_width * 0.3f;												// This camera position gets the camera close to the center of the map.
 	App->render->camera.y = -40;
@@ -101,11 +101,11 @@ void SecondScene::InitScene()
 
 void SecondScene::DrawScene()
 {
-	//App->map->Draw();
+	App->map->Draw();
 
 	if (scene_texture != nullptr)
 	{
-		App->render->Blit(scene_texture, -(map_width) * 0.5f, 0, NULL);
+		//App->render->Blit(scene_texture, -(map_width) * 0.5f, 0, NULL);
 	}
 }
 
@@ -156,7 +156,10 @@ void SecondScene::ExecuteTransition()
 		{
 			iPoint mouse_pos = App->input->GetMouseToWorld();
 
-			App->transition_manager->CreateZoomToTexture(SCENES::FIRST_SCENE, mouse_pos);
+			if (scene_texture != nullptr)
+			{
+				App->transition_manager->CreateZoomToTexture(SCENES::FIRST_SCENE, mouse_pos);
+			}
 		}
 
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)

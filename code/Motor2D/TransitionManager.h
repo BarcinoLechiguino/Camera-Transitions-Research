@@ -8,7 +8,6 @@
 
 
 class		Transition;
-class		FadeToColour;
 enum class	SCENES;
 
 class TransitionManager :  public Module

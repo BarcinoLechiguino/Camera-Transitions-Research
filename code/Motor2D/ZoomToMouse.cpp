@@ -16,8 +16,6 @@ ZoomToMouse::~ZoomToMouse()
 
 void ZoomToMouse::StepTransition()
 {
-	//current_cutoff += GetCutoffRate(step_duration);
-
 	switch (step)
 	{
 	case TRANSITION_STEP::ENTERING:
@@ -57,9 +55,7 @@ void ZoomToMouse::Entering()
 void ZoomToMouse::Changing(SCENES next_scene)
 {
 	App->scene_manager->SwitchScene(next_scene);
-
-	target_to_zoom = App->scene_manager->current_scene->scene_texture;
-
+	
 	step = TRANSITION_STEP::EXITING;
 }
 
@@ -77,35 +73,40 @@ void ZoomToMouse::Exiting()
 
 void ZoomToMouse::ApplyZoom()
 {
-	zoom_rate = original_scale + current_cutoff * zoom_scale;															// If current_cutoff == 0.0f, then scale == original_scale.
+	zoom_rate = GetZoomRate();																	// If current_cutoff == 0.0f, then scale == original_scale.
 
-	//zoom_rate = Lerp(original_scale, zoom_scale * 2, current_cutoff);
+	App->render->camera.x = Lerp(original_position.x, target_position.x, current_cutoff);		// Zoom rate goes from 1 to 2 to 1, so there is no need to
+	App->render->camera.y = Lerp(original_position.y, target_position.y, current_cutoff);		// separate the zoom in different steps.
 
-	App->render->Blit(target_to_zoom, x_increase_rate, y_increase_rate, NULL, true, App->render->renderer, zoom_rate);
+	SDL_RenderSetScale(App->render->renderer, zoom_rate, zoom_rate);
+}
+
+float ZoomToMouse::GetZoomRate() const
+{
+	float rate = original_scale + zoom_scale * current_cutoff;
+
+	if (rate > original_scale + zoom_scale)
+	{
+		rate = original_scale + zoom_scale;
+	}
+
+	if (rate < original_scale)
+	{
+		rate = original_scale;
+	}
+
+	return rate;
 }
 
 void ZoomToMouse::InitZoomToMouse(iPoint mouse_position)
 {
-	int x_offset;
-	int y_offset;
+	original_scale = App->win->GetScale();
 
-	App->map->GetTileOffset(x_offset, y_offset);
-
-	original_scale = App->win->GetScale();																				// The minimum amount of zoom that there will be.
-
-	target_to_zoom = App->scene_manager->current_scene->scene_texture;													// The texture to which scale will be incremented.
-
-	float total_zoom = original_scale + zoom_scale;																		// The maximum amount of zoom that there will be.
-
-	float half_map_width = App->scene_manager->current_scene->map_width * 0.5f;										// Will be used to keep up with the zoom's rate of increase.
-	float half_map_height = App->scene_manager->current_scene->map_height * 0.5f;
-
-	float x_increment = Lerp(half_map_width, half_map_width * zoom_scale, zoom_rate);
-	float y_increment = Lerp(half_map_height, half_map_height * zoom_scale, zoom_rate);
-
-	x_increase_rate = -mouse_position.x - x_increment + x_offset;
-	y_increase_rate = -mouse_position.y + y_increment - y_offset;
-
+	original_position.x = App->render->camera.x;
+	original_position.y = App->render->camera.y;
+	
+	target_position.x = (-mouse_position.x) + App->render->camera.w * 0.25f;					// Adjusting the final position of the camera taking into account the mouse position.
+	target_position.y = (-mouse_position.y) + App->render->camera.h * 0.25f;					// Adjusting the final position of the camera taking into account the mouse position.
 
 	step = TRANSITION_STEP::ENTERING;
 }
