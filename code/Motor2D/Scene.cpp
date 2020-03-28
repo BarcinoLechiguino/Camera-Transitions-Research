@@ -3,6 +3,10 @@
 #include "Input.h"
 
 Scene::Scene(SCENES scene_name) : scene_name(scene_name)
+, scene_surface(nullptr)
+, scene_renderer(nullptr)
+, scene_texture(nullptr)
+, tileset_texture(nullptr)
 {
 
 }
@@ -42,30 +46,47 @@ bool Scene::CleanUp()
 	return true;
 }
 
-void Scene::CameraDebugMovement(float dt)
+void Scene::InitScene()
 {
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-	{
-		App->render->camera.y += floor(200.0f * dt);
-	}
 
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-	{
-		App->render->camera.y -= floor(200.0f * dt);
-	}
+}
 
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-	{
-		App->render->camera.x += floor(200.0f * dt);
-	}
+void Scene::DrawScene()
+{
 
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-	{
-		App->render->camera.x -= floor(200.0f * dt);
-	}
+}
+
+SDL_Texture* Scene::SceneToTexture()
+{
+	SDL_Texture* ret = nullptr;
+
+	return ret;
 }
 
 void Scene::ExecuteTransition()
 {
 
+}
+
+void Scene::CameraDebugMovement(float dt)
+{
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	{
+		App->render->camera.y += floor(500.0f * dt);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	{
+		App->render->camera.y -= floor(500.0f * dt);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+	{
+		App->render->camera.x += floor(500.0f * dt);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+	{
+		App->render->camera.x -= floor(500.0f * dt);
+	}
 }

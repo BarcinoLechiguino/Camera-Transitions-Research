@@ -2,6 +2,7 @@
 #define __INPUT_H__
 
 #include "Module.h"
+#include "p2Point.h"
 
 //#define NUM_KEYS 352
 #define NUM_MOUSE_BUTTONS 5
@@ -69,6 +70,8 @@ public:
 	void GetMousePosition(int &x, int &y);
 	void GetMouseMotion(int& x, int& y);
 	void GetMousewheelScrolling(int&x, int& y);
+
+	iPoint GetMouseToWorld() const;										// Method that will return a vector with the position of the mouse in relation to the world.
 
 	// Text Input
 	void TextInput();

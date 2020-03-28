@@ -1,32 +1,33 @@
 #ifndef __CAMERA_TO_MOUSE
 #define __CAMERA_TO_MOUSE
 
+#define MAX_TIME 1.0f
+
 #include "Transition.h"
 
 class CameraToMouse : public Transition
 {
 public:
-	CameraToMouse(iPoint destination, float speed);
+	CameraToMouse(iPoint mouse_position, float step_duration);
 	~CameraToMouse();
 
 	void StepTransition();
 
 public:
-	//void Entering();
-	//void Exiting();
+	void Entering();
+	void Exiting();
 
 	void TranslateCamera();
 
+	void InitCameraToMouse(iPoint mouse_position);
+
 private:
-	iPoint origin;
-	iPoint destination;
-	iPoint camera_center;
+	iPoint	origin;
+	iPoint	mouse_position;
 
-	float speed;
+	fPoint	next_pos;
 
-	bool reached_destination;
-	bool reached_x;
-	bool reached_y;
+	float	travel_time;
 };
 
 #endif // !__CAMERA_TO_MOUSE

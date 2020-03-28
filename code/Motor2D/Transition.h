@@ -25,9 +25,7 @@ public:
 	virtual ~Transition();
 
 	virtual void Start();
-
 	virtual void StepTransition();
-
 	virtual void CleanUp();
 
 public:
@@ -35,9 +33,10 @@ public:
 	virtual void Changing(SCENES next_scene);										// Method that will be used to execute the CHANGING transition step.
 	virtual void Exiting();															// Method that will be used to execute the EXITING transition step.
 	
-	virtual SDL_Texture* CreateTransitionTexture();
 	float Lerp(float start, float end, float rate);									// Method that will be used to interpolate the speed of a given transition.
 	float GetCutoffRate(float step_duration, float dt = App->GetDT());				// Method that returns the cutoff rate for a given transition. Will use dt as the standard increase.
+
+	SDL_Texture* CreateTransitionTexture();
 
 public:
 	TRANSITION_STEP step;															// All the steps that a given transition will go through.

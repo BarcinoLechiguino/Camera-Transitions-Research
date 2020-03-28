@@ -1,16 +1,11 @@
 #include "CameraToMouse.h"
 #include "TransitionManager.h"
 
-CameraToMouse::CameraToMouse(iPoint destination, float speed) : Transition(SCENES::NONE, 0)
-, destination(destination)
-, reached_destination(false)
-, reached_x(false)
-, reached_y(false)
+CameraToMouse::CameraToMouse(iPoint mouse_position, float step_duration) : Transition(SCENES::NONE, step_duration)
+, travel_time(0.0f)
+, next_pos(0.0f, 0.0f)
 {	
-	this->destination.x = (-this->destination.x + App->render->camera.w * 0.5f);
-	this->destination.y = (-this->destination.y + App->render->camera.h * 0.5f);
-
-	origin = { App->render->camera.x, App->render->camera.y };
+	InitCameraToMouse(mouse_position);
 }
 
 CameraToMouse::~CameraToMouse()
@@ -20,32 +15,57 @@ CameraToMouse::~CameraToMouse()
 
 void CameraToMouse::StepTransition()
 {
-	current_cutoff = GetCutoffRate(speed);
+	switch (step)
+	{
+	case TRANSITION_STEP::ENTERING:
 
-	if (!reached_destination)
+		Entering();
+
+		break;
+
+	case TRANSITION_STEP::EXITING:
+
+		Exiting();
+
+		break;
+	}
+}
+
+void CameraToMouse::Entering()
+{
+	travel_time += GetCutoffRate(step_duration);
+
+	if (travel_time <= MAX_TIME)
 	{
 		TranslateCamera();
 	}
 	else
-	{
-		App->transition_manager->DeleteActiveTransition();
+	{	
+		step = TRANSITION_STEP::EXITING;
 	}
+}
+
+void CameraToMouse::Exiting()
+{
+	App->transition_manager->DeleteActiveTransition();
 }
 
 void CameraToMouse::TranslateCamera()
 {
-	float pos_x = Lerp(origin.x, destination.x, App->GetDT());
-	float pos_y = Lerp(origin.y, destination.y, App->GetDT());
+	next_pos.x = Lerp(origin.x, mouse_position.x, travel_time);
+	next_pos.y = Lerp(origin.y, mouse_position.y, travel_time);
 
-	App->render->camera.x = pos_x;
-	App->render->camera.y = pos_y;
+	App->render->camera.x = next_pos.x;
+	App->render->camera.y = next_pos.y;
+}
 
-	LOG("Destination pos: %d, %d", destination.x, destination.y);
-	LOG("Camera pos: %d, %d", App->render->camera.x, App->render->camera.y);
-	
-	
-	if (App->render->camera.x == destination.x && App->render->camera.y == destination.y)
-	{
-		reached_destination = true;
-	}
+void CameraToMouse::InitCameraToMouse(iPoint mouse_position)
+{
+	origin.x = App->render->camera.x;
+	origin.y = App->render->camera.y;
+
+	this->mouse_position.x = (-mouse_position.x) + App->render->camera.w * 0.5f;
+	this->mouse_position.y = (-mouse_position.y) + App->render->camera.h * 0.5f;
+
+	step = TRANSITION_STEP::ENTERING;
 }

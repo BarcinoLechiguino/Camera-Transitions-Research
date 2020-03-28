@@ -3,7 +3,7 @@
 #include "Application.h"
 #include "Input.h"
 #include "Window.h"
-#include "FirstScene.h"
+#include "Render.h"
 #include "SDL/include/SDL.h"
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -184,6 +184,17 @@ void Input::GetMousewheelScrolling(int&x, int& y)
 
 	mouse_scroll_x = 0;
 	mouse_scroll_y = 0;
+}
+
+iPoint Input::GetMouseToWorld() const
+{
+	iPoint ret;
+
+	App->input->GetMousePosition(ret.x, ret.y);
+
+	iPoint world_pos = App->render->ScreenToWorld(ret.x, ret.y);
+
+	return world_pos;
 }
 
 // ---------------------------- TEXT INPUT METHODS ----------------------------

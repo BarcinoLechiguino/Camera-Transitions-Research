@@ -22,16 +22,17 @@ public:
 	void GetWindowRect(SDL_Rect& rect) const;								// Method that will get the current dimensions of the screen and assign them to a given rect.
 
 	int	GetScale() const;													// Retrieve window scale
+	void SetScale(float new_scale);											// Modify window scale.
 
 public:
 	SDL_Window*		window;													//The window we'll be rendering to
 	SDL_Surface*	screen_surface;											//The surface contained by the window
 
 private:
-	std::string	title;
-	int			width;
-	int			height;
-	int			scale;
+	std::string		title;
+	int				width;
+	int				height;
+	float			scale;
 };
 
 #endif // __WINDOW_H__

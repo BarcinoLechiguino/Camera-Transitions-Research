@@ -95,10 +95,7 @@ void SceneManager::LoadInitialScene()
 
 void SceneManager::SwitchScene(SCENES scene_name)
 {	
-	if (current_scene != nullptr)
-	{
-		current_scene->CleanUp();
-	}
+	current_scene->CleanUp();
 
 	std::vector<Scene*>::iterator item = scenes.begin();
 
@@ -129,6 +126,56 @@ void SceneManager::LoadScene(SCENES scene_name)
 	}
 
 	next_scene->Start();
+}
+
+void SceneManager::UnloadScene(SCENES scene_name)
+{
+	std::vector<Scene*>::iterator item = scenes.begin();
+
+	for (; item != scenes.end(); ++item)
+	{
+		if ((*item)->scene_name == scene_name)
+		{
+			if ((*item) == current_scene)
+			{
+				if (next_scene != nullptr)															// Cleaning up current_scene. next_scene is re-assigned to current_scene first.
+				{
+					Scene* tmp = current_scene;
+
+					current_scene = next_scene;
+
+					next_scene = tmp;
+
+					tmp = nullptr;
+
+					next_scene->CleanUp();
+
+					next_scene = nullptr;
+				}
+				else
+				{
+					LOG("UNLOAD SCENE ERROR: Two scenes were not active at the same time.");
+				}
+
+				break;
+			}
+			else
+			{
+				if (current_scene != nullptr)
+				{
+					(*item)->CleanUp();
+
+					next_scene = nullptr;
+				}
+				else
+				{
+					LOG("UNLOAD SCENE ERROR: Two scenes were not active at the same time.");
+				}
+				
+				break;
+			}
+		}
+	}
 }
 
 // ---------------- CREATE SCENE METHODS ----------------

@@ -6,8 +6,7 @@
 class SecondScene : public Scene
 {
 public:
-	SecondScene();
-	SecondScene(SCENES scene);
+	SecondScene();									// Constructor
 	~SecondScene();									// Destructor
 
 	bool Awake(pugi::xml_node& config);				// Called before render is available
@@ -18,12 +17,14 @@ public:
 	bool CleanUp();									// Called before quitting
 
 public:
+	void InitScene();
+	
+	void DrawScene();
+	SDL_Texture* SceneToTexture();
+
 	void ExecuteTransition();						// Method that will trigger a new transition depending on the input received.
 
-	void LoadGuiElements();							// Method that will load all the Gui Elements present in this scene.
-
-private:
-
+public:
 
 };
 

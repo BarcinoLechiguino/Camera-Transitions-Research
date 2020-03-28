@@ -52,7 +52,34 @@ void Map::Draw(/*SDL_Renderer* renderer*/)
 					SDL_Rect r = tileset->GetTileRect(tile_id);
 					iPoint pos = MapToWorld(x, y);
 
-					App->render->Blit(tileset->texture, pos.x, pos.y, &r/*, true, renderer*/);
+					App->render->Blit(tileset->texture, pos.x, pos.y, &r, true/*, renderer*/);
+				}
+			}
+		}
+	}
+}
+
+void Map::DrawToSubRenderer(SDL_Renderer* sub_renderer, SDL_Texture* tileset_texture)
+{	
+	std::list<MapLayer*>::iterator item = App->map->data.layers.begin();
+
+	for (; item != App->map->data.layers.end(); ++item)
+	{
+		MapLayer* layer = (*item);
+
+		for (int y = 0; y < App->map->data.height; ++y)
+		{
+			for (int x = 0; x < App->map->data.width; ++x)
+			{
+				int tile_id = layer->Get(x, y);
+				if (tile_id > 0)
+				{
+					TileSet* tileset = GetTilesetFromTileId(tile_id);
+
+					SDL_Rect r = tileset->GetTileRect(tile_id);
+					iPoint pos = MapToWorld(x, y);
+
+					App->render->Blit(tileset_texture, pos.x, pos.y, &r, true, sub_renderer);
 				}
 			}
 		}
@@ -95,6 +122,18 @@ TileSet* Map::GetTilesetFromTileId(int id) const
 	return set;
 }
 
+void Map::GetMapSize(int& w, int& h) const
+{
+	w = App->map->data.width * App->map->data.tile_width;
+	h = App->map->data.height * App->map->data.tile_height;
+}
+
+void Map::GetTileOffset(int& x, int& y) const
+{
+	x = App->map->data.tile_width * 0.5f;
+	y = App->map->data.tile_height * 0.5f;
+}
+
 iPoint Map::MapToWorld(int x, int y) const
 {
 	iPoint ret;
@@ -132,8 +171,8 @@ iPoint Map::WorldToMap(int x, int y) const
 		
 		float half_width = data.tile_width * 0.5f;
 		float half_height = data.tile_height * 0.5f;
-		ret.x = int( (x / half_width + y / half_height) / 2) - 1;
-		ret.y = int( (y / half_height - (x / half_width)) / 2);
+		ret.x = int( ( (x / half_width) + (y / half_height) ) * 0.5) - 1;
+		ret.y = int( ( (y / half_height) - (x / half_width) ) * 0.5);
 	}
 	else
 	{

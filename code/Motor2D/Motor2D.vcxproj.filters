@@ -79,6 +79,18 @@
     <ClCompile Include="CameraToMouse.cpp">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
     </ClCompile>
+    <ClCompile Include="ZoomToMouse.cpp">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
+    </ClCompile>
+    <ClCompile Include="ZoomToTexture.cpp">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Texture Transitions</Filter>
+    </ClCompile>
+    <ClCompile Include="Dissolve.cpp">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Texture Transitions</Filter>
+    </ClCompile>
+    <ClCompile Include="ExpandingBars.cpp">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="p2Defs.h">
@@ -168,6 +180,18 @@
     <ClInclude Include="CameraToMouse.h">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
     </ClInclude>
+    <ClInclude Include="ZoomToMouse.h">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
+    </ClInclude>
+    <ClInclude Include="ZoomToTexture.h">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Texture Transitions</Filter>
+    </ClInclude>
+    <ClInclude Include="Dissolve.h">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Texture Transitions</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpandingBars.h">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">
@@ -199,6 +223,9 @@
     </Filter>
     <Filter Include="Engine  ==============\Modules\Scenes\In-Game Scenes">
       <UniqueIdentifier>{517845e7-c852-4b7a-abd8-14bbb6c6ec37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine  ==============\Modules\Transitions\Transition Types\Texture Transitions">
+      <UniqueIdentifier>{75ea4089-52f0-4c77-952d-d16738ed4eca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

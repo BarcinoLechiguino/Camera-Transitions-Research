@@ -3,7 +3,7 @@
 
 Cut::Cut(SCENES next_scene) : Transition(next_scene, 0.0f)
 {
-	//this->next_scene = next_scene;
+
 }
 
 Cut::~Cut()

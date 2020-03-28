@@ -3,10 +3,10 @@
 
 #include "Transition.h"
 
-class AlternatingBars : Transition
+class AlternatingBars : public Transition
 {
 public:
-	AlternatingBars(SCENES next_scene, float step_duration);
+	AlternatingBars(SCENES next_scene, float step_duration, int bar_number);
 	~AlternatingBars();
 
 	void StepTransition();
@@ -19,7 +19,8 @@ public:
 	void TranslateBars();
 
 private:
-	SDL_Rect bar;
+	SDL_Rect	bar;
+	int			bar_number;
 
 };
 

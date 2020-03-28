@@ -22,7 +22,8 @@ public:
 	void	ScenePushbacks();										// The pushbacks must be made in the order in which the scenes will appear.
 	void	LoadInitialScene();										// Will load the first scene in the scenes vector.
 	void	SwitchScene(SCENES scene_name);							// Unloads the current scene and then loads the next one.
-	void	LoadScene(SCENES scene_name);							// Loads the a new scene. Can be called even while there is another one already running.
+	void	LoadScene(SCENES scene_name);							// Loads a new scene. Can be called even while there is another one already running.
+	void	UnloadScene(SCENES scene_name);							// Unloads a scene. Only use when there is another scene loaded already. Ex. current_scene & next_scene are active.
 
 	Scene*	CreateScene(SCENES scene_name);
 

@@ -117,3 +117,8 @@ int Window::GetScale() const
 {
 	return scale;
 }
+
+void Window::SetScale(float new_scale)
+{
+	scale = new_scale;
+}

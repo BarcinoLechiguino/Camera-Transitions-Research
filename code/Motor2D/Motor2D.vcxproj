@@ -79,6 +79,8 @@
     <ClCompile Include="AlternatingBars.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Cut.cpp" />
+    <ClCompile Include="Dissolve.cpp" />
+    <ClCompile Include="ExpandingBars.cpp" />
     <ClCompile Include="FadeToColour.cpp" />
     <ClCompile Include="Fonts.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -102,11 +104,15 @@
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="TransitionManager.cpp" />
     <ClCompile Include="Wipe.cpp" />
+    <ClCompile Include="ZoomToMouse.cpp" />
+    <ClCompile Include="ZoomToTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlternatingBars.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Cut.h" />
+    <ClInclude Include="Dissolve.h" />
+    <ClInclude Include="ExpandingBars.h" />
     <ClInclude Include="FadeToColour.h" />
     <ClInclude Include="Fonts.h" />
     <ClInclude Include="Map.h" />
@@ -133,6 +139,8 @@
     <ClInclude Include="Transition.h" />
     <ClInclude Include="TransitionManager.h" />
     <ClInclude Include="Wipe.h" />
+    <ClInclude Include="ZoomToMouse.h" />
+    <ClInclude Include="ZoomToTexture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

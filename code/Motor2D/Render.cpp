@@ -46,8 +46,8 @@ bool Render::Awake(pugi::xml_node& config)
 	{
 		camera.w = App->win->screen_surface->w;
 		camera.h = App->win->screen_surface->h;
-		camera.x = /*(App->map->data.width * App->map->data.tile_width) * 0.5f*/ 0;
-		camera.y = /*-40*/ 0;
+		camera.x = 0;
+		camera.y = 0;
 	}
 
 	return ret;
@@ -59,9 +59,6 @@ bool Render::Start()
 	LOG("render start");
 	// back background
 	SDL_RenderGetViewport(renderer, &viewport);
-
-	camera.x = (App->map->data.width * App->map->data.tile_width) * 0.30f;
-	camera.y = -40;
 
 	return true;
 }
@@ -101,6 +98,18 @@ void Render::SetViewPort(const SDL_Rect& rect)
 void Render::ResetViewPort()
 {
 	SDL_RenderSetViewport(renderer, &viewport);
+}
+
+void Render::CreateSubRenderer(int w, int h, SDL_Surface*& sub_surface, SDL_Renderer*& sub_renderer)
+{
+	uint r = 0x00ff0000;
+	uint g = 0x0000ff00;
+	uint b = 0x000000ff;
+	uint a = 0xff000000;
+
+	sub_surface = SDL_CreateRGBSurface(0, w, h, 32, r, g, b, a);
+
+	sub_renderer = SDL_CreateSoftwareRenderer(sub_surface);
 }
 
 iPoint Render::ScreenToWorld(int x, int y) const
@@ -199,7 +208,7 @@ bool Render::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, 
 bool Render::DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera) const
 {
 	bool ret = true;
-	uint scale = App->win->GetScale();
+	uint scale = App->win-> GetScale();
 
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);

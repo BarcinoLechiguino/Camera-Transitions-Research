@@ -117,9 +117,17 @@ public:
 	// Load new map
 	bool Load(const char* path);
 
+
+	void DrawToSubRenderer(SDL_Renderer* sub_renderer, SDL_Texture* tileset_texture);				// Will draw the map into a Sub-Renderer. Needed to make a texture from the scene.
+																									// Only accepts one tileset texture.
+
+	void GetMapSize(int& w, int& h) const;
+	void GetTileOffset(int& w, int& h) const;
+
 	iPoint MapToWorld(int x, int y) const;
 	iPoint WorldToMap(int x, int y) const;
-	bool CreateWalkabilityMap(int& width, int& height, uchar** buffer) const;
+
+	TileSet* GetTilesetFromTileId(int id) const;
 
 private:
 
@@ -129,7 +137,7 @@ private:
 	bool LoadLayer(pugi::xml_node& node, MapLayer* layer);
 	bool LoadProperties(pugi::xml_node& node, Properties& properties);
 
-	TileSet* GetTilesetFromTileId(int id) const;
+	//TileSet* GetTilesetFromTileId(int id) const;
 
 public:
 

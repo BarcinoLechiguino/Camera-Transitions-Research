@@ -31,6 +31,8 @@ public:
 	// Utils
 	void SetViewPort(const SDL_Rect& rect);
 	void ResetViewPort();
+	void CreateSubRenderer(int w, int h, SDL_Surface*& sub_surface, SDL_Renderer*& sub_renderer);			// Will create both a surface and a renderer.
+
 	iPoint ScreenToWorld(int x, int y) const;
 
 	// Draw & Blit
