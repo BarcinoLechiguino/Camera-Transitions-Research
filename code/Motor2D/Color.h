@@ -29,6 +29,8 @@ struct Color
 	}
 };
 
+Color GetRandomColour();
+
 extern Color Red;
 extern Color Green;
 extern Color Blue;

@@ -73,9 +73,6 @@
     <ClCompile Include="Slide.cpp">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
     </ClCompile>
-    <ClCompile Include="AlternatingBars.cpp">
-      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
-    </ClCompile>
     <ClCompile Include="CameraToMouse.cpp">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
     </ClCompile>
@@ -88,8 +85,14 @@
     <ClCompile Include="Dissolve.cpp">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types\Texture Transitions</Filter>
     </ClCompile>
+    <ClCompile Include="AlternatingBars.cpp">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
+    </ClCompile>
     <ClCompile Include="ExpandingBars.cpp">
-      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
+    </ClCompile>
+    <ClCompile Include="Bars.cpp">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -174,9 +177,6 @@
     <ClInclude Include="Slide.h">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
     </ClInclude>
-    <ClInclude Include="AlternatingBars.h">
-      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
-    </ClInclude>
     <ClInclude Include="CameraToMouse.h">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
     </ClInclude>
@@ -189,8 +189,14 @@
     <ClInclude Include="Dissolve.h">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types\Texture Transitions</Filter>
     </ClInclude>
+    <ClInclude Include="AlternatingBars.h">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
+    </ClInclude>
     <ClInclude Include="ExpandingBars.h">
-      <Filter>Engine  ==============\Modules\Transitions\Transition Types</Filter>
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
+    </ClInclude>
+    <ClInclude Include="Bars.h">
+      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +232,9 @@
     </Filter>
     <Filter Include="Engine  ==============\Modules\Transitions\Transition Types\Texture Transitions">
       <UniqueIdentifier>{75ea4089-52f0-4c77-952d-d16738ed4eca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions">
+      <UniqueIdentifier>{e946cc50-487c-48bb-873a-d3bbe70819c5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

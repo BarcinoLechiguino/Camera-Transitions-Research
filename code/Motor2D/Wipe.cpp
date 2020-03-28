@@ -5,11 +5,7 @@ Wipe::Wipe(SCENES next_scene, float step_duration, bool enter_from_left, Color w
 , enter_from_left(enter_from_left)
 , wipe_colour(wipe_colour)
 {
-	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
-
-	App->win->GetWindowRect(screen);
-
-	step = TRANSITION_STEP::ENTERING;
+	InitWipe();
 }
 
 Wipe::~Wipe()
@@ -53,15 +49,6 @@ void Wipe::Entering()
 
 		step = TRANSITION_STEP::CHANGING;
 	}
-
-	/*current_cutoff += GetCutoffRate(step_duration);
-
-	if (current_cutoff >= MAX_CUTOFF)
-	{
-		current_cutoff = MAX_CUTOFF;
-
-		step = TRANSITION_STEP::CHANGING;
-	}*/
 }
 
 void Wipe::Changing(SCENES next_scene)
@@ -78,22 +65,11 @@ void Wipe::Exiting()
 	if (current_cutoff >= MAX_CUTOFF)
 	{
 		current_cutoff = MIN_CUTOFF;
+		
+		step = TRANSITION_STEP::NONE;
 
 		App->transition_manager->DeleteActiveTransition();
-
-		step = TRANSITION_STEP::NONE;
 	}
-
-	/*current_cutoff -= GetCutoffRate(step_duration);
-	
-	if (current_cutoff <= MIN_CUTOFF)
-	{
-		current_cutoff = MIN_CUTOFF;
-
-		App->transition_manager->DeleteActiveTransition();
-
-		step = TRANSITION_STEP::NONE;
-	}*/
 }
 
 void Wipe::TranslateWipe()
@@ -101,18 +77,12 @@ void Wipe::TranslateWipe()
 	if (enter_from_left)
 	{	
 		if (step == TRANSITION_STEP::ENTERING)
-		{	
-			//screen.x = (-screen.w) + screen.w * current_cutoff;
-			
+		{			
 			screen.x = Lerp(-screen.w, 0, current_cutoff);
 		}
 		
 		if (step == TRANSITION_STEP::EXITING)
 		{
-			//screen.x = screen.w * current_cutoff;
-			
-			//screen.x = Lerp(screen.w, 0, current_cutoff);
-			
 			screen.x = Lerp(0, screen.w, current_cutoff);
 		}
 	}
@@ -120,51 +90,24 @@ void Wipe::TranslateWipe()
 	{
 		if (step == TRANSITION_STEP::ENTERING)
 		{
-			//screen.x = screen.w - screen.w * current_cutoff;
-			
 			screen.x = Lerp(screen.w, 0, current_cutoff);
 		}
 
 		if (step == TRANSITION_STEP::EXITING)
 		{
-			//screen.x = -screen.w * current_cutoff;
-			
-			//screen.x = Lerp(-screen.w, 0, current_cutoff);
-			
 			screen.x = Lerp(0, -screen.w, current_cutoff);
 		}
 	}
 
-
-	
-	/*if (enter_from_left)															// Only works with cutoff rate going from 0.0f to 1.0f and then from 1.0f to 0.0f.
-	{
-		if (step == TRANSITION_STEP::ENTERING)
-		{
-			screen.x = (screen.w) - screen.w / current_cutoff;
-		}
-
-		if (step == TRANSITION_STEP::EXITING)
-		{
-			screen.x = (-screen.w) + screen.w / current_cutoff;
-		}
-	}
-	else
-	{
-		if (step == TRANSITION_STEP::ENTERING)
-		{
-			screen.x = (screen.w) - screen.w / current_cutoff;
-		}
-
-		if (step == TRANSITION_STEP::EXITING)
-		{
-			screen.x = (-screen.w) + screen.w / current_cutoff;
-		}
-	}*/
-
-
 	SDL_SetRenderDrawColor(App->render->renderer, wipe_colour.r, wipe_colour.g, wipe_colour.b, 255);
 	SDL_RenderFillRect(App->render->renderer, &screen);
+}
 
-	LOG("screen.x = %d", screen.x);
+void Wipe::InitWipe()
+{
+	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
+
+	App->win->GetWindowRect(screen);
+
+	step = TRANSITION_STEP::ENTERING;
 }

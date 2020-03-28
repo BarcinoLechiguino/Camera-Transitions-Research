@@ -58,30 +58,3 @@ float Transition::GetCutoffRate(float step_duration, float dt)
 
 	return cutoff_rate;
 }
-
-SDL_Texture* Transition::CreateTransitionTexture()
-{
-	App->win->GetWindowSize(win_width, win_height);
-	
-	uint r = 0x00ff0000;
-	uint g = 0x0000ff00;
-	uint b = 0x000000ff;
-	uint a = 0xff000000;
-
-	SDL_Surface* sur	= SDL_CreateRGBSurface(0, win_width, win_height, 32, r, g, b, a);
-
-	SDL_Renderer* rend	= SDL_CreateSoftwareRenderer(sur);
-
-	//SDL_SetRenderDrawColor(rend, 0, 0, 0, 255);
-	//SDL_RenderClear(rend);
-
-	//SDL_Texture* tex = SDL_CreateTextureFromSurface(rend, sur);
-
-	SDL_Texture* load_tex = App->tex->Load("gui/atlas.png", rend);
-
-	App->render->Blit(load_tex, 0, 0, NULL, rend);
-
-	SDL_Texture* tex = SDL_CreateTextureFromSurface(App->render->renderer, sur);
-
-	return load_tex;
-}

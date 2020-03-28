@@ -128,13 +128,13 @@ void SceneManager::LoadScene(SCENES scene_name)
 	next_scene->Start();
 }
 
-void SceneManager::UnloadScene(SCENES scene_name)
+void SceneManager::UnloadScene(Scene* scene_to_unload)
 {
 	std::vector<Scene*>::iterator item = scenes.begin();
 
 	for (; item != scenes.end(); ++item)
 	{
-		if ((*item)->scene_name == scene_name)
+		if ((*item) == scene_to_unload)
 		{
 			if ((*item) == current_scene)
 			{

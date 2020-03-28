@@ -93,11 +93,11 @@ Transition* TransitionManager::CreateWipe(SCENES next_scene, float step_duration
 	return active_transition;
 }
 
-Transition* TransitionManager::CreateAlternatingBars(SCENES next_scene, float step_duration, int bar_number)
+Transition* TransitionManager::CreateAlternatingBars(SCENES next_scene, float step_duration, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour)
 {
 	if (!is_transitioning)
 	{
-		active_transition = new AlternatingBars(next_scene, step_duration, bar_number);
+		active_transition = new AlternatingBars(next_scene, step_duration, bar_number, vertical, random_colours, even_colour, odd_colour);
 
 		is_transitioning = true;
 	}
@@ -105,11 +105,13 @@ Transition* TransitionManager::CreateAlternatingBars(SCENES next_scene, float st
 	return active_transition;
 }
 
-Transition* TransitionManager::CreateExpandingBars(SCENES next_scene, float step_duration, int bar_number)
+Transition* TransitionManager::CreateExpandingBars(SCENES next_scene, float step_duration, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour)
 {
 	if (!is_transitioning)
 	{
-		active_transition = new ExpandingBars(next_scene, step_duration, bar_number);
+		active_transition = new ExpandingBars(next_scene, step_duration, bar_number, vertical, random_colours, even_colour, odd_colour);
+
+		is_transitioning = true;
 	}
 
 	return active_transition;
@@ -162,8 +164,6 @@ Transition* TransitionManager::CreateCameraToMouse(iPoint mouse_position, float 
 
 	return active_transition;
 }
-
-
 
 void TransitionManager::DeleteActiveTransition()
 {

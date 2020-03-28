@@ -2,11 +2,12 @@
 #define __ALTERNAING_BARS_H__
 
 #include "Transition.h"
+#include "Color.h"
 
 class AlternatingBars : public Transition
 {
 public:
-	AlternatingBars(SCENES next_scene, float step_duration, int bar_number);
+	AlternatingBars(SCENES next_scene, float step_duration, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour);
 	~AlternatingBars();
 
 	void StepTransition();
@@ -16,12 +17,28 @@ public:
 	void Changing(SCENES next_scene);
 	void Exiting();
 
-	void TranslateBars();
+	void AlternateBars();
+	void TranslateHorizontalBars();
+	void TranslateVerticalBars();
+	void DrawBars();
+	
+	void InitAlternatingBars();
+	void AssignHorizontalBar(Bar& new_bar, const int& win_width, const int& win_height, const int& index);
+	void AssignVerticalBar(Bar& new_bar, const int& win_width, const int& win_height, const int& index);
+	void AssignBarColour(Bar& new_bar, const int& index);
 
 private:
-	std::vector<SDL_Rect> bars;
-	int			bar_number;
+	std::vector<Bar>	bars;
+	
+	bool				vertical;
+	bool				random_colours;
+	
+	int					bar_number;
+	int					win_width;
+	int					win_height;
 
+	Color				even_colour;
+	Color				odd_colour;
 };
 
 #endif // !__ALTERNATE_BARS_H__

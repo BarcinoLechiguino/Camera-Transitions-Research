@@ -67,10 +67,10 @@ void Slide::Exiting()
 	if (current_cutoff <= MIN_CUTOFF)
 	{
 		current_cutoff = MIN_CUTOFF;
+		
+		step = TRANSITION_STEP::NONE;
 
 		App->transition_manager->DeleteActiveTransition();
-
-		step = TRANSITION_STEP::NONE;
 	}
 }
 

@@ -156,6 +156,24 @@ void FirstScene::ExecuteTransition()
 			App->transition_manager->CreateWipe(SCENES::SECOND_SCENE, 1.0f, false, White);
 		}
 
+		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+		{
+			App->transition_manager->CreateAlternatingBars(SCENES::SECOND_SCENE, 1.0f, 5, true, true);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
+		{
+			App->transition_manager->CreateExpandingBars(SCENES::SECOND_SCENE, 1.0f, 5, false, true);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
+		{
+			if (scene_texture != nullptr)
+			{
+				App->transition_manager->CreateDissolve(SCENES::SECOND_SCENE, 1.0f);
+			}
+		}
+
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN)
 		{
 			iPoint mouse_pos = App->input->GetMouseToWorld();

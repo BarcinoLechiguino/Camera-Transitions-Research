@@ -2,6 +2,8 @@
 #include "TransitionManager.h"
 
 Dissolve::Dissolve(SCENES next_scene, float step_duration) : Transition(next_scene, step_duration)
+, dissolving_alpha(0.0f)
+, condensing_alpha(0.0f)
 {
 	InitDissolve();
 }
@@ -39,8 +41,6 @@ void Dissolve::StepTransition()
 
 void Dissolve::Entering()
 {
-	//SDL_SetTextureAlphaMod(App->scene_manager->next_scene->tileset_texture, 0.0f);
-
 	current_cutoff += GetCutoffRate(step_duration);
 
 	if (current_cutoff <= MAX_CUTOFF)
@@ -53,22 +53,31 @@ void Dissolve::Entering()
 
 void Dissolve::Changing(SCENES next_scene)
 {
+	App->scene_manager->UnloadScene(App->scene_manager->current_scene);
 
+	step = TRANSITION_STEP::EXITING;
 }
 
 void Dissolve::Exiting()
 {
-
+	step = TRANSITION_STEP::NONE;
+	
+	App->transition_manager->DeleteActiveTransition();
 }
 
 void Dissolve::ApplyDissolve()
 {
-	SDL_SetTextureAlphaMod(App->scene_manager->current_scene->tileset_texture, current_cutoff * 255.0f);
-	SDL_SetTextureAlphaMod(App->scene_manager->next_scene->tileset_texture, current_cutoff * 255.0f);
+	dissolving_alpha += Lerp(MAX_ALPHA, MIN_ALPHA, dissolve_rate);									// Decreasing alpha value.
+	condensing_alpha += Lerp(MIN_ALPHA, MAX_ALPHA, dissolve_rate);									// Increasing alpha value.
+	
+	SDL_SetTextureAlphaMod(App->scene_manager->current_scene->scene_texture, dissolving_alpha);
+	SDL_SetTextureAlphaMod(App->scene_manager->next_scene->scene_texture, condensing_alpha);
 }
 
 void Dissolve::InitDissolve()
 {
+	dissolve_rate = GetCutoffRate(step_duration);
+	
 	App->scene_manager->LoadScene(next_scene);
 	
 	SDL_SetTextureAlphaMod(App->scene_manager->next_scene->tileset_texture, 0.0f);

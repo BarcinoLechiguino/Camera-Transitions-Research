@@ -19,6 +19,8 @@ public:
 
 	void TranslateWipe();
 
+	void InitWipe();
+
 private:
 	SDL_Rect	screen;
 	Color		wipe_colour;
