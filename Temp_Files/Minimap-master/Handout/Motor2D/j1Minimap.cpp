@@ -111,21 +111,21 @@ bool j1Minimap::Update(float dt)
 
 bool j1Minimap::PostUpdate()
 {	
-	SDL_Rect rect0 = { 0, 0, minimapCounter, 200 };									//Left to Right
-	SDL_Rect rect1 = { 0, 0, 400, minimapCounter * 0.5 };									//Top to Bottom
-	SDL_Rect rect2 = { 0, 100, 400, 200 };											//Stripe: Right to Left
-	SDL_Rect rect3 = { 0, 0, 400, 100 };											//Stripe: Left to Right
-	SDL_Rect rectS = { 0, 0, 400, 200 };
+	SDL_Rect rect0		= { 0, 0, minimapCounter, 200 };													//Left to Right
+	SDL_Rect rect1		= { 0, 0, 400, minimapCounter * 0.5 };												//Top to Bottom
+	SDL_Rect rect2		= { 0, 100, 400, 200 };																//Stripe: Right to Left
+	SDL_Rect rect3		= { 0, 0, 400, 100 };																//Stripe: Left to Right
+	SDL_Rect rectScale	= { 0, 0, 400, 200 };
 
-	App->render->Blit(minimap_tex, 0, 0, &rect0, false);							//Slide In/Out Horizontally
-	App->render->Blit(minimap_tex, 0, 0, &rect1, false);							//Slide In/Out Vertically
+	App->render->Blit(minimap_tex, 0, 0, &rect0, false);													//Slide In/Out Horizontally
+	App->render->Blit(minimap_tex, 0, 0, &rect1, false);													//Slide In/Out Vertically
 
-	App->render->Blit(minimap_tex, 400 - minimapCounter * 2, 100, &rect2, false);	//Stripes
+	App->render->Blit(minimap_tex, 400 - minimapCounter * 2, 100, &rect2, false);							//Stripes
 	App->render->Blit(minimap_tex, -400 + minimapCounter * 2, 0, &rect3, false);
 
-	App->render->Blit(minimap_tex, 0, 0, &rectS, false, App->render->renderer, minimapCounter * 0.01);
+	App->render->Blit(minimap_tex, 0, 0, &rectScale, false, App->render->renderer, minimapCounter * 0.01);
 
-	SDL_SetRenderDrawColor(App->render->renderer, 0, 0, 0, minimapCounter * 0.5);	//Fade To Black
+	SDL_SetRenderDrawColor(App->render->renderer, 0, 0, 0, minimapCounter * 0.5);							//Fade To Black
 	SDL_RenderFillRect(App->render->renderer, &rect0);
 	//SDL_RenderClear(App->render->renderer);
 

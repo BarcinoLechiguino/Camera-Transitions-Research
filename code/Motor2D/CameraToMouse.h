@@ -8,7 +8,7 @@
 class CameraToMouse : public Transition
 {
 public:
-	CameraToMouse(iPoint mouse_position, float step_duration);
+	CameraToMouse(iPoint mouse_position, float step_duration, bool non_lerp);
 	~CameraToMouse();
 
 	void StepTransition();

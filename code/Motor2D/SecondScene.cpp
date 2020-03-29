@@ -137,24 +137,40 @@ void SecondScene::ExecuteTransition()
 
 		if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
-			App->transition_manager->CreateSlide(SCENES::FIRST_SCENE);
+			App->transition_manager->CreateSlide(SCENES::FIRST_SCENE, 0.5f, true);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 		{
-			App->transition_manager->CreateWipe(SCENES::FIRST_SCENE);
+			App->transition_manager->CreateWipe(SCENES::FIRST_SCENE, 0.5f, true);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
-			App->transition_manager->CreateAlternatingBars(SCENES::FIRST_SCENE);
+			App->transition_manager->CreateAlternatingBars(SCENES::FIRST_SCENE, 0.5f, true);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 		{
-			App->transition_manager->CreateExpandingBars(SCENES::FIRST_SCENE);
+			App->transition_manager->CreateExpandingBars(SCENES::FIRST_SCENE, 0.5f, true);
 		}
 
+		if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN)
+		{
+			iPoint mouse_pos = App->input->GetMouseToWorld();
+
+			App->transition_manager->CreateZoomToMouse(SCENES::FIRST_SCENE, mouse_pos, 0.5f, true);
+		}
+
+		if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
+		{
+			iPoint mouse_pos = App->input->GetMouseToWorld();
+
+			App->transition_manager->CreateCameraToMouse(mouse_pos, 0.5f, false);
+		}
+
+		
+		// --- TRANSITION WITH TEXTURE METHODS (NOT IMPLEMENTED)
 		if (App->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
 		{
 			if (scene_texture != nullptr)
@@ -163,13 +179,6 @@ void SecondScene::ExecuteTransition()
 			}
 		}
 
-		if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN)
-		{
-			iPoint mouse_pos = App->input->GetMouseToWorld();
-
-			App->transition_manager->CreateZoomToMouse(SCENES::FIRST_SCENE, mouse_pos);
-		}
-		
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_MIDDLE) == KEY_DOWN)
 		{
 			iPoint mouse_pos = App->input->GetMouseToWorld();
@@ -178,13 +187,6 @@ void SecondScene::ExecuteTransition()
 			{
 				App->transition_manager->CreateZoomToTexture(SCENES::FIRST_SCENE, mouse_pos);
 			}
-		}
-
-		if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
-		{
-			iPoint mouse_pos = App->input->GetMouseToWorld();
-
-			App->transition_manager->CreateCameraToMouse(mouse_pos);
 		}
 	}
 }

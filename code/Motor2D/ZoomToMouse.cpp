@@ -2,7 +2,7 @@
 #include "TransitionManager.h"
 #include "Map.h"
 
-ZoomToMouse::ZoomToMouse(SCENES next_scene, iPoint mouse_position, float step_duration, float zoom_scale) : Transition(next_scene, step_duration)
+ZoomToMouse::ZoomToMouse(SCENES next_scene, iPoint mouse_position, float step_duration, bool non_lerp, float zoom_scale) : Transition(next_scene, step_duration, non_lerp)
 , zoom_scale(zoom_scale)
 , mouse_position(mouse_position)
 {
@@ -73,10 +73,21 @@ void ZoomToMouse::Exiting()
 
 void ZoomToMouse::ApplyZoom()
 {
-	zoom_rate = GetZoomRate();																	// If current_cutoff == 0.0f, then scale == original_scale.
+	zoom_rate = GetZoomRate();																				// If current_cutoff == 0.0f, then scale == original_scale.
 
-	App->render->camera.x = Lerp(original_position.x, target_position.x, current_cutoff);		// Zoom rate goes from 1 to 2 to 1, so there is no need to
-	App->render->camera.y = Lerp(original_position.y, target_position.y, current_cutoff);		// separate the zoom in different steps.
+	if (!non_lerp)
+	{
+		App->render->camera.x = Lerp(original_position.x, target_position.x, current_cutoff);				// Zoom rate goes from 1 to 2 to 1, so there is no need to
+		App->render->camera.y = Lerp(original_position.y, target_position.y, current_cutoff);				// separate the zoom in different steps.
+	}
+	else
+	{
+		//App->render->camera.x = N_Lerp(original_position.x, target_position.x, current_cutoff, true);
+		//App->render->camera.y = N_Lerp(original_position.y, target_position.y, current_cutoff, true);
+
+		App->render->camera.x = N_Lerp(target_position.x, original_position.x, current_cutoff);
+		App->render->camera.y = N_Lerp(target_position.y, original_position.y, current_cutoff);
+	}
 
 	SDL_RenderSetScale(App->render->renderer, zoom_rate, zoom_rate);
 }

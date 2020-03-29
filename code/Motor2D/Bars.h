@@ -13,7 +13,7 @@
 class Bars : public Transition
 {
 public:
-	Bars(SCENES next_scene, float step_duration, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour);
+	Bars(SCENES next_scene, float step_duration, bool non_lerp, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour);
 	~Bars();
 
 	void StepTransition();
@@ -23,11 +23,11 @@ public:
 	void Changing();
 	void Exiting();
 
-	//void DrawBars();
+	//virtual void DrawBars();
 
-	//void AssignHorizontalBar(Bar& new_bar, int win_width, int win_height, int index);
-	//void AssignVerticalBar(Bar& new_bar, int win_width, int win_height, int index);
-	//void AssignBarColour(Bar& new_bar, int index);
+	//virtual void AssignHorizontalBar(Bar& new_bar, int win_width, int win_height, int index);
+	//virtual void AssignVerticalBar(Bar& new_bar, int win_width, int win_height, int index);
+	//virtual void AssignBarColour(Bar& new_bar, int index);
 
 public:
 	// std::vector<Bar>	bars;

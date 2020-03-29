@@ -7,7 +7,7 @@
 class Slide : public Transition
 {
 public:
-	Slide(SCENES next_scene, float step_duration, bool enter_from_left, Color slide_colour);
+	Slide(SCENES next_scene, float step_duration, bool non_lerp, bool enter_from_left, Color slide_colour);
 	~Slide();
 
 	void StepTransition();
@@ -18,6 +18,9 @@ public:
 	void Exiting();
 
 	void TranslateSlide();
+	void DrawSlide();
+
+	void InitSlide();
 
 private:
 	SDL_Rect	screen;

@@ -1,8 +1,8 @@
 #include "ExpandingBars.h"
 #include "TransitionManager.h"
 
-ExpandingBars::ExpandingBars(SCENES next_scene, float step_duration, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour) 
-	: Transition(next_scene, step_duration)
+ExpandingBars::ExpandingBars(SCENES next_scene, float step_duration, bool non_lerp, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour) 
+	: Transition(next_scene, step_duration, non_lerp)
 	, bar_number(bar_number)
 	, random_colours(random_colours)
 	, even_colour(even_colour)
@@ -92,62 +92,66 @@ void ExpandingBars::ExpandBars()
 
 void ExpandingBars::ExpandHorizontalBars()
 {
+	/*for (int i = 0; i < bars.size(); ++i)
+	{
+		if (i % 2 == 0)
+		{
+			bars[i].bar.x = Lerp(screen_center.x, 0, current_cutoff);
+			bars[i].bar.w = Lerp(0, win_width, current_cutoff);
+		}
+		else
+		{
+			bars[i].bar.x = Lerp(bars[i].bar.x, 0, 0.16);
+			bars[i].bar.w = Lerp(bars[i].bar.w, win_width, 0.16);
+		}
+	}*/
+
 	for (int i = 0; i < bars.size(); ++i)
 	{
-		bars[i].bar.x = Lerp(screen_center.x, 0, current_cutoff);
-		bars[i].bar.w = Lerp(0, win_width, current_cutoff);
-	}	
-	
-	//if (step == TRANSITION_STEP::ENTERING)
-	//{
-	//	for (int i = 0; i < bars.size(); ++i)
-	//	{
-	//		bars[i].bar.x = Lerp( screen_center.x, 0, current_cutoff );								// current_cutoff is halved as both the x and the w of the bar
-	//		bars[i].bar.w = Lerp( 0, win_width, current_cutoff );									// increase at the same time. win_width * 0.5f would also work.
-	//	}
-	//}
+		if (step == TRANSITION_STEP::ENTERING)
+		{
+			if (i % 2 == 0)
+			{
+				bars[i].bar.x = Lerp(screen_center.x, 0, current_cutoff);
+				bars[i].bar.w = Lerp(0, win_width, current_cutoff);
+			}
+			else
+			{
+				bars[i].bar.x = Lerp(bars[i].bar.x, 0, 0.16);
+				bars[i].bar.w = Lerp(bars[i].bar.w, win_width, 0.16);
+			}
+		}
 
-	//if (step == TRANSITION_STEP::EXITING)
-	//{
-	//	for (int i = 0; i < bars.size(); ++i)
-	//	{
-	//		bars[i].bar.x = Lerp( 0, screen_center.x, current_cutoff );
-	//		bars[i].bar.w = Lerp( win_width, 0, current_cutoff );
-	//	}
-	//}
+		if (step == TRANSITION_STEP::EXITING)
+		{
+			if (i % 2 == 0)
+			{
+				bars[i].bar.x = Lerp(screen_center.x, 0, current_cutoff);
+				bars[i].bar.w = Lerp(0, win_width, current_cutoff);
+			}
+			else
+			{
+				bars[i].bar.x = Lerp(bars[i].bar.x, screen_center.x, App->GetDT());
+				bars[i].bar.w = Lerp(bars[i].bar.w, 0, App->GetDT());
+			}
+		}
+	}
+
+	/*for (int i = 0; i < bars.size(); ++i)
+	{
+		bars[i].bar.x = Lerp(screen_center.x, 0, current_cutoff);										// cutoff goes from 0 to 1 to 0, so there is no need to
+		bars[i].bar.w = Lerp(0, win_width, current_cutoff);												// separate expansion and reduction in different steps.
+																										// Ex: 0 --> win_width --> 0.
+	}*/
 }
 
 void ExpandingBars::ExpandVerticalBars()
 {
-	if (step == TRANSITION_STEP::ENTERING)
+	for (int i = 0; i < bars.size(); ++i)
 	{
-		for (int i = 0; i < bars.size(); ++i)
-		{
-			if (i % 2 == 0)
-			{
-				bars[i].bar.y = Lerp(-win_height, 0, current_cutoff);
-			}
-			else
-			{
-				bars[i].bar.y = Lerp(win_height, 0, current_cutoff);
-			}
-		}
-	}
-
-	if (step == TRANSITION_STEP::EXITING)
-	{
-		for (int i = 0; i < bars.size(); ++i)
-		{
-			if (i % 2 == 0)
-			{
-				bars[i].bar.y = Lerp(0, win_height, current_cutoff);
-			}
-			else
-			{
-				bars[i].bar.y = Lerp(0, -win_height, current_cutoff);
-			}
-		}
-	}
+		bars[i].bar.y = Lerp(screen_center.y, 0, current_cutoff);									// cutoff goes from 0 to 1 to 0, so there is no need to
+		bars[i].bar.h = Lerp(0, win_height, current_cutoff);										// separate expansion and reduction in different steps.
+	}																								// Ex: 0 --> win_height --> 0.
 }
 
 void ExpandingBars::DrawBars()
@@ -161,6 +165,10 @@ void ExpandingBars::DrawBars()
 
 void ExpandingBars::InitExpandingBars()
 {
+	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
+
+	//SDL_RenderFillRects();
+	
 	App->win->GetWindowSize(win_width, win_height);
 
 	screen_center = { win_width * 0.5f, win_height * 0.5f };

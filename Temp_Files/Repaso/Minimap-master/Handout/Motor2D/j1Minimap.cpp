@@ -66,7 +66,7 @@ bool j1Minimap::Start()
 		map_renderer = SDL_CreateSoftwareRenderer(map_surface);
 		
 		
-		tex = App->tex->Load("maps/isometric_grass_and_water.png"/*, map_renderer*/);								//Loading tileset sprites.
+		tex = App->tex->Load("maps/isometric_grass_and_water.png", map_renderer);								//Loading tileset sprites.
 	}
 	
 	DrawMinimap();

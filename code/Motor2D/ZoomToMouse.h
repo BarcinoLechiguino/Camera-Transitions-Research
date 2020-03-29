@@ -6,7 +6,7 @@
 class ZoomToMouse : public Transition
 {
 public:
-	ZoomToMouse(SCENES next_scene, iPoint mouse_position, float step_duration, float zoom_scale);
+	ZoomToMouse(SCENES next_scene, iPoint mouse_position, float step_duration, bool non_lerp, float zoom_scale);
 	~ZoomToMouse();
 
 	void StepTransition();

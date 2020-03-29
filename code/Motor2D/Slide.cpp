@@ -1,13 +1,11 @@
 #include "Slide.h"
 #include "TransitionManager.h"
 
-Slide::Slide(SCENES next_scene, float step_duration, bool enter_from_left, Color slide_colour) : Transition(next_scene, step_duration)
+Slide::Slide(SCENES next_scene, float step_duration, bool non_lerp, bool enter_from_left, Color slide_colour) : Transition(next_scene, step_duration, non_lerp)
 , enter_from_left(enter_from_left)
 , slide_colour(slide_colour)
 {
-	App->win->GetWindowRect(screen);
-
-	step = TRANSITION_STEP::ENTERING;
+	InitSlide();
 }
 
 Slide::~Slide()
@@ -78,19 +76,43 @@ void Slide::TranslateSlide()
 {
 	if (enter_from_left)
 	{
-		//screen.x = (-screen.w) + (current_cutoff * screen.w);
-		screen.x = (-screen.w) + screen.w / current_cutoff;						// "Parabolic" slide
-
-		//screen.x = Lerp(-screen.w, screen.w, current_cutoff);						
+		if (!non_lerp)
+		{
+			screen.x = Lerp(-screen.w, 0, current_cutoff);
+		}
+		else
+		{
+			//screen.x = N_Lerp(-screen.w, 0, current_cutoff, true);
+			screen.x = N_Lerp(0, -screen.w, current_cutoff);
+		}
 	}
 	else
 	{
-		//screen.x = screen.w - (current_cutoff * screen.w);
-		screen.x = (screen.w) - screen.w / current_cutoff;
-
-		//screen.x = Lerp(screen.w, -screen.w, current_cutoff);
+		if (!non_lerp)
+		{
+			screen.x = Lerp(screen.w, 0, current_cutoff);
+		}
+		else
+		{
+			//screen.x = N_Lerp(screen.w, 0, current_cutoff, true);
+			screen.x = N_Lerp(0, screen.w, current_cutoff);
+		}
 	}
 
+	DrawSlide();
+}
+
+void Slide::DrawSlide()
+{
 	SDL_SetRenderDrawColor(App->render->renderer, slide_colour.r, slide_colour.g, slide_colour.b, 255);
 	SDL_RenderFillRect(App->render->renderer, &screen);
+}
+
+void Slide::InitSlide()
+{
+	App->win->GetWindowRect(screen);
+
+	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
+
+	step = TRANSITION_STEP::ENTERING;
 }

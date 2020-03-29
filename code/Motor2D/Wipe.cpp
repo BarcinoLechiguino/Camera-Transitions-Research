@@ -1,7 +1,7 @@
 #include "Wipe.h"
 #include "TransitionManager.h"
 
-Wipe::Wipe(SCENES next_scene, float step_duration, bool enter_from_left, Color wipe_colour) : Transition(next_scene, step_duration)
+Wipe::Wipe(SCENES next_scene, float step_duration, bool non_lerp, bool enter_from_left, Color wipe_colour) : Transition(next_scene, step_duration, non_lerp)
 , enter_from_left(enter_from_left)
 , wipe_colour(wipe_colour)
 {
@@ -60,8 +60,6 @@ void Wipe::Changing(SCENES next_scene)
 
 void Wipe::Exiting()
 {					
-	//current_cutoff += GetCutoffRate(step_duration);					//Doubles the cutoff. Makes for a speedy exit.	// Notice that, exiting in this case increases cutoff too.
-																														// This was modified to make TranslateWipe() easier to understand.
 	if (current_cutoff >= MAX_CUTOFF)
 	{
 		current_cutoff = MIN_CUTOFF;
@@ -78,27 +76,64 @@ void Wipe::TranslateWipe()
 	{	
 		if (step == TRANSITION_STEP::ENTERING)
 		{			
-			screen.x = Lerp(-screen.w, 0, current_cutoff);
+			if (!non_lerp)
+			{
+				screen.x = Lerp(-screen.w, 0, current_cutoff);
+			}
+			else
+			{
+				//screen.x = N_Lerp(-screen.w, 0, current_cutoff, true);
+				screen.x = N_Lerp(0, -screen.w, current_cutoff);
+			}
 		}
 		
 		if (step == TRANSITION_STEP::EXITING)
 		{
-			screen.x = Lerp(0, screen.w, current_cutoff);
+			if (!non_lerp)
+			{
+				screen.x = Lerp(0, screen.w, current_cutoff);
+			}
+			else
+			{
+				//screen.x = N_Lerp(0, screen.w, current_cutoff, true);
+				screen.x = N_Lerp(screen.w, 0, current_cutoff);
+			}
 		}
 	}
 	else
 	{
 		if (step == TRANSITION_STEP::ENTERING)
 		{
-			screen.x = Lerp(screen.w, 0, current_cutoff);
+			if (!non_lerp)
+			{
+				screen.x = Lerp(screen.w, 0, current_cutoff);
+			}
+			else
+			{
+				//screen.x = N_Lerp(screen.w, 0, current_cutoff, true);
+				screen.x = N_Lerp(0, screen.w, current_cutoff);
+			}
 		}
 
 		if (step == TRANSITION_STEP::EXITING)
 		{
-			screen.x = Lerp(0, -screen.w, current_cutoff);
+			if (!non_lerp)
+			{
+				screen.x = Lerp(0, -screen.w, current_cutoff);
+			}
+			else
+			{
+				//screen.x = N_Lerp(0, -screen.w, current_cutoff, true);
+				screen.x = N_Lerp(-screen.w, 0, current_cutoff);
+			}
 		}
 	}
 
+	DrawWipe();
+}
+
+void Wipe::DrawWipe()
+{
 	SDL_SetRenderDrawColor(App->render->renderer, wipe_colour.r, wipe_colour.g, wipe_colour.b, 255);
 	SDL_RenderFillRect(App->render->renderer, &screen);
 }

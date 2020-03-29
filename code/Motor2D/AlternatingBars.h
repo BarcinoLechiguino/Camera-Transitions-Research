@@ -7,7 +7,7 @@
 class AlternatingBars : public Transition
 {
 public:
-	AlternatingBars(SCENES next_scene, float step_duration, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour);
+	AlternatingBars(SCENES next_scene, float step_duration, bool non_lerp, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour);
 	~AlternatingBars();
 
 	void StepTransition();

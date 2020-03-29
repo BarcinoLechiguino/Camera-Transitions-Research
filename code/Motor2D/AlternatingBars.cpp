@@ -1,8 +1,8 @@
 #include "AlternatingBars.h"
 #include "TransitionManager.h"
 
-AlternatingBars::AlternatingBars(SCENES next_scene, float step_duration, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour) 
-	: Transition(next_scene, step_duration)
+AlternatingBars::AlternatingBars(SCENES next_scene, float step_duration, bool non_lerp, int bar_number, bool vertical, bool random_colours, Color even_colour, Color odd_colour) 
+	: Transition(next_scene, step_duration, non_lerp)
 	, bar_number(bar_number)
 	, win_width(0.0f)
 	, win_height(0.0f)
@@ -98,11 +98,27 @@ void AlternatingBars::TranslateHorizontalBars()
 		{
 			if (i % 2 == 0)
 			{
-				bars[i].bar.x = Lerp(-win_width, 0, current_cutoff);
+				if (!non_lerp)
+				{
+					bars[i].bar.x = Lerp(-win_width, 0, current_cutoff);
+				}
+				else
+				{
+					//bars[i].bar.x = N_Lerp(-win_width, 0, current_cutoff, true);
+					bars[i].bar.x = N_Lerp(0, -win_height, current_cutoff);
+				}
 			}
 			else
 			{
-				bars[i].bar.x = Lerp(win_width, 0, current_cutoff);
+				if (!non_lerp)
+				{
+					bars[i].bar.x = Lerp(win_width, 0, current_cutoff);
+				}
+				else
+				{
+					//bars[i].bar.x = N_Lerp(win_width, 0, current_cutoff, true);
+					bars[i].bar.x = N_Lerp(0, win_width, current_cutoff);
+				}
 			}
 		}
 	}
@@ -113,11 +129,27 @@ void AlternatingBars::TranslateHorizontalBars()
 		{
 			if (i % 2 == 0)
 			{
-				bars[i].bar.x = Lerp(0, win_width, current_cutoff);
+				if (!non_lerp)
+				{
+					bars[i].bar.x = Lerp(0, win_width, current_cutoff);
+				}
+				else
+				{
+					//bars[i].bar.x = N_Lerp(0, win_width, current_cutoff, true);
+					bars[i].bar.x = N_Lerp(win_width, 0, current_cutoff);
+				}
 			}
 			else
 			{
-				bars[i].bar.x = Lerp(0, -win_width, current_cutoff);
+				if (!non_lerp)
+				{
+					bars[i].bar.x = Lerp(0, -win_width, current_cutoff);
+				}
+				else
+				{
+					//bars[i].bar.x = N_Lerp(0, -win_width, current_cutoff, true);
+					bars[i].bar.x = N_Lerp(-win_width, 0, current_cutoff);
+				}
 			}
 		}
 	}
@@ -131,11 +163,27 @@ void AlternatingBars::TranslateVerticalBars()
 		{
 			if (i % 2 == 0)
 			{
-				bars[i].bar.y = Lerp(-win_height, 0, current_cutoff);
+				if (!non_lerp)
+				{
+					bars[i].bar.y = Lerp(-win_height, 0, current_cutoff);
+				}
+				else
+				{
+					//bars[i].bar.y = N_Lerp(-win_height, 0, current_cutoff, true);
+					bars[i].bar.y = N_Lerp(0, -win_height, current_cutoff);
+				}
 			}
 			else
 			{
-				bars[i].bar.y = Lerp(win_height, 0, current_cutoff);
+				if (!non_lerp)
+				{
+					bars[i].bar.y = Lerp(win_height, 0, current_cutoff);
+				}
+				else
+				{
+					//bars[i].bar.y = N_Lerp(win_height, 0, current_cutoff, true);
+					bars[i].bar.y = N_Lerp(0, win_height, current_cutoff);
+				}
 			}
 		}
 	}
@@ -146,11 +194,27 @@ void AlternatingBars::TranslateVerticalBars()
 		{
 			if (i % 2 == 0)
 			{
-				bars[i].bar.y = Lerp(0, win_height, current_cutoff);
+				if (!non_lerp)
+				{
+					bars[i].bar.y = Lerp(0, win_height, current_cutoff);
+				}
+				else
+				{
+					//bars[i].bar.y = N_Lerp(0, win_height, current_cutoff, true);
+					bars[i].bar.y = N_Lerp(win_height, 0, current_cutoff);
+				}
 			}
 			else
 			{
-				bars[i].bar.y = Lerp(0, -win_height, current_cutoff);
+				if (!non_lerp)
+				{
+					bars[i].bar.y = Lerp(0, -win_height, current_cutoff);
+				}
+				else
+				{
+					//bars[i].bar.y = N_Lerp(0, -win_height, current_cutoff, true);
+					bars[i].bar.y = N_Lerp(-win_height, 0, current_cutoff);
+				}
 			}
 		}
 	}
@@ -167,6 +231,8 @@ void AlternatingBars::DrawBars()
 
 void AlternatingBars::InitAlternatingBars()
 {	
+	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
+	
 	App->win->GetWindowSize(win_width, win_height);
 
 	for (int i = 0; i < bar_number; ++i)

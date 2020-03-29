@@ -1,7 +1,7 @@
 #include "CameraToMouse.h"
 #include "TransitionManager.h"
 
-CameraToMouse::CameraToMouse(iPoint mouse_position, float step_duration) : Transition(SCENES::NONE, step_duration)
+CameraToMouse::CameraToMouse(iPoint mouse_position, float step_duration, bool non_lerp) : Transition(SCENES::NONE, step_duration, non_lerp)
 , travel_time(0.0f)
 , next_pos(0.0f, 0.0f)
 {	
@@ -52,8 +52,19 @@ void CameraToMouse::Exiting()
 
 void CameraToMouse::TranslateCamera()
 {
-	next_pos.x = Lerp(origin.x, mouse_position.x, travel_time);
-	next_pos.y = Lerp(origin.y, mouse_position.y, travel_time);
+	if (!non_lerp)
+	{
+		next_pos.x = Lerp(origin.x, mouse_position.x, travel_time);
+		next_pos.y = Lerp(origin.y, mouse_position.y, travel_time);
+	}
+	else
+	{
+		//next_pos.x = N_Lerp(origin.x, mouse_position.x, travel_time, true);
+		//next_pos.y = N_Lerp(origin.y, mouse_position.y, travel_time, true);
+
+		next_pos.x = N_Lerp(mouse_position.x, origin.x, travel_time);
+		next_pos.y = N_Lerp(mouse_position.y, origin.y, travel_time);
+	}
 
 	App->render->camera.x = next_pos.x;
 	App->render->camera.y = next_pos.y;
