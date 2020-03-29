@@ -105,7 +105,7 @@ void AlternatingBars::TranslateHorizontalBars()
 				else
 				{
 					//bars[i].bar.x = N_Lerp(-win_width, 0, current_cutoff, true);
-					bars[i].bar.x = N_Lerp(0, -win_height, current_cutoff);
+					bars[i].bar.x = N_Lerp(-win_height, 0, current_cutoff);
 				}
 			}
 			else
@@ -117,7 +117,7 @@ void AlternatingBars::TranslateHorizontalBars()
 				else
 				{
 					//bars[i].bar.x = N_Lerp(win_width, 0, current_cutoff, true);
-					bars[i].bar.x = N_Lerp(0, win_width, current_cutoff);
+					bars[i].bar.x = N_Lerp(win_width, 0, current_cutoff);
 				}
 			}
 		}
@@ -136,7 +136,7 @@ void AlternatingBars::TranslateHorizontalBars()
 				else
 				{
 					//bars[i].bar.x = N_Lerp(0, win_width, current_cutoff, true);
-					bars[i].bar.x = N_Lerp(win_width, 0, current_cutoff);
+					bars[i].bar.x = N_Lerp(0, win_width, current_cutoff);
 				}
 			}
 			else
@@ -148,7 +148,7 @@ void AlternatingBars::TranslateHorizontalBars()
 				else
 				{
 					//bars[i].bar.x = N_Lerp(0, -win_width, current_cutoff, true);
-					bars[i].bar.x = N_Lerp(-win_width, 0, current_cutoff);
+					bars[i].bar.x = N_Lerp(0, -win_width, current_cutoff);
 				}
 			}
 		}
@@ -170,7 +170,7 @@ void AlternatingBars::TranslateVerticalBars()
 				else
 				{
 					//bars[i].bar.y = N_Lerp(-win_height, 0, current_cutoff, true);
-					bars[i].bar.y = N_Lerp(0, -win_height, current_cutoff);
+					bars[i].bar.y = N_Lerp(-win_height, 0, current_cutoff);
 				}
 			}
 			else
@@ -182,7 +182,7 @@ void AlternatingBars::TranslateVerticalBars()
 				else
 				{
 					//bars[i].bar.y = N_Lerp(win_height, 0, current_cutoff, true);
-					bars[i].bar.y = N_Lerp(0, win_height, current_cutoff);
+					bars[i].bar.y = N_Lerp(win_height, 0, current_cutoff);
 				}
 			}
 		}
@@ -201,7 +201,7 @@ void AlternatingBars::TranslateVerticalBars()
 				else
 				{
 					//bars[i].bar.y = N_Lerp(0, win_height, current_cutoff, true);
-					bars[i].bar.y = N_Lerp(win_height, 0, current_cutoff);
+					bars[i].bar.y = N_Lerp(0, win_height, current_cutoff);
 				}
 			}
 			else
@@ -213,7 +213,7 @@ void AlternatingBars::TranslateVerticalBars()
 				else
 				{
 					//bars[i].bar.y = N_Lerp(0, -win_height, current_cutoff, true);
-					bars[i].bar.y = N_Lerp(-win_height, 0, current_cutoff);
+					bars[i].bar.y = N_Lerp(0, -win_height, current_cutoff);
 				}
 			}
 		}

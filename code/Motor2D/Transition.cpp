@@ -60,14 +60,16 @@ float Transition::N_Lerp(float start, float end, float rate, bool smash_in)				/
 
 	if (smash_in)																		
 	{
-		increment = (end - start) * rate * rate;										// Ease-Out Smash-In --> Slow out, Fast In
+		//increment = (end - start) * rate * rate;										// Ease-Out Smash-In --> Slow out, Fast In
 	}
 	else
 	{
-		float r = 1 - rate;
-
-		increment = (end - start) * r * r;												// Smash-Out Ease-In --> Fast out, Slow In
-	}																					// This one requires to receive the start-end values inverted.
+		//float r = (1 - rate);															// Smash-Out Ease-In --> Fast out, Slow In. Simplified version.
+		//increment = (end - start) * r * r;											// This one requires to receive the start-end values inverted.
+		
+		float r = 1 - ((1 - rate) * (1 - rate));										// Smash-Out Ease-In --> Fast out, Slow In. Full version.
+		increment = (end - start) * r;													// This one accepts the parameters in the same order as Lerp.
+	}																						
 
 	return start + increment;
 }

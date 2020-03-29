@@ -83,7 +83,7 @@ void Slide::TranslateSlide()
 		else
 		{
 			//screen.x = N_Lerp(-screen.w, 0, current_cutoff, true);
-			screen.x = N_Lerp(0, -screen.w, current_cutoff);
+			screen.x = N_Lerp(-screen.w, 0, current_cutoff);
 		}
 	}
 	else
@@ -95,7 +95,7 @@ void Slide::TranslateSlide()
 		else
 		{
 			//screen.x = N_Lerp(screen.w, 0, current_cutoff, true);
-			screen.x = N_Lerp(0, screen.w, current_cutoff);
+			screen.x = N_Lerp(screen.w, 0, current_cutoff);
 		}
 	}
 

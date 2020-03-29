@@ -62,8 +62,8 @@ void CameraToMouse::TranslateCamera()
 		//next_pos.x = N_Lerp(origin.x, mouse_position.x, travel_time, true);
 		//next_pos.y = N_Lerp(origin.y, mouse_position.y, travel_time, true);
 
-		next_pos.x = N_Lerp(mouse_position.x, origin.x, travel_time);
-		next_pos.y = N_Lerp(mouse_position.y, origin.y, travel_time);
+		next_pos.x = N_Lerp(origin.x, mouse_position.x, travel_time);
+		next_pos.y = N_Lerp(origin.y, mouse_position.y, travel_time);
 	}
 
 	App->render->camera.x = next_pos.x;

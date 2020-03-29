@@ -106,33 +106,86 @@ void ExpandingBars::ExpandHorizontalBars()
 		}
 	}*/
 
+	float prev_cutoff = current_cutoff;
+
 	for (int i = 0; i < bars.size(); ++i)
-	{
-		if (step == TRANSITION_STEP::ENTERING)
+	{	
+		float offset = Lerp(i, 0, current_cutoff);
+
+		if (prev_cutoff == current_cutoff + i * 0.05f)
 		{
-			if (i % 2 == 0)
+			if (step == TRANSITION_STEP::ENTERING)
 			{
-				bars[i].bar.x = Lerp(screen_center.x, 0, current_cutoff);
-				bars[i].bar.w = Lerp(0, win_width, current_cutoff);
+				if (i % 2 == 0)
+				{
+					if (!non_lerp)
+					{
+						bars[i].bar.x = Lerp(screen_center.x, 0, current_cutoff);
+						bars[i].bar.w = Lerp(0, win_width, current_cutoff);
+					}
+					else
+					{
+						bars[i].bar.x = N_Lerp(screen_center.x, 0, current_cutoff + i * 0.05f, true);
+						bars[i].bar.w = N_Lerp(0, win_width, current_cutoff + i * 0.05f, true);
+
+						//bars[i].bar.x = N_Lerp(screen_center.x, 0, current_cutoff);
+						//bars[i].bar.w = N_Lerp(0, win_width, current_cutoff);
+					}
+				}
+				else
+				{
+					if (!non_lerp)
+					{
+						bars[i].bar.x = Lerp(bars[i].bar.x, 0, current_cutoff);
+						bars[i].bar.w = Lerp(bars[i].bar.w, win_width, current_cutoff);
+					}
+					else
+					{
+						bars[i].bar.x = N_Lerp(screen_center.x, 0, current_cutoff + i * 0.05f, true);
+						bars[i].bar.w = N_Lerp(0, win_width, current_cutoff + i * 0.05f, true);
+
+						//bars[i].bar.x = N_Lerp(screen_center.x, 0, current_cutoff);
+						//bars[i].bar.w = N_Lerp(0, win_width, current_cutoff);
+					}
+				}
 			}
-			else
-			{
-				bars[i].bar.x = Lerp(bars[i].bar.x, 0, 0.16);
-				bars[i].bar.w = Lerp(bars[i].bar.w, win_width, 0.16);
-			}
+
+			//prev_cutoff = current_cutoff;
 		}
 
 		if (step == TRANSITION_STEP::EXITING)
 		{
 			if (i % 2 == 0)
 			{
-				bars[i].bar.x = Lerp(screen_center.x, 0, current_cutoff);
-				bars[i].bar.w = Lerp(0, win_width, current_cutoff);
+				if (!non_lerp)
+				{
+					bars[i].bar.x = Lerp(screen_center.x, 0, current_cutoff);
+					bars[i].bar.w = Lerp(0, win_width, current_cutoff);
+				}
+				else
+				{
+					bars[i].bar.x = N_Lerp(screen_center.x, 0, current_cutoff - i * 0.05f, true);
+					bars[i].bar.w = N_Lerp(0, win_width, current_cutoff - i * 0.05f, true);
+
+					//bars[i].bar.x = N_Lerp(screen_center.x, 0, current_cutoff);
+					//bars[i].bar.w = N_Lerp(0, win_width, current_cutoff);
+				}
 			}
 			else
 			{
-				bars[i].bar.x = Lerp(bars[i].bar.x, screen_center.x, App->GetDT());
-				bars[i].bar.w = Lerp(bars[i].bar.w, 0, App->GetDT());
+				if (!non_lerp)
+				{
+					bars[i].bar.x = Lerp(bars[i].bar.x, screen_center.x, current_cutoff);
+					bars[i].bar.w = Lerp(bars[i].bar.w, 0, current_cutoff);
+				}
+				else
+				{
+					bars[i].bar.x = N_Lerp(screen_center.x, 0, current_cutoff - i * 0.05f, true);
+					bars[i].bar.w = N_Lerp(0, win_width, current_cutoff - i * 0.05f, true);
+
+					//bars[i].bar.x = N_Lerp(screen_center.x, 0, current_cutoff);
+					//bars[i].bar.w = N_Lerp(0, win_width, current_cutoff);
+				}
 			}
 		}
 	}

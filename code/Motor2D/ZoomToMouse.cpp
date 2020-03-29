@@ -85,8 +85,8 @@ void ZoomToMouse::ApplyZoom()
 		//App->render->camera.x = N_Lerp(original_position.x, target_position.x, current_cutoff, true);
 		//App->render->camera.y = N_Lerp(original_position.y, target_position.y, current_cutoff, true);
 
-		App->render->camera.x = N_Lerp(target_position.x, original_position.x, current_cutoff);
-		App->render->camera.y = N_Lerp(target_position.y, original_position.y, current_cutoff);
+		App->render->camera.x = N_Lerp(original_position.x, target_position.x, current_cutoff);
+		App->render->camera.y = N_Lerp(original_position.y, target_position.y, current_cutoff);
 	}
 
 	SDL_RenderSetScale(App->render->renderer, zoom_rate, zoom_rate);
