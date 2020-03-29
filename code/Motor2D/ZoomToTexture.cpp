@@ -28,7 +28,7 @@ void ZoomToTexture::StepTransition()
 
 	case TRANSITION_STEP::CHANGING:
 		
-		Changing(next_scene);
+		Changing();
 
 		break;
 
@@ -54,7 +54,7 @@ void ZoomToTexture::Entering()
 	}
 }
 
-void ZoomToTexture::Changing(SCENES next_scene)
+void ZoomToTexture::Changing()
 {
 	App->scene_manager->SwitchScene(next_scene);
 

@@ -1,6 +1,4 @@
 #include "Transition.h"
-#include "Render.h"
-#include "Textures.h"
 
 Transition::Transition(SCENES next_scene, float step_duration, bool non_lerp ) : 
 	next_scene(next_scene), 
@@ -37,7 +35,7 @@ void Transition::Entering()
 	
 }
 
-void Transition::Changing(SCENES next_scene)
+void Transition::Changing()
 {
 
 }

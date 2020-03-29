@@ -26,7 +26,7 @@ void ZoomToMouse::StepTransition()
 
 	case TRANSITION_STEP::CHANGING:
 
-		Changing(next_scene);
+		Changing();
 
 		break;
 
@@ -52,7 +52,7 @@ void ZoomToMouse::Entering()
 	}
 }
 
-void ZoomToMouse::Changing(SCENES next_scene)
+void ZoomToMouse::Changing()
 {
 	App->scene_manager->SwitchScene(next_scene);
 	

@@ -1,5 +1,5 @@
-#ifndef __BARS_H__
-#define __BARS_H__
+#ifndef __BAR_H__
+#define __BAR_H__
 
 #include "Color.h"
 
@@ -9,4 +9,4 @@ struct Bar
 	Color		colour;
 };
 
-#endif // !__BARS_H__
+#endif // !__BAR_H__

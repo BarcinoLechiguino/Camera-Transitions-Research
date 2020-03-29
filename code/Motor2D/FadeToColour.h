@@ -14,7 +14,7 @@ public:
 
 public:
 	void Entering();														// Method that will be used to execute the ENTERING transition step.
-	void Changing(SCENES next_scene);										// Method that will be used to execute the CHANGING transition step.
+	void Changing();														// Method that will be used to execute the CHANGING transition step.
 	void Exiting();															// Method that will be used to execute the EXITING transition step.
 	
 	void ApplyFade();														// Method that will be used to update the alpha value of the fade. //TMP NAME AND COMMENT

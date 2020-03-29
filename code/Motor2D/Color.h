@@ -31,15 +31,25 @@ struct Color
 
 Color GetRandomColour();
 
+extern Color Black;
+extern Color White;
+
 extern Color Red;
 extern Color Green;
 extern Color Blue;
-extern Color Black;
-extern Color White;
+extern Color LowRed;
+extern Color LowGreen;
+extern Color LowBlue;
+
 extern Color Yellow;
 extern Color Pink;
+extern Color LightPink;
 extern Color Purple;
 extern Color Orange;
+extern Color Coral;
+extern Color Sienna;
+extern Color SandBrown;
+extern Color RosyBrown;
 extern Color Magenta;
 extern Color Cyan;
 extern Color Grey;

@@ -25,7 +25,7 @@ void Dissolve::StepTransition()
 
 	case TRANSITION_STEP::CHANGING:
 
-		Changing(next_scene);
+		Changing();
 
 		break;
 
@@ -51,7 +51,7 @@ void Dissolve::Entering()
 	}
 }
 
-void Dissolve::Changing(SCENES next_scene)
+void Dissolve::Changing()
 {
 	App->scene_manager->UnloadScene(App->scene_manager->current_scene);
 

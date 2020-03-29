@@ -79,15 +79,11 @@ bool SceneManager::CleanUp()
 		RELEASE((*item));
 	}
 	scenes.clear();
-	
-	if (current_scene != nullptr)
-	{
-		//current_scene->CleanUp();
-	}
 
 	return ret;
 }
 
+// -------------- SCENE MANAGEMENT METHODS --------------
 void SceneManager::LoadInitialScene()
 {
 	current_scene = (*scenes.begin());
@@ -121,7 +117,16 @@ void SceneManager::LoadScene(SCENES scene_name)
 	{
 		if ((*item)->scene_name == scene_name)
 		{
-			next_scene = (*item);
+			if (next_scene == nullptr)
+			{
+				next_scene = (*item);
+			}
+			else
+			{
+				next_scene->CleanUp();
+
+				next_scene = (*item);
+			}
 		}
 	}
 
@@ -210,51 +215,4 @@ void SceneManager::ScenePushbacks()
 {
 	CreateScene(SCENES::FIRST_SCENE);
 	CreateScene(SCENES::SECOND_SCENE);
-}
-
-// ------------------------------------------------------
-
-void SceneManager::CaseSwitchScene(SCENES scene_name)
-{
-	if (current_scene != nullptr)
-	{
-		current_scene->CleanUp();
-	}
-
-	/*switch (scene)
-	{
-	case SCENE::FIRST_SCENE:
-
-		current_scene = new FirstScene(scene_name);
-
-		break;
-
-	case SCENE::SECOND_SCENE:
-
-		current_scene = new SecondScene(scene_name);
-
-		break;
-	}*/
-
-	current_scene->Start();
-}
-
-void SceneManager::VectorSwitchScene(SCENES scene_name)
-{
-	if (current_scene != nullptr)
-	{
-		current_scene->CleanUp();
-	}
-
-	std::vector<Scene*>::iterator item = scenes.begin();
-
-	for (; item != scenes.end(); ++item)
-	{
-		if ((*item)->scene_name == scene_name)
-		{
-			current_scene = (*item);
-		}
-	}
-
-	current_scene->Start();
 }

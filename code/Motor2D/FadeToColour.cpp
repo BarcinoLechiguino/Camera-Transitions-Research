@@ -28,7 +28,7 @@ void FadeToColour::StepTransition()
 
 	case TRANSITION_STEP::CHANGING:
 
-		Changing(next_scene);
+		Changing();
 
 		break;
 
@@ -54,7 +54,7 @@ void FadeToColour::Entering()
 	}
 }
 
-void FadeToColour::Changing(SCENES next_scene)
+void FadeToColour::Changing()
 {
 	App->scene_manager->SwitchScene(next_scene);
 

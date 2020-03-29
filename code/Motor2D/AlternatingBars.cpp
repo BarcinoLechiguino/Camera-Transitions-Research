@@ -33,7 +33,7 @@ void AlternatingBars::StepTransition()
 
 	case TRANSITION_STEP::CHANGING:
 
-		Changing(next_scene);
+		Changing();
 
 		break;
 
@@ -57,7 +57,7 @@ void AlternatingBars::Entering()
 	}
 }
 
-void AlternatingBars::Changing(SCENES next_scene)
+void AlternatingBars::Changing()
 {
 	App->scene_manager->SwitchScene(next_scene);
 

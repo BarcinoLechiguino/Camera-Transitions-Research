@@ -31,7 +31,7 @@ public:
 
 public:
 	virtual void Entering();														// Method that will be used to execute the ENTERING transition step.
-	virtual void Changing(SCENES next_scene);										// Method that will be used to execute the CHANGING transition step.
+	virtual void Changing();														// Method that will be used to execute the CHANGING transition step.
 	virtual void Exiting();															// Method that will be used to execute the EXITING transition step.
 	
 	float Lerp(float start, float end, float rate);									// Method that will be used to linearly interpolate the speed of a given transition.

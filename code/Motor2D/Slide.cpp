@@ -1,9 +1,12 @@
 #include "Slide.h"
 #include "TransitionManager.h"
 
-Slide::Slide(SCENES next_scene, float step_duration, bool non_lerp, bool enter_from_left, Color slide_colour) : Transition(next_scene, step_duration, non_lerp)
-, enter_from_left(enter_from_left)
-, slide_colour(slide_colour)
+Slide::Slide(SCENES next_scene, float step_duration, bool non_lerp, bool vertical, bool slide_from_right, bool slide_from_bottom, Color slide_colour)
+	: Transition(next_scene, step_duration, non_lerp)
+	, vertical(vertical)
+	, slide_from_right(slide_from_right)
+	, slide_from_bottom(slide_from_bottom)
+	, slide_colour(slide_colour)
 {
 	InitSlide();
 }
@@ -25,7 +28,7 @@ void Slide::StepTransition()
 
 	case TRANSITION_STEP::CHANGING:
 
-		Changing(next_scene);
+		Changing();
 
 		break;
 
@@ -51,7 +54,7 @@ void Slide::Entering()
 	}
 }
 
-void Slide::Changing(SCENES next_scene)
+void Slide::Changing()
 {
 	App->scene_manager->SwitchScene(next_scene);
 
@@ -74,32 +77,72 @@ void Slide::Exiting()
 
 void Slide::TranslateSlide()
 {
-	if (enter_from_left)
+	if (!vertical)
+	{
+		HorizontalSlide();
+	}
+	else
+	{
+		VerticalSlide();
+	}
+
+	DrawSlide();
+}
+
+void Slide::HorizontalSlide()
+{
+	if (!slide_from_right)
 	{
 		if (!non_lerp)
 		{
-			screen.x = Lerp(-screen.w, 0, current_cutoff);
+			screen.x = Lerp(-screen.w, 0, current_cutoff);									// Horizontal linearly interpolated slide coming from the left.
 		}
 		else
 		{
 			//screen.x = N_Lerp(-screen.w, 0, current_cutoff, true);
-			screen.x = N_Lerp(-screen.w, 0, current_cutoff);
+			screen.x = N_Lerp(-screen.w, 0, current_cutoff);								// Horizontal non-linearly interpolated slide coming from the left.
 		}
 	}
 	else
 	{
 		if (!non_lerp)
 		{
-			screen.x = Lerp(screen.w, 0, current_cutoff);
+			screen.x = Lerp(screen.w, 0, current_cutoff);									// Horizontal linearly interpolated slide coming from the right.
 		}
 		else
 		{
 			//screen.x = N_Lerp(screen.w, 0, current_cutoff, true);
-			screen.x = N_Lerp(screen.w, 0, current_cutoff);
+			screen.x = N_Lerp(screen.w, 0, current_cutoff);									// Horizontal non-linearly interpolated slide coming from the right.
 		}
 	}
+}
 
-	DrawSlide();
+void Slide::VerticalSlide()
+{
+	if (!slide_from_bottom)
+	{
+		if (!non_lerp)
+		{
+			screen.y = Lerp(-screen.h, 0, current_cutoff);									// Vertical linearly interpolated slide coming from the top.
+		}
+		else
+		{
+			//screen.y = N_Lerp(-screen.h, 0, current_cutoff, true);
+			screen.y = N_Lerp(-screen.h, 0, current_cutoff);								// Vertical non-linearly interpolated slide coming from the top.
+		}
+	}
+	else
+	{
+		if (!non_lerp)
+		{
+			screen.y = Lerp(screen.h, 0, current_cutoff);									// Vertical linearly interpolated slide coming from the bottom.
+		}
+		else
+		{
+			//screen.y = N_Lerp(screen.h, 0, current_cutoff, true);
+			screen.y = N_Lerp(screen.h, 0, current_cutoff);									// Vertical non-linearly interpolated slide coming from the bottom.
+		}
+	}
 }
 
 void Slide::DrawSlide()

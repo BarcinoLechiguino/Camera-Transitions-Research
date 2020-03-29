@@ -13,7 +13,7 @@ public:
 
 public:
 	void Entering();
-	void Changing(SCENES next_scene);
+	void Changing();
 	void Exiting();
 
 	void ApplyZoom();

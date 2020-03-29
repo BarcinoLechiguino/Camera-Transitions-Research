@@ -19,10 +19,10 @@ public:
 	bool CleanUp();									// Called before quitting
 
 public:
-	void InitScene();
+	void InitScene();								// Method that will be used to initialize all scene elements.
 	
-	void DrawScene();
-	SDL_Texture* SceneToTexture();
+	void DrawScene();								// Method that will draw all scene elements on screen.
+	SDL_Texture* SceneToTexture();					// Method that will be used to get a texture from the current screen.
 
 	void ExecuteTransition();						// Method that will trigger a new transition depending on the input received.
 

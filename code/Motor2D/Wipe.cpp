@@ -1,9 +1,12 @@
 #include "Wipe.h"
 #include "TransitionManager.h"
 
-Wipe::Wipe(SCENES next_scene, float step_duration, bool non_lerp, bool enter_from_left, Color wipe_colour) : Transition(next_scene, step_duration, non_lerp)
-, enter_from_left(enter_from_left)
-, wipe_colour(wipe_colour)
+Wipe::Wipe(SCENES next_scene, float step_duration, bool non_lerp, bool vertical, bool wipe_from_right, bool wipe_from_bottom, Color wipe_colour) 
+	: Transition(next_scene, step_duration, non_lerp)
+	, vertical(vertical)
+	, wipe_from_right(wipe_from_right)
+	, wipe_from_bottom(wipe_from_bottom)
+	, wipe_colour(wipe_colour)
 {
 	InitWipe();
 }
@@ -27,7 +30,7 @@ void Wipe::StepTransition()
 
 	case TRANSITION_STEP::CHANGING:
 
-		Changing(next_scene);
+		Changing();
 
 		break;
 
@@ -51,7 +54,7 @@ void Wipe::Entering()
 	}
 }
 
-void Wipe::Changing(SCENES next_scene)
+void Wipe::Changing()
 {
 	App->scene_manager->SwitchScene(next_scene);
 
@@ -72,22 +75,36 @@ void Wipe::Exiting()
 
 void Wipe::TranslateWipe()
 {
-	if (enter_from_left)
-	{	
-		if (step == TRANSITION_STEP::ENTERING)
-		{			
+	if (!vertical)
+	{
+		HorizontalWipe();
+	}
+	else
+	{
+		VerticalWipe();
+	}
+
+	DrawWipe();
+}
+
+void Wipe::HorizontalWipe()
+{
+	if (!wipe_from_right)
+	{
+		if (step == TRANSITION_STEP::ENTERING)												// Horizontal wipe that will start from (-screen.w, 0 ) and will stop at ( 0, 0 ).
+		{
 			if (!non_lerp)
 			{
-				screen.x = Lerp(-screen.w, 0, current_cutoff);
+				screen.x = Lerp(-screen.w, 0, current_cutoff);								// Linearly interpolated wipe.
 			}
 			else
 			{
 				//screen.x = N_Lerp(-screen.w, 0, current_cutoff, true);
-				screen.x = N_Lerp(-screen.w, 0, current_cutoff);
+				screen.x = N_Lerp(-screen.w, 0, current_cutoff);							// Non-linearly interpolated wipe.
 			}
 		}
-		
-		if (step == TRANSITION_STEP::EXITING)
+
+		if (step == TRANSITION_STEP::EXITING)												// Horizontal wipe that will start from ( 0, 0 ) and will stop at ( sceen.w , 0 ).
 		{
 			if (!non_lerp)
 			{
@@ -102,7 +119,7 @@ void Wipe::TranslateWipe()
 	}
 	else
 	{
-		if (step == TRANSITION_STEP::ENTERING)
+		if (step == TRANSITION_STEP::ENTERING)												// Horizontal wipe that will start from ( screen.w, 0 ) and will stop at ( 0, 0 ).
 		{
 			if (!non_lerp)
 			{
@@ -115,7 +132,7 @@ void Wipe::TranslateWipe()
 			}
 		}
 
-		if (step == TRANSITION_STEP::EXITING)
+		if (step == TRANSITION_STEP::EXITING)												// Horizontal wipe that will start from ( 0, 0 ) and will stop at ( -sceen.w , 0 ).
 		{
 			if (!non_lerp)
 			{
@@ -128,8 +145,66 @@ void Wipe::TranslateWipe()
 			}
 		}
 	}
+}
 
-	DrawWipe();
+void Wipe::VerticalWipe()
+{
+	if (!wipe_from_bottom)
+	{
+		if (step == TRANSITION_STEP::ENTERING)												// Vertical wipe that will start from ( 0, screen.h ) and will stop at ( 0, 0 ).
+		{
+			if (!non_lerp)
+			{
+				screen.y = Lerp(-screen.h, 0, current_cutoff);								// Linearly interpolated wipe.
+			}
+			else
+			{
+				//screen.y = N_Lerp(-screen.h, 0, current_cutoff, true);
+				screen.y = N_Lerp(-screen.h, 0, current_cutoff);							// Non-linearly interpolated wipe.
+			}
+		}
+
+		if (step == TRANSITION_STEP::EXITING)												// Vertical wipe that will start from ( 0, 0 ) and will stop at ( 0, screen.h ).
+		{
+			if (!non_lerp)
+			{
+				screen.y = Lerp(0, screen.h, current_cutoff);
+			}
+			else
+			{
+				//screen.y = N_Lerp(0, screen.h, current_cutoff, true);
+				screen.y = N_Lerp(0, screen.h, current_cutoff);
+			}
+		}
+	}
+	else
+	{
+		if (step == TRANSITION_STEP::ENTERING)												// Vertical wipe that will start from ( 0, screen.h ) and will stop at ( 0, 0 ).
+		{
+			if (!non_lerp)
+			{
+				screen.y = Lerp(screen.h, 0, current_cutoff);
+			}
+			else
+			{
+				//screen.y = N_Lerp(screen.h, 0, current_cutoff, true);
+				screen.y = N_Lerp(screen.h, 0, current_cutoff);
+			}
+		}
+
+		if (step == TRANSITION_STEP::EXITING)												// Vertical wipe that will start from ( 0, 0 ) and will stop at ( 0, -screen.h ).
+		{
+			if (!non_lerp)
+			{
+				screen.y = Lerp(0, -screen.h, current_cutoff);
+			}
+			else
+			{
+				//screen.x = N_Lerp(0, -screen.h, current_cutoff, true);
+				screen.y = N_Lerp(0, -screen.h, current_cutoff);
+			}
+		}
+	}
 }
 
 void Wipe::DrawWipe()

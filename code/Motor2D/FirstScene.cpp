@@ -81,15 +81,25 @@ bool FirstScene::CleanUp()
 
 	App->map->CleanUp();
 
-	App->tex->UnLoad(scene_texture);
-	App->tex->UnLoad(tileset_texture);
+	if (scene_texture != nullptr)
+	{
+		App->tex->UnLoad(scene_texture);
+	}
+
+	if (tileset_texture != nullptr)
+	{
+		App->tex->UnLoad(tileset_texture);
+	}
 
 	if (SDL_RenderClear(scene_renderer) == 0)
 	{
 		scene_renderer = nullptr;
 	}
 
-	SDL_FreeSurface(scene_surface);
+	if (scene_surface != nullptr)
+	{
+		SDL_FreeSurface(scene_surface);
+	}
 
 	return ret;
 }
@@ -101,23 +111,29 @@ void FirstScene::InitScene()
 	App->map->GetMapSize(map_width, map_height);
 	App->map->GetTileOffset(x_offset, y_offset);
 	
+	App->render->camera.x = map_width * 0.3f;										// This camera position gets the camera close to the center of the map.
+	App->render->camera.y = -40;
+
+	// --- TRANSITIONS WITH TEXTURE
 	/*App->render->camera.x = map_width * 0.5f;										// This camera position is to have the renderer render all the scene_texture.
 	App->render->camera.y = 0;
 
-	SceneToTexture();*/
+	SceneToTexture();
 
 	App->render->camera.x = map_width * 0.3f;										// This camera position gets the camera close to the center of the map.
-	App->render->camera.y = -40;
+	App->render->camera.y = -40;*/
 }
 
 void FirstScene::DrawScene()
 {
 	App->map->Draw();
 
-	if (scene_texture != nullptr)
+
+	// --- TRANSITIONS WITH TEXTURE
+	/*if (scene_texture != nullptr)
 	{
-		//App->render->Blit(scene_texture, -(map_width) * 0.5f, 0, NULL);
-	}	
+		App->render->Blit(scene_texture, -(map_width) * 0.5f, 0, NULL);
+	}*/	
 }
 
 SDL_Texture* FirstScene::SceneToTexture()
@@ -143,27 +159,37 @@ void FirstScene::ExecuteTransition()
 
 		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
-			App->transition_manager->CreateFadeToColour(SCENES::SECOND_SCENE, 1.0f, White);
+			App->transition_manager->CreateFadeToColour(SCENES::SECOND_SCENE);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
-			App->transition_manager->CreateSlide(SCENES::SECOND_SCENE, 1.0f, true, false, White);
+			App->transition_manager->CreateSlide(SCENES::SECOND_SCENE, 0.5f, true);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 		{
-			App->transition_manager->CreateWipe(SCENES::SECOND_SCENE, 1.0f, true, false, White);
+			App->transition_manager->CreateSlide(SCENES::SECOND_SCENE, 0.5f, true, true);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
-			App->transition_manager->CreateAlternatingBars(SCENES::SECOND_SCENE, 1.0f, true, 5, true, true);
+			App->transition_manager->CreateWipe(SCENES::SECOND_SCENE, 0.5f, true);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 		{
-			App->transition_manager->CreateExpandingBars(SCENES::SECOND_SCENE, 1.0f, true, 5, true, true);
+			App->transition_manager->CreateWipe(SCENES::SECOND_SCENE, 0.5f, true, true);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
+		{
+			App->transition_manager->CreateAlternatingBars(SCENES::SECOND_SCENE, 0.5f, true);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
+		{
+			App->transition_manager->CreateExpandingBars(SCENES::SECOND_SCENE, 0.5f, true);
 		}
 
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN)
@@ -172,7 +198,7 @@ void FirstScene::ExecuteTransition()
 
 			App->transition_manager->CreateZoomToMouse(SCENES::SECOND_SCENE, mouse_pos, 0.5f, true);
 		}
-		
+
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
 		{
 			iPoint mouse_pos = App->input->GetMouseToWorld();
@@ -180,7 +206,7 @@ void FirstScene::ExecuteTransition()
 			App->transition_manager->CreateCameraToMouse(mouse_pos, 0.5f, true);
 		}
 
-		
+
 		// --- TRANSITION WITH TEXTURE METHODS (NOT IMPLEMENTED)
 		if (App->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
 		{

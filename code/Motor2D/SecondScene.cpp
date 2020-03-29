@@ -132,27 +132,37 @@ void SecondScene::ExecuteTransition()
 
 		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
-			App->transition_manager->CreateFadeToColour(SCENES::FIRST_SCENE);
+			App->transition_manager->CreateFadeToColour(SCENES::FIRST_SCENE, 1.0f, White);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
-			App->transition_manager->CreateSlide(SCENES::FIRST_SCENE, 0.5f, true);
+			App->transition_manager->CreateSlide(SCENES::FIRST_SCENE, 0.5f, true, false, true, false, White);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 		{
-			App->transition_manager->CreateWipe(SCENES::FIRST_SCENE, 0.5f, true);
+			App->transition_manager->CreateSlide(SCENES::FIRST_SCENE, 0.5f, true, true, false, true, White);
 		}
-
+		
 		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
-			App->transition_manager->CreateAlternatingBars(SCENES::FIRST_SCENE, 0.5f, true);
+			App->transition_manager->CreateWipe(SCENES::FIRST_SCENE, 0.5f, true, false, true, false, White);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 		{
-			App->transition_manager->CreateExpandingBars(SCENES::FIRST_SCENE, 0.5f, true);
+			App->transition_manager->CreateWipe(SCENES::FIRST_SCENE, 0.5f, true, true, false, true, White);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
+		{
+			App->transition_manager->CreateAlternatingBars(SCENES::FIRST_SCENE, 1.0f, true, 5, true, true);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
+		{
+			App->transition_manager->CreateExpandingBars(SCENES::FIRST_SCENE, 1.0f, true, 5, true, true);
 		}
 
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN)
@@ -166,10 +176,10 @@ void SecondScene::ExecuteTransition()
 		{
 			iPoint mouse_pos = App->input->GetMouseToWorld();
 
-			App->transition_manager->CreateCameraToMouse(mouse_pos, 0.5f, false);
+			App->transition_manager->CreateCameraToMouse(mouse_pos, 0.5f, true);
 		}
 
-		
+
 		// --- TRANSITION WITH TEXTURE METHODS (NOT IMPLEMENTED)
 		if (App->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
 		{
