@@ -163,7 +163,7 @@ void FirstScene::ExecuteTransition()
 
 		if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 		{
-			App->transition_manager->CreateExpandingBars(SCENES::SECOND_SCENE, 1.0f, true, 5, false, true);
+			App->transition_manager->CreateExpandingBars(SCENES::SECOND_SCENE, 1.0f, true, 5, true, true);
 		}
 
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN)

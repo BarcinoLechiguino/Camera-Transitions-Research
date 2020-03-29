@@ -2,7 +2,7 @@
 #define __ALTERNAING_BARS_H__
 
 #include "Transition.h"
-#include "Color.h"
+#include "Bar.h"
 
 class AlternatingBars : public Transition
 {

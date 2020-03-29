@@ -60,7 +60,7 @@ float Transition::N_Lerp(float start, float end, float rate, bool smash_in)				/
 
 	if (smash_in)																		
 	{
-		//increment = (end - start) * rate * rate;										// Ease-Out Smash-In --> Slow out, Fast In
+		increment = (end - start) * rate * rate;										// Ease-Out Smash-In --> Slow out, Fast In
 	}
 	else
 	{

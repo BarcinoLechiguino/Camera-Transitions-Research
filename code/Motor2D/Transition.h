@@ -19,12 +19,6 @@ enum class TRANSITION_STEP
 	EXITING
 };
 
-struct Bar											// Move Later
-{
-	SDL_Rect	bar;
-	Color		colour;
-};
-
 class Transition
 {
 public:

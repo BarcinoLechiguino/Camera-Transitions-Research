@@ -2,7 +2,7 @@
 #define __EXPANDING_BARS_H__
 
 #include "Transition.h"
-#include "Color.h"
+#include "Bar.h"
 
 class ExpandingBars : public Transition
 {

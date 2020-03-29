@@ -77,7 +77,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AlternatingBars.cpp" />
-    <ClCompile Include="Bars.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Cut.cpp" />
     <ClCompile Include="Dissolve.cpp" />
@@ -110,7 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlternatingBars.h" />
-    <ClInclude Include="Bars.h" />
+    <ClInclude Include="Bar.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Cut.h" />
     <ClInclude Include="Dissolve.h" />

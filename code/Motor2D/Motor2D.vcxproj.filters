@@ -91,9 +91,6 @@
     <ClCompile Include="ExpandingBars.cpp">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
     </ClCompile>
-    <ClCompile Include="Bars.cpp">
-      <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="p2Defs.h">
@@ -195,7 +192,7 @@
     <ClInclude Include="ExpandingBars.h">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
     </ClInclude>
-    <ClInclude Include="Bars.h">
+    <ClInclude Include="Bar.h">
       <Filter>Engine  ==============\Modules\Transitions\Transition Types\Bar Transitions</Filter>
     </ClInclude>
   </ItemGroup>
