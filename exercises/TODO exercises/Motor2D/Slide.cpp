@@ -90,54 +90,35 @@ void Slide::TranslateSlide()
 }
 
 void Slide::HorizontalSlide()
-{
+{	
+	// TODO 9A: The Slide transition is a rect that comes from one side, reaches the other, and returns to where it came from.
+	// Make use of either of the interpolation functions used in the previous TODO to recreate that effect.
+	// Tip: There already exists a screen rect variable. Current_cutoff still goes from 0 to 1 to 0 through the whole transition.
+	
 	if (!slide_from_right)
 	{
-		if (!non_lerp)
-		{
-			screen.x = Lerp(-screen.w, 0, current_cutoff);									// Horizontal linearly interpolated slide coming from the left.
-		}
-		else
-		{
-			screen.x = N_Lerp(-screen.w, 0, current_cutoff);								// Horizontal non-linearly interpolated slide coming from the left.
-		}
+
 	}
 	else
 	{
-		if (!non_lerp)
-		{
-			screen.x = Lerp(screen.w, 0, current_cutoff);									// Horizontal linearly interpolated slide coming from the right.
-		}
-		else
-		{
-			screen.x = N_Lerp(screen.w, 0, current_cutoff);									// Horizontal non-linearly interpolated slide coming from the right.
-		}
+
 	}
+
 }
 
 void Slide::VerticalSlide()
 {
+	// TODO 9B: Very similar to its A counterpart
+	// Instead of manipulating the x of the screen rect, the y is manupulated instead.
+	// Think about which parameter of the screen use for the Lerp() or N_Lerp().
+	
 	if (!slide_from_bottom)
 	{
-		if (!non_lerp)
-		{
-			screen.y = Lerp(-screen.h, 0, current_cutoff);									// Vertical linearly interpolated slide coming from the top.
-		}
-		else
-		{
-			screen.y = N_Lerp(-screen.h, 0, current_cutoff);								// Vertical non-linearly interpolated slide coming from the top.
-		}
+
 	}
 	else
 	{
-		if (!non_lerp)
-		{
-			screen.y = Lerp(screen.h, 0, current_cutoff);									// Vertical linearly interpolated slide coming from the bottom.
-		}
-		else
-		{
-			screen.y = N_Lerp(screen.h, 0, current_cutoff);									// Vertical non-linearly interpolated slide coming from the bottom.
-		}
+
 	}
 }
 

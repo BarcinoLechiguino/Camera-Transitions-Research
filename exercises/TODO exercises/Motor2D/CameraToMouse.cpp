@@ -52,19 +52,12 @@ void CameraToMouse::Exiting()
 
 void CameraToMouse::TranslateCamera()
 {
-	if (!non_lerp)
-	{
-		next_pos.x = Lerp(origin.x, mouse_position.x, current_cutoff);					// The translation between the origin position and the target position (mouse position)
-		next_pos.y = Lerp(origin.y, mouse_position.y, current_cutoff);					// will be Linearly Interpolated.
-	}
-	else
-	{
-		next_pos.x = N_Lerp(origin.x, mouse_position.x, current_cutoff);				// The translation between the origin position and the target position (mouse position)
-		next_pos.y = N_Lerp(origin.y, mouse_position.y, current_cutoff);				// will be Non-Linearly Interpolated.
-	}
+	// TODO 8: Make the camera move from it's origin position to the mouse's position.
+	// You will need to use either Lerp() or N_Lerp() as well as the next_pos buffer to move the camera accurately.
+	// Tip: Check what Lerp() and N_Lerp() do and which values they require as parameters.
+	
+	
 
-	App->render->camera.x = next_pos.x;
-	App->render->camera.y = next_pos.y;
 }
 
 void CameraToMouse::InitCameraToMouse(iPoint mouse_position)

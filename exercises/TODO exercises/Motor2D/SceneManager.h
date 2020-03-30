@@ -4,6 +4,9 @@
 #include "Module.h"
 #include "Scene.h"
 
+// TODO 0A: Familiarize yourself with the structure, different methods and core elements of
+// the Camera Transition System. It will be key to be able to keep up with the rest of TODOs.
+
 class SceneManager : public Module
 {
 public:

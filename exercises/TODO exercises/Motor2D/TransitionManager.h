@@ -8,6 +8,9 @@
 class		Transition;
 enum class	SCENES;
 
+// TODO 0: Familiarize yourself with the structure, different methods and core elements of
+// the Camera Transition System. It will be key to be able to keep up with the rest of TODOs.
+
 class TransitionManager :  public Module
 {
 public:
@@ -22,7 +25,11 @@ public:
 	void DeleteActiveTransition();
 	
 	Transition* CreateCut(SCENES next_scene);
-	Transition* CreateFadeToColour(SCENES next_scene, float step_duration = 1.0f, Color fade_colour = Black);
+	
+	// TODO 6A: Code a Create method that creates FadeToColour transitions.
+	// Tip: See which parameters need to be passed to the FadeToColour transition.
+
+	
 
 	Transition* CreateSlide(SCENES next_scene, float step_duration = 0.5f, bool non_lerp = false, bool vertical = false,
 									bool slide_from_right = false, bool slide_from_bottom = false, Color slide_colour = Black);
@@ -40,10 +47,10 @@ public:
 	Transition* CreateCameraToMouse(iPoint mouse_pos, float step_duration = 0.5f, bool non_lerp = false);
 
 public:
-	bool						is_transitioning;																	// Will define whether a transition is active or not.
+	bool						is_transitioning;						// Will define whether a transition is active or not.
 
 private:
-	Transition*					active_transition;																	// Pointer to the transtion that's active at any given time.
+	Transition*					active_transition;						// Pointer to the transtion that's active at any given time.
 
 };
 

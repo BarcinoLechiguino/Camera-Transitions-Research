@@ -13,7 +13,10 @@ Cut::~Cut()
 
 void Cut::StepTransition()
 {
-	App->scene_manager->SwitchScene(next_scene);
+	// TODO 1: Switch the current scene for the next one. Remember that the transition needs to be deleted.
+	// Tip: Check SceneManager and TransitionManager out. 
+	// Execute a Cut transition to see if your code works (Press 1). If it is not implemented correctly you'll need to exit the application
 
-	App->transition_manager->DeleteActiveTransition();
+	
+
 }

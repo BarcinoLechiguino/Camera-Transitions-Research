@@ -108,7 +108,11 @@ void FirstScene::ExecuteTransition()
 
 		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
-			App->transition_manager->CreateFadeToColour(SCENES::SECOND_SCENE);
+			// TODO 7A: Create and execute a FadeToColour transition on input. Remember in which scene you currently are.
+			// Tip: Actually it's only one line of code.
+			
+			
+
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)

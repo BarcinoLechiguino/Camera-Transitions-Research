@@ -1,15 +1,18 @@
 #ifndef __TRANSITION_H__
 #define __TRANSITION_H__
 
-#define MAX_CUTOFF 1.0f
-#define MIN_CUTOFF 0.0f
-
 #include "SDL/include/SDL.h"
 #include "Application.h"
 #include "Window.h"
 #include "Render.h"
 #include "Color.h"
 #include "SceneManager.h"
+
+// TODO 0: Familiarize yourself with the structure, different methods and core elements of
+// the Camera Transition System. It will be key to be able to keep up with the rest of TODOs.
+
+#define MAX_CUTOFF 1.0f
+#define MIN_CUTOFF 0.0f
 
 enum class TRANSITION_STEP
 {
@@ -43,13 +46,12 @@ public:
 	SCENES			next_scene;														// The scene that will be transitioned to.
 
 	float			step_duration;													// The duration of each transtion step in seconds.
-	float			current_cutoff;													// The amount of time that has elapsed since the start of the transition step.
+	float			current_cutoff;													// The current amount of accumulated cutoff. Ranges from 0.0f to 1.0f. (0.0 = step start & 1.0f = step end)
 
 	bool			non_lerp;														// Bool that defines whether or not a transition is linearly or non-linearly interpolated.
 
 private:
-	float			cutoff_rate;													// The rate at which the transition will elapse.
-																					// Ranges from 0.0f to 1.0f  0.0 == step_start & 1.0f == step_end.
+	float			cutoff_rate;													// The rate at which transition will elapse. See GetCutoffRate().
 };
 
 #endif // !__TRANSITION_H__

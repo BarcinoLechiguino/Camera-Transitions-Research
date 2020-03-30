@@ -80,9 +80,9 @@ void FadeToColour::ApplyFade()
 
 void FadeToColour::InitFadeToColour()
 {
-	App->win->GetWindowRect(screen);
-
 	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
+	
+	App->win->GetWindowRect(screen);
 
 	step = TRANSITION_STEP::ENTERING;
 }

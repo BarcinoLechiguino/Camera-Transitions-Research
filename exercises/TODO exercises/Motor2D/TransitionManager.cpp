@@ -64,17 +64,10 @@ Transition* TransitionManager::CreateCut(SCENES next_scene)
 	return active_transition;
 }
 
-Transition* TransitionManager::CreateFadeToColour(SCENES next_scene, float step_duration, Color fade_colour)
-{	
-	if (!is_transitioning)
-	{
-		active_transition = new FadeToColour(next_scene, step_duration, fade_colour);
+// TODO 6B: Code a Create method that creates FadeToColour transitions.
 
-		is_transitioning = true;
-	}
 
-	return active_transition;
-}
+
 
 Transition* TransitionManager::CreateSlide(SCENES next_scene, float step_duration, bool non_lerp, bool vertical, bool slide_from_right, bool slide_from_bottom, Color slide_colour)
 {

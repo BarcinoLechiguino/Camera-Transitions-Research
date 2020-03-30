@@ -7,6 +7,9 @@
 
 #include "Application.h"
 
+// TODO 0: Familiarize yourself with the structure, different methods and core elements of
+// the Camera Transition System. It will be key to be able to keep up with the rest of TODOs.
+
 enum class SCENES
 {
 	FIRST_SCENE,

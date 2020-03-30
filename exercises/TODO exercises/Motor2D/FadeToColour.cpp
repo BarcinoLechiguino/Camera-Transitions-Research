@@ -13,7 +13,7 @@ FadeToColour::~FadeToColour()
 }
 
 void FadeToColour::StepTransition()
-{
+{	
 	switch (step)
 	{
 	case TRANSITION_STEP::ENTERING:
@@ -40,14 +40,13 @@ void FadeToColour::StepTransition()
 
 void FadeToColour::Entering()
 {
-	current_cutoff += GetCutoffRate(step_duration);
+	// TODO 3: Add the cutoff_rate to the current_cutoff each loop.
+	// Moreover, change the transition step when the current_cutoff
+	// reaches the MAX limit value. Remember to keep that limit value.
+	// Tip: Check what current_cutoff and current_rate is.
+	
 
-	if (current_cutoff >= MAX_CUTOFF)
-	{
-		current_cutoff = MAX_CUTOFF;
 
-		step = TRANSITION_STEP::CHANGING;
-	}
 }
 
 void FadeToColour::Changing()
@@ -59,30 +58,34 @@ void FadeToColour::Changing()
 
 void FadeToColour::Exiting()
 {
-	current_cutoff -= GetCutoffRate(step_duration);
+	// TODO 4: Substract the cutoff_rate off of the current_cutoff each loop. Very similar to the previous TODO, but reversed.
+	// In addition to that, when the current_cutoff reaches the MIN limit value, change the step and delete the transition.
+	// Tip: Remember what you did in TODO 1.
 
-	if (current_cutoff <= MIN_CUTOFF)
-	{
-		current_cutoff = MIN_CUTOFF;
 
-		step = TRANSITION_STEP::NONE;
 
-		App->transition_manager->DeleteActiveTransition();
-	}
 }
 
 void FadeToColour::ApplyFade()
 {
-	SDL_SetRenderDrawColor(App->render->renderer, fade_colour.r, fade_colour.g, fade_colour.b, current_cutoff * 255.0f);
+	// TODO 5: It's time to apply the current_cutoff to make the alpha fluctuate.
+	// Make use of the SDL_SetRenderDrawColor() and SDL_RenderFillRect() to draw
+	// the screen rect as well as to change it's alpha over time.
+	// Tip: Remember the value range of current_cutoff. Do not forget about fade_colour.
+	
 
-	SDL_RenderFillRect(App->render->renderer, &screen);
+
 }
 
 void FadeToColour::InitFadeToColour()
 {
-	App->win->GetWindowRect(screen);
-
 	SDL_SetRenderDrawBlendMode(App->render->renderer, SDL_BLENDMODE_BLEND);
+	
+	// TODO 2: Initialize the variables of the FadeToColour transition.
+	// Initialize the screen rect with the parameters of the window's rect.
+	// After that, the  transition needs to get going. For that change the transition step.
+	// Tip: Remember to check StepTransition() and which elements a transition has.
 
-	step = TRANSITION_STEP::ENTERING;
+
+
 }

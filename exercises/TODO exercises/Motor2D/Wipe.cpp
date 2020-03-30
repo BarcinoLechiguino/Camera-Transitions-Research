@@ -18,6 +18,8 @@ Wipe::~Wipe()
 
 void Wipe::StepTransition()
 {
+	// TODO 10: Check what is different 
+	
 	current_cutoff += GetCutoffRate(step_duration);
 	
 	switch (step)
