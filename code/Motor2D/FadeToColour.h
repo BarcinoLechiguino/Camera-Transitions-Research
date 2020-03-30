@@ -17,7 +17,9 @@ public:
 	void Changing();														// Method that will be used to execute the CHANGING transition step.
 	void Exiting();															// Method that will be used to execute the EXITING transition step.
 	
-	void ApplyFade();														// Method that will be used to update the alpha value of the fade. //TMP NAME AND COMMENT
+	void ApplyFade();														// Method that will be used to update the alpha value of the fade.
+
+	void InitFadeToColour();												// Method that will be used to initialize all the variables related with the FadeToColour.
 
 private:
 	SDL_Rect	screen;

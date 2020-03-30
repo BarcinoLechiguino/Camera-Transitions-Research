@@ -94,25 +94,28 @@ void AlternatingBars::TranslateHorizontalBars()
 {
 	if (step == TRANSITION_STEP::ENTERING)
 	{
-		for (int i = 0; i < bars.size(); ++i)
+		if (!non_lerp)
 		{
-			if (i % 2 == 0)
+			for (int i = 0; i < bars.size(); ++i)
 			{
-				if (!non_lerp)
+				if (i % 2 == 0)
 				{
 					bars[i].bar.x = Lerp(-win_width, 0, current_cutoff);
 				}
 				else
 				{
-					//bars[i].bar.x = N_Lerp(-win_width, 0, current_cutoff, true);
-					bars[i].bar.x = N_Lerp(-win_height, 0, current_cutoff);
+					bars[i].bar.x = Lerp(win_width, 0, current_cutoff);
 				}
 			}
-			else
+		}
+		else
+		{
+			for (int i = 0; i < bars.size(); ++i)
 			{
-				if (!non_lerp)
+				if (i % 2 == 0)
 				{
-					bars[i].bar.x = Lerp(win_width, 0, current_cutoff);
+					//bars[i].bar.x = N_Lerp(-win_width, 0, current_cutoff, true);
+					bars[i].bar.x = N_Lerp(-win_height, 0, current_cutoff);
 				}
 				else
 				{
@@ -125,25 +128,28 @@ void AlternatingBars::TranslateHorizontalBars()
 
 	if (step == TRANSITION_STEP::EXITING)
 	{
-		for (int i = 0; i < bars.size(); ++i)
+		if (!non_lerp)
 		{
-			if (i % 2 == 0)
+			for (int i = 0; i < bars.size(); ++i)
 			{
-				if (!non_lerp)
+				if (i % 2 == 0)
 				{
 					bars[i].bar.x = Lerp(0, win_width, current_cutoff);
 				}
 				else
 				{
-					//bars[i].bar.x = N_Lerp(0, win_width, current_cutoff, true);
-					bars[i].bar.x = N_Lerp(0, win_width, current_cutoff);
+					bars[i].bar.x = Lerp(0, -win_width, current_cutoff);
 				}
 			}
-			else
+		}
+		else
+		{
+			for (int i = 0; i < bars.size(); ++i)
 			{
-				if (!non_lerp)
+				if (i % 2 == 0)
 				{
-					bars[i].bar.x = Lerp(0, -win_width, current_cutoff);
+					//bars[i].bar.x = N_Lerp(0, win_width, current_cutoff, true);
+					bars[i].bar.x = N_Lerp(0, win_width, current_cutoff);
 				}
 				else
 				{
@@ -156,28 +162,31 @@ void AlternatingBars::TranslateHorizontalBars()
 }
 
 void AlternatingBars::TranslateVerticalBars()
-{
+{	
 	if (step == TRANSITION_STEP::ENTERING)
 	{
-		for (int i = 0; i < bars.size(); ++i)
+		if (!non_lerp)
 		{
-			if (i % 2 == 0)
+			for (int i = 0; i < bars.size(); ++i)
 			{
-				if (!non_lerp)
+				if (i % 2 == 0)
 				{
 					bars[i].bar.y = Lerp(-win_height, 0, current_cutoff);
 				}
 				else
 				{
-					//bars[i].bar.y = N_Lerp(-win_height, 0, current_cutoff, true);
-					bars[i].bar.y = N_Lerp(-win_height, 0, current_cutoff);
+					bars[i].bar.y = Lerp(win_height, 0, current_cutoff);
 				}
 			}
-			else
+		}
+		else
+		{
+			for (int i = 0; i < bars.size(); ++i)
 			{
-				if (!non_lerp)
+				if (i % 2 == 0)
 				{
-					bars[i].bar.y = Lerp(win_height, 0, current_cutoff);
+					//bars[i].bar.y = N_Lerp(-win_height, 0, current_cutoff, true);
+					bars[i].bar.y = N_Lerp(-win_height, 0, current_cutoff);
 				}
 				else
 				{
@@ -190,25 +199,28 @@ void AlternatingBars::TranslateVerticalBars()
 
 	if (step == TRANSITION_STEP::EXITING)
 	{
-		for (int i = 0; i < bars.size(); ++i)
+		if (!non_lerp)
 		{
-			if (i % 2 == 0)
+			for (int i = 0; i < bars.size(); ++i)
 			{
-				if (!non_lerp)
+				if (i % 2 == 0)
 				{
 					bars[i].bar.y = Lerp(0, win_height, current_cutoff);
 				}
 				else
 				{
-					//bars[i].bar.y = N_Lerp(0, win_height, current_cutoff, true);
-					bars[i].bar.y = N_Lerp(0, win_height, current_cutoff);
+					bars[i].bar.y = Lerp(0, -win_height, current_cutoff);
 				}
 			}
-			else
+		}
+		else
+		{
+			for (int i = 0; i < bars.size(); ++i)
 			{
-				if (!non_lerp)
+				if (i % 2 == 0)
 				{
-					bars[i].bar.y = Lerp(0, -win_height, current_cutoff);
+					//bars[i].bar.y = N_Lerp(0, win_height, current_cutoff, true);
+					bars[i].bar.y = N_Lerp(0, win_height, current_cutoff);
 				}
 				else
 				{

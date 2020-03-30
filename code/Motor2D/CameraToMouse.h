@@ -22,12 +22,10 @@ public:
 	void InitCameraToMouse(iPoint mouse_position);
 
 private:
-	iPoint	origin;
-	iPoint	mouse_position;
+	iPoint	origin;																// Original position of the camera at the start of the transition.
+	iPoint	mouse_position;														// Position of the mouse at the start of the transition. Will be the target position of the transition.
 
-	fPoint	next_pos;
-
-	float	travel_time;
+	fPoint	next_pos;															// Will store the values returned by the interpolation methods before they are assigned to the camera position.
 };
 
 #endif // !__CAMERA_TO_MOUSE

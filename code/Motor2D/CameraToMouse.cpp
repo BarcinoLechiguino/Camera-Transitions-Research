@@ -2,7 +2,7 @@
 #include "TransitionManager.h"
 
 CameraToMouse::CameraToMouse(iPoint mouse_position, float step_duration, bool non_lerp) : Transition(SCENES::NONE, step_duration, non_lerp)
-, travel_time(0.0f)
+, origin(0.0f, 0.0f)
 , next_pos(0.0f, 0.0f)
 {	
 	InitCameraToMouse(mouse_position);
@@ -33,9 +33,9 @@ void CameraToMouse::StepTransition()
 
 void CameraToMouse::Entering()
 {
-	travel_time += GetCutoffRate(step_duration);
+	current_cutoff += GetCutoffRate(step_duration);
 
-	if (travel_time <= MAX_TIME)
+	if (current_cutoff <= MAX_TIME)
 	{
 		TranslateCamera();
 	}
@@ -54,16 +54,16 @@ void CameraToMouse::TranslateCamera()
 {
 	if (!non_lerp)
 	{
-		next_pos.x = Lerp(origin.x, mouse_position.x, travel_time);
-		next_pos.y = Lerp(origin.y, mouse_position.y, travel_time);
+		next_pos.x = Lerp(origin.x, mouse_position.x, current_cutoff);					// The translation between the origin position and the target position (mouse position)
+		next_pos.y = Lerp(origin.y, mouse_position.y, current_cutoff);					// will be Linearly Interpolated.
 	}
 	else
 	{
 		//next_pos.x = N_Lerp(origin.x, mouse_position.x, travel_time, true);
 		//next_pos.y = N_Lerp(origin.y, mouse_position.y, travel_time, true);
 
-		next_pos.x = N_Lerp(origin.x, mouse_position.x, travel_time);
-		next_pos.y = N_Lerp(origin.y, mouse_position.y, travel_time);
+		next_pos.x = N_Lerp(origin.x, mouse_position.x, current_cutoff);				// The translation between the origin position and the target position (mouse position)
+		next_pos.y = N_Lerp(origin.y, mouse_position.y, current_cutoff);				// will be Non-Linearly Interpolated.
 	}
 
 	App->render->camera.x = next_pos.x;
@@ -75,8 +75,8 @@ void CameraToMouse::InitCameraToMouse(iPoint mouse_position)
 	origin.x = App->render->camera.x;
 	origin.y = App->render->camera.y;
 
-	this->mouse_position.x = (-mouse_position.x) + App->render->camera.w * 0.5f;
-	this->mouse_position.y = (-mouse_position.y) + App->render->camera.h * 0.5f;
+	this->mouse_position.x = (-mouse_position.x) + App->render->camera.w * 0.5f;		// The mouse position that was passed as argument will be re-calculated so the value
+	this->mouse_position.y = (-mouse_position.y) + App->render->camera.h * 0.5f;		// can be applied to the camera x and y positions.
 
 	step = TRANSITION_STEP::ENTERING;
 }
