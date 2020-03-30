@@ -91,9 +91,9 @@ void Slide::TranslateSlide()
 
 void Slide::HorizontalSlide()
 {	
-	// TODO 9A: The Slide transition is a rect that comes from one side, reaches the other, and returns to where it came from.
-	// Make use of either of the interpolation functions used in the previous TODO to recreate that effect.
-	// Tip: There already exists a screen rect variable. Current_cutoff still goes from 0 to 1 to 0 through the whole transition.
+	// TODO 9A: Recreate the Slide effect by making use of either Lerp() or N_Lerp() like in the previous TODO. 
+	// Use the screen rect variable. Current_cutoff still behaves like in the previously seen transitions.
+	// Tip: Only one line of code is needed for each case.
 	
 	if (!slide_from_right)
 	{
@@ -108,10 +108,10 @@ void Slide::HorizontalSlide()
 
 void Slide::VerticalSlide()
 {
-	// TODO 9B: Very similar to its A counterpart
-	// Instead of manipulating the x of the screen rect, the y is manupulated instead.
-	// Think about which parameter of the screen use for the Lerp() or N_Lerp().
-	
+	// TODO 9B: Very similar to its horizontal counterpart counterpart
+	// Think about which parameter of the screen use to reproduce the effect vertically for the Lerp()//N_Lerp().
+	// Tip: Only one line of code is needed for each case.
+
 	if (!slide_from_bottom)
 	{
 

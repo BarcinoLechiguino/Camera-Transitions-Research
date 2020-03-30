@@ -22,6 +22,7 @@ public:
 	void DeleteActiveTransition();
 	
 	Transition* CreateCut(SCENES next_scene);
+	
 	Transition* CreateFadeToColour(SCENES next_scene, float step_duration = 1.0f, Color fade_colour = Black);
 
 	Transition* CreateSlide(SCENES next_scene, float step_duration = 0.5f, bool non_lerp = false, bool vertical = false,
@@ -40,10 +41,10 @@ public:
 	Transition* CreateCameraToMouse(iPoint mouse_pos, float step_duration = 0.5f, bool non_lerp = false);
 
 public:
-	bool						is_transitioning;																	// Will define whether a transition is active or not.
+	bool						is_transitioning;						// Will define whether a transition is active or not.
 
 private:
-	Transition*					active_transition;																	// Pointer to the transtion that's active at any given time.
+	Transition*					active_transition;						// Pointer to the transtion that's active at any given time.
 
 };
 

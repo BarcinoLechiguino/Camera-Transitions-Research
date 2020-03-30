@@ -18,7 +18,8 @@ Wipe::~Wipe()
 
 void Wipe::StepTransition()
 {
-	// TODO 10: Check what is different 
+	// TODO 10: Check what is different in this update loop 
+	// from the others you have seen so far.
 	
 	current_cutoff += GetCutoffRate(step_duration);
 	
@@ -48,6 +49,9 @@ void Wipe::StepTransition()
 
 void Wipe::Entering()
 {
+	//  TODO 10: Check what is different in this Entering() method
+	// from the ones that you have previously seen.
+	
 	if (current_cutoff >= MAX_CUTOFF)
 	{
 		current_cutoff = MIN_CUTOFF;
@@ -65,6 +69,9 @@ void Wipe::Changing()
 
 void Wipe::Exiting()
 {					
+	//  TODO 10: Check what is different in this Exiting() method
+	// from the ones that you have previously seen.
+	
 	if (current_cutoff >= MAX_CUTOFF)
 	{
 		current_cutoff = MIN_CUTOFF;
@@ -91,113 +98,50 @@ void Wipe::TranslateWipe()
 
 void Wipe::HorizontalWipe()
 {
+	// TODO 10A: Recreate the wipe effect by makin the screen rect cross from either of both sides to the other using Lerp() or N_Lerp().
+	// To make the rect cross the screen, the transition needs to be broken down into two steps using the transition steps.
+	// Tip: Be careful with current_step. It will range from 0 to 1 differently from other transitions.
+	 
+	
 	if (!wipe_from_right)
 	{
-		if (step == TRANSITION_STEP::ENTERING)												// Horizontal wipe that will start from (-screen.w, 0 ) and will stop at ( 0, 0 ).
+		if (step == TRANSITION_STEP::ENTERING)
 		{
-			if (!non_lerp)
-			{
-				screen.x = Lerp(-screen.w, 0, current_cutoff);								// Linearly interpolated wipe.
-			}
-			else
-			{
-				screen.x = N_Lerp(-screen.w, 0, current_cutoff);							// Non-linearly interpolated wipe.
-			}
-		}
 
-		if (step == TRANSITION_STEP::EXITING)												// Horizontal wipe that will start from ( 0, 0 ) and will stop at ( sceen.w , 0 ).
+		}
+		
+		if (step == TRANSITION_STEP::EXITING)
 		{
-			if (!non_lerp)
-			{
-				screen.x = Lerp(0, screen.w, current_cutoff);
-			}
-			else
-			{
-				screen.x = N_Lerp(0, screen.w, current_cutoff);
-			}
+
 		}
 	}
 	else
 	{
-		if (step == TRANSITION_STEP::ENTERING)												// Horizontal wipe that will start from ( screen.w, 0 ) and will stop at ( 0, 0 ).
+		if (step == TRANSITION_STEP::ENTERING)
 		{
-			if (!non_lerp)
-			{
-				screen.x = Lerp(screen.w, 0, current_cutoff);
-			}
-			else
-			{
-				screen.x = N_Lerp(screen.w, 0, current_cutoff);
-			}
+
 		}
 
-		if (step == TRANSITION_STEP::EXITING)												// Horizontal wipe that will start from ( 0, 0 ) and will stop at ( -sceen.w , 0 ).
+		if (step == TRANSITION_STEP::EXITING)
 		{
-			if (!non_lerp)
-			{
-				screen.x = Lerp(0, -screen.w, current_cutoff);
-			}
-			else
-			{
-				screen.x = N_Lerp(0, -screen.w, current_cutoff);
-			}
+
 		}
 	}
 }
 
 void Wipe::VerticalWipe()
 {
+	// TODO 10B: Again, similar to it's horizontal counterpart, but taking into account that
+	// the wipe will happen from top to bottom and from bottom to top.
+	// Now you have to put the step breakdown yourself.
+
 	if (!wipe_from_bottom)
 	{
-		if (step == TRANSITION_STEP::ENTERING)												// Vertical wipe that will start from ( 0, screen.h ) and will stop at ( 0, 0 ).
-		{
-			if (!non_lerp)
-			{
-				screen.y = Lerp(-screen.h, 0, current_cutoff);								// Linearly interpolated wipe.
-			}
-			else
-			{
-				screen.y = N_Lerp(-screen.h, 0, current_cutoff);							// Non-linearly interpolated wipe.
-			}
-		}
 
-		if (step == TRANSITION_STEP::EXITING)												// Vertical wipe that will start from ( 0, 0 ) and will stop at ( 0, screen.h ).
-		{
-			if (!non_lerp)
-			{
-				screen.y = Lerp(0, screen.h, current_cutoff);
-			}
-			else
-			{
-				screen.y = N_Lerp(0, screen.h, current_cutoff);
-			}
-		}
 	}
 	else
 	{
-		if (step == TRANSITION_STEP::ENTERING)												// Vertical wipe that will start from ( 0, screen.h ) and will stop at ( 0, 0 ).
-		{
-			if (!non_lerp)
-			{
-				screen.y = Lerp(screen.h, 0, current_cutoff);
-			}
-			else
-			{
-				screen.y = N_Lerp(screen.h, 0, current_cutoff);
-			}
-		}
 
-		if (step == TRANSITION_STEP::EXITING)												// Vertical wipe that will start from ( 0, 0 ) and will stop at ( 0, -screen.h ).
-		{
-			if (!non_lerp)
-			{
-				screen.y = Lerp(0, -screen.h, current_cutoff);
-			}
-			else
-			{
-				screen.y = N_Lerp(0, -screen.h, current_cutoff);
-			}
-		}
 	}
 }
 

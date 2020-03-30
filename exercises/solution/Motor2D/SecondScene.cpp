@@ -98,27 +98,27 @@ void SecondScene::ExecuteTransition()
 
 		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
-			App->transition_manager->CreateFadeToColour(SCENES::FIRST_SCENE, 1.0f, White);
+			App->transition_manager->CreateFadeToColour(SCENES::FIRST_SCENE);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
-			App->transition_manager->CreateSlide(SCENES::FIRST_SCENE, 0.5f, true, false, true, false, White);
+			App->transition_manager->CreateSlide(SCENES::FIRST_SCENE, 0.5f, true, false, true, false);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 		{
-			App->transition_manager->CreateSlide(SCENES::FIRST_SCENE, 0.5f, true, true, false, true, White);
+			App->transition_manager->CreateSlide(SCENES::FIRST_SCENE, 0.5f, true, true, false, true);
 		}
 		
 		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
-			App->transition_manager->CreateWipe(SCENES::FIRST_SCENE, 0.5f, true, false, true, false, White);
+			App->transition_manager->CreateWipe(SCENES::FIRST_SCENE, 0.5f, true, false, true, false);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 		{
-			App->transition_manager->CreateWipe(SCENES::FIRST_SCENE, 0.5f, true, true, false, true, White);
+			App->transition_manager->CreateWipe(SCENES::FIRST_SCENE, 0.5f, true, true, false, true);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)

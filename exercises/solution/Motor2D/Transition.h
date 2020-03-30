@@ -1,15 +1,15 @@
 #ifndef __TRANSITION_H__
 #define __TRANSITION_H__
 
-#define MAX_CUTOFF 1.0f
-#define MIN_CUTOFF 0.0f
-
 #include "SDL/include/SDL.h"
 #include "Application.h"
 #include "Window.h"
 #include "Render.h"
 #include "Color.h"
 #include "SceneManager.h"
+
+#define MAX_CUTOFF 1.0f
+#define MIN_CUTOFF 0.0f
 
 enum class TRANSITION_STEP
 {
@@ -48,7 +48,7 @@ public:
 	bool			non_lerp;														// Bool that defines whether or not a transition is linearly or non-linearly interpolated.
 
 private:
-	float			cutoff_rate;													// The rate at which transition will elapse.
+	float			cutoff_rate;													// The rate at which transition will elapse. See GetCutoffRate().
 																					
 };
 
