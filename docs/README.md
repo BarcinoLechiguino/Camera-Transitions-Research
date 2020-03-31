@@ -60,7 +60,7 @@ Camera transitions are a post-production technique used to connect one shot/scen
 Instantly connects one shot to another. These shots normally happen at the same time.
 This transition would be able to have a really parallel in video games, but, as it would go against the very reason they are implemented, cuts are ommited in video games
 
-<img src="/docs/images/transition_gifs/basic_transitions/Cut-Transition.gif">
+<gif src="/docs/images/transition_gifs/basic_transitions/Cut-Transition.gif">
 
 ### Fade In/Out
 The scene gradually turns to one colour, normally black, and comes back. Used to convey completion, the passage of a period of time and ascension  (Fade In/Out to White). The most common transition after the cut.
