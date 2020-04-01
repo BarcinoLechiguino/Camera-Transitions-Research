@@ -123,7 +123,7 @@ It's a really flexible way to make transitions as textures can be modified in a 
 
 Code wise its quite complex to make transitions like the one in the example.
 
-![Xenosaga Epospde I Blender Distortion](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif)
+![Xenosaga Epospde I Blender Distortion](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif)
 
 ### Shaders
 Shaders are chunks of code that are executed in the GPU. They modify the way an image is rendered.
@@ -145,11 +145,11 @@ Transition:
 
 Original Texture:
 
-[Pokeball Shader Texture](images/presentation_images/Shader_Pokeball.PNG)
+![Pokeball Shader Texture](images/presentation_images/Shader_Pokeball.PNG)
 
 Transition:
 
-[Pokeball Shader Transition](images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-1-Pokeball.gif)
+![Pokeball Shader Transition](images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-1-Pokeball.gif)
 
 If you want to know more about applying shaders to camera transitions, check [Shaders Case Study - Pokémon Battle Transitions](<https://www.youtube.com/watch?v=LnAoD7hgDxw>) out, it is really easy to understand and introduces you to a lot of the basics really easily.
 
@@ -229,7 +229,7 @@ The majority of the transitions that will be set as examples come from Pokemon a
 ### Scene Manager
 The scene manager will create update and change the current_scene.
 
-![SceneManager Class](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/SceneManager.PNG)
+![SceneManager Class](images/system_core_elements/SceneManager.PNG)
 
 ### Scene Class
 Absbtract class from which all the scenes will inherit from.
@@ -362,7 +362,7 @@ The calculus goes as shown in the picture below:
 
 **Ease In, Smash Out (Slow Start, Fast End)**
 
-![Non-Linear Movement](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/transition_math/Non-Linear-Movement.gif)
+![Non-Linear Movement](images/transition_gifs/transition_math/Non-Linear-Movement.gif)
 
 **Smash In, Ease Out (Fast Start, Slow End)**
 
@@ -432,6 +432,7 @@ For TODO 0 just check out the .h files where this statement is at.
 
 ![TODO 0](images/exercise_statements/TODO_0.PNG)
 
+---
 
 ## TODO 1
 
@@ -444,8 +445,11 @@ For TODO 0 just check out the .h files where this statement is at.
   </p>
 </details>
 
+
 If you have done this TODO correctly, you should see this after pressing 1:
 ![TODO 1 Result](images/transition_gifs/own_transitions/Cut.gif)
+
+---
 
 ## TODO 2
 From here on you will not be able to see your progress until TODO 7B
@@ -459,6 +463,8 @@ From here on you will not be able to see your progress until TODO 7B
   </p>
 </details>
 
+---
+
 ## TODO 3
 
 ![TODO 3](images/exercise_statements/TODO_3_Statement.PNG)
@@ -469,6 +475,8 @@ From here on you will not be able to see your progress until TODO 7B
      <img src="images/solutions/TODO_3_Solution.PNG">
   </p>
 </details>
+
+---
 
 ## TODO 4
 
@@ -481,6 +489,8 @@ From here on you will not be able to see your progress until TODO 7B
   </p>
 </details>
 
+---
+
 ## TODO 5
 
 ![TODO 5](images/exercise_statements/TODO_5_Statement.PNG)
@@ -491,6 +501,8 @@ From here on you will not be able to see your progress until TODO 7B
      <img src="images/solutions/TODO_5_Solution.PNG">
   </p>
 </details>
+
+---
 
 ## TODO 6A
 
@@ -503,6 +515,8 @@ From here on you will not be able to see your progress until TODO 7B
   </p>
 </details>
 
+- - -
+
 ## TODO 6B
 
 ![TODO 6B](images/exercise_statements/TODO_6B_Statement.PNG)
@@ -514,9 +528,11 @@ From here on you will not be able to see your progress until TODO 7B
   </p>
 </details>
 
+---
+
 ## TODO 7A
 
-![TODO 7A](docs/images/exercise_statements/TODO_7A_Statement.PNG)
+![TODO 7A](images/exercise_statements/TODO_7A_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
@@ -524,6 +540,8 @@ From here on you will not be able to see your progress until TODO 7B
      <img src="images/solutions/TODO_7A_Solution.PNG">
   </p>
 </details>
+
+- - -
 
 ## TODO 7B
 
@@ -541,6 +559,8 @@ If you have done every TODO from TODO 2 to this one, you should see this after p
 
 Congratulations! You have coded your own FadeToColour() metod. From here on out the TODOs will have their difficulty scalated quite steeply, but more challenge means more fun right? :)
 
+---
+
 ## TODO 8
 
 ![TODO 8](images/exercise_statements/TODO_8_Statement.PNG)
@@ -557,6 +577,8 @@ If you have completed this TODO correcly, you should see this when you LEFT CLIC
 
 Congratulations! You can now travel all over this massive map with just a few clicks. Sit tight, after this TODO come the big boys.
 
+---
+
 ## TODO 9A
 
 ![TODO 9A](images/exercise_statements/TODO_9A_Statement.PNG)
@@ -567,6 +589,8 @@ Congratulations! You can now travel all over this massive map with just a few cl
      <img src="images/solutions/TODO_9A_Solution.PNG">
   </p>
 </details>
+
+- - -
 
 ## TODO 9B
 
@@ -583,6 +607,8 @@ If you have implemented both 9A and 9B correctly, you should see this after pres
 ![TODO 9A & 9B Result](images/transition_gifs/own_transitions/Slide.gif)
 
 Congratulations! You have implemented your own Slide Transition. C'mon now, there only remain two steps to reach the summit :)
+
+---
 
 ## TODO 10A
 
@@ -601,6 +627,8 @@ Congratulations! You have implemented your own Slide Transition. C'mon now, ther
      <img src="images/solutions/TODO_10A_NL_Solution.PNG">
   </p>
 </details>
+
+- - -
 
 ## TODO 10B
 
