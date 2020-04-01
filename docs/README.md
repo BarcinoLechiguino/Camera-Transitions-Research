@@ -65,7 +65,7 @@ This transition would be able to have a really parallel in video games, but, as 
 ### Fade In/Out
 The scene gradually turns to one colour, normally black, and comes back. Used to convey completion, the passage of a period of time and ascension  (Fade In/Out to White). The most common transition after the cut.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/transition_gifs/basic_transitions/Fade-In-Transition.gif)
+![Enter media description here](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/transition_gifs/basic_transitions/Fade-In-Transition.gif)
 
 ### Wipe
 One shot replaces another, normally by traveling from one side of the screen to the other. Can also travel from anywhere on the screen.
