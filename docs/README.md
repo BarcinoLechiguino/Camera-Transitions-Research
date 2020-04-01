@@ -60,34 +60,32 @@ Camera transitions are a post-production technique used to connect one shot/scen
 Instantly connects one shot to another. These shots normally happen at the same time.
 This transition would be able to have a really parallel in video games, but, as it would go against the very reason they are implemented, cuts are ommited in video games
 
-<img src="images/transition_gifs/basic_transitions/Cut-Transition.gif"/>
-
 ![Cut](images/transition_gifs/basic_transitions/Cut-Transition.gif "Aren't Cuts really cool?")
 
 ### Fade In/Out
 The scene gradually turns to one colour, normally black, and comes back. Used to convey completion, the passage of a period of time and ascension  (Fade In/Out to White). The most common transition after the cut.
 
-![Enter media description here](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/transition_gifs/basic_transitions/Fade-In-Transition.gif)
+![Fade In](images/transition_gifs/basic_transitions/Fade-In-Transition.gif)
 
 ### Wipe
 One shot replaces another, normally by traveling from one side of the screen to the other. Can also travel from anywhere on the screen.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/transition_gifs/basic_transitions/Wipe-Transitions.gif)
+![Wipe](images/transition_gifs/basic_transitions/Wipe-Transitions.gif)
 
 ### Dissolve
 Like the wipe, one shot replaces another. This time however, instead of gradually turning to a colour, the scene turns to another. Not that common nowadays.  
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/transition_gifs/basic_transitions/Dissolve-Transitions.gif)
+![Dissolve](images/transition_gifs/basic_transitions/Dissolve-Transitions.gif)
 
 ### Zoom
 The zoom is incresaed in one scene and is decreased in the next one. Wants to convey a frenetic pace or emphasize on someone or something on the screen.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/transition_gifs/basic_transitions/Zoom.gif)
+![Zoom](images/transition_gifs/basic_transitions/Zoom.gif)
 
 ## Why apply camera transitions to video games?
 To put it plainly, it's to hide different elements we do not want the players to see from them. One of the main reasons can be perfectly observed in the material below. Take a look and see what happens.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Load-Time-Difference.gif)
+![Load Time Difference](images/transition_gifs/video_game_transitions/Load-Time-Difference.gif)
 
 ### The reasoning behind video game camera transitions
 Contrary to films, video games require time to load from one scene to another.
@@ -101,11 +99,11 @@ Although originally camera transitions had to be implemented due to purely utili
 
 One great example of how to use camera transitions to bring the narrative to far higher heights is Vagrant Story (PSX). See how the camera is translated and how that creates a "reveal" moment when there was none previously.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_Hiding.gif)
+![Vagrant Story Camera Translation I](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_Hiding.gif)
 
 Now, notice how an effect as simple as a Cut To Black can be used so cleverly. It should be noted that this segment of the game belongs to the introduction, not the end of the game.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/Cut_To_Credits.gif)
+![Vagrant Story Cut To Credits](images/transition_gifs/video_game_transitions/RPG_Transitions/Cut_To_Credits.gif)
 
 
 ## Camera Transition Techniques
@@ -116,7 +114,7 @@ Although it is quite simple to move a rect, for example, which lowers the diffic
 
 Again, this technique is really simple code wise (in comparison with the following two).
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif)
+![Pokemon Red/Blue Horizontal Bars](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif)
 
 ### Manipulating the scene's texture
 All the textures are blended together and manipulated.
@@ -125,7 +123,7 @@ It's a really flexible way to make transitions as textures can be modified in a 
 
 Code wise its quite complex to make transitions like the one in the example.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif)
+![Xenosaga Epospde I Blender Distortion](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif)
 
 ### Shaders
 Shaders are chunks of code that are executed in the GPU. They modify the way an image is rendered.
@@ -134,119 +132,119 @@ Using shaders to make transitions has become a widespread practice due to the po
 
 #### Shader Transition Examples
 
+**Waves Transition**
+Original Texture:
+
+![Waves Shader Texture](images/presentation_images/Shader_Waves.PNG)
+
+Transition:
+
+![Waves Shader Transition](images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-2-Waves.gif)
+
 **Pokeball Transition**
 
 Original Texture:
 
-[](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/presentation_images/Shader_Pokeball.PNG)
+[Pokeball Shader Texture](images/presentation_images/Shader_Pokeball.PNG)
 
 Transition:
 
-[](https://github.com/BarcinoLechiguino/Camera-Transitions-
-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-1-Pokeball.gif)
-
-Original Texture:
-
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/presentation_images/Shader_Waves.PNG)
-
-Transition:
-
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-2-Waves.gif)
+[Pokeball Shader Transition](images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-1-Pokeball.gif)
 
 If you want to know more about applying shaders to camera transitions, check [Shaders Case Study - Pokémon Battle Transitions](<https://www.youtube.com/watch?v=LnAoD7hgDxw>) out, it is really easy to understand and introduces you to a lot of the basics really easily.
 
 ## VG Transition Examples
 #### Disclaimer 
-The majority of the transitions that will be set as examples come from Pokemon and JRPG  games, in special from battle transitions. This is due to the fact that battle transitions are as diverse as they can be, and this particular segment of camera transitions reach out to all camera transition techniques to bring really interesting transitions.
+The majority of the transitions that will be set as examples come from Pokemon and JRPG  games, in special from battle transitions. This is due to the fact that battle transitions are as diverse as they can be, and this particular segment of camera transitions reach out to all camera transition techniques to bring to reality really interesting transitions.
 
 ### Basic transitions
 #### Fade To Black (Pokemon Fire Red / Green Leaf GBA)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-FadeToBlack.gif)
+![Pokemon Fire Red / Green Leaf GBA ](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-FadeToBlack.gif)
 
 #### Fancy Fade To Black (South Park: The Stick of Truth)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-2-Lightning.gif)
+![ South Park: The Stick of Truth ](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-2-Lightning.gif)
 
 #### Wipe (Pokemon Red/Blue GBC)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-1-Circular-Wi.gif)
+![ Pokemon Red/Blue GBC ](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-1-Circular-Wi.gif)
 
 #### Horizontal Alternating Bars (Pokemon Red/Blue GBC)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif)
+![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif)
 
 #### Vertical Alternating Bars (Pokemon Red/Blue GBC)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-3-Vertical-Ba.gif)
+![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-3-Vertical-Ba.gif)
 
 #### Camera Translation (Vagrant Story)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_To_Battle.gif)
+![Vagrant Story](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_To_Battle.gif)
 
 #### Composition of Basics (Grandia II)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-5-FadeTurn.gif)
+![Grandia II](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-5-FadeTurn.gif)
 
 ### Advanced Transitions
 #### Sliding Quarters (Pokemon Red/Blue GBC)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-5-Slide-Quart.gif)
+![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-5-Slide-Quart.gif)
 
 #### Texture Re-Scaling (Pokemon Red/Blue GBC)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-4-Reduce-Text.gif)
+![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-4-Reduce-Text.gif)
 
 #### Texture Manipulation: Flakes / Scales (Wild Arms 5)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-3-Flakes.gif)
+![Wild Arms 5](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-3-Flakes.gif)
 
 #### Texture Manipulation: Blender Effect (Xenosaga Episode I)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif)
+![Xenosaga Episode I](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif)
 
 #### Composition of Advanced (Chrono Cross)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-1-Sparks.gif)
+![Chrono Cross](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-1-Sparks.gif)
 
 ### Themed Transitions
 #### Pokemon: Battle against a Gym Leader Brock (Pokemon Fire Red / Green Leaf GBA)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-2-Brock-Battle.gif)
+![Pokemon Fire Red / Green Leaf GBA](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-2-Brock-Battle.gif)
 
 #### Pokemon: Battle against Zygarde (Pokemon X / Y)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-1-Zygarde.gif)
+![Pokemon X / Y](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-1-Zygarde.gif)
 
 #### Resident Evil: Door Transition (Resident Evil PSX)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-6-RE-Door.gif)
+![Resident Evil PSX](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-6-RE-Door.gif)
 
 #### Multiple Games: Mirror Break Effect (Shadow Heartsfrom the New World, Resonande of Fate, Fate/Extra, Tales of Symphonia, Dawn of the New World, Xenoblade Chronicles 2, Final Fantasy X)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-7-Broken-Mirror.gif)
+![Mirror Break Effect](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-7-Broken-Mirror.gif)
 
 # Code Implementation
 ## The System's core elements
 ### Scene Manager
 The scene manager will create update and change the current_scene.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/SceneManager.PNG)
+![SceneManager Class](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/SceneManager.PNG)
 
 ### Scene Class
 Absbtract class from which all the scenes will inherit from.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/Scene.PNG)
+![Scene Class](images/system_core_elements/Scene.PNG)
 
 ### Transition Manager
 The transition manager creates, updates and destroys the active_transition.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/TransitionManager.PNG)
+![Transition Manager Class](images/system_core_elements/TransitionManager.PNG)
 
 ### Transition Class
 Will be responsible of calling the SceneManager's SwitchScene() method to switch scene when the CHANGING TRANSITION_STEP is "activated"
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/Transition.PNG)
+![Transition Class](images/system_core_elements/Transition.PNG)
 
 ## Transition Structure
 Any given transition will be broken down in 3 steps:
@@ -263,7 +261,7 @@ On the other hand, the current_value can go from 0.0f to 1.0f, reset to 0.0f, sw
 
 Such would be the case of the Wipe, which, instead of returning back like the Slide, it needs to actually cross the screen.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/TransitionStructure.PNG)
+![Transition Structure](images/system_core_elements/TransitionStructure.PNG)
 
 ### Transition Step
 There are 4 transition steps:
@@ -279,18 +277,17 @@ There are 4 transition steps:
 ### Entering() Method
 The Entering() method will normally look like in the picture below:
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_3_Solution.PNG)
+![Entering Method](images/solutions/TODO_3_Solution.PNG)
 
 ### Changing() Method
 The Changing() method will **ALWAYS** look like in the picture below:
 
-
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/presentation_images/ChangingMethod.PNG)
+![Changing Method](images/presentation_images/ChangingMethod.PNG)
 
 ### Exiting() Method
 The Exiting() method will normally look like in the picture below:
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_4_Solution.PNG)
+![Exiting Method](images/solutions/TODO_4_Solution.PNG)
 
 ## The mathematics behind the transitions
 ### Cutoff and its relation to transition time
@@ -299,18 +296,18 @@ Technically, cutoff refers to the amount of screen that is being "cut off" by th
 
 The cutoff value can fluctuate between 0.0f and 1.0f, representing 0,0f that the screen is not being "cut off" at all and 1.0f representing that the screen has been completely cutoff. See the 2 example pictures down below:
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/presentation_images/Cutoff_Explanation.png)
+![Cutoff Explanation](images/presentation_images/Cutoff_Explanation.png)
 
 Notice that, as it was mentioned before, when the cutoff value is at 0.5f, then it means that the screen has been covered halfway through:
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/transition_math/Cutoff-Rate-Example.gif)
+![Cutoff Rate Example](images/transition_gifs/transition_math/Cutoff-Rate-Example.gif)
 
 #### Cutoff/Time Implementation
 The solution I propose to link the cutoff with the time is to take into account another parameter, the total time that a given transition step will take. So, in the end, two inputs are needed, the **timestep** input and the **transition time**.
 
 The resulting equation is preety simple:
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/GetCutoffRate.PNG)
+![GetCutoffRate Method](images/system_core_elements/GetCutoffRate.PNG)
 
 The value resulting from dividing the dt by the step_duration, which the amount of time that a given transition step will take to finish, will be given the name of **Cutoff Rate**.
 
@@ -326,7 +323,7 @@ In the case of using shaders, we can tell the GPU how to interpret a texture, so
 
 Instead of calculating the cutoff rate by using dt / step_duration, the texture will be assigning a float value from 0.0f to 1.0f depending on the color value of the texture's pixels.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/presentation_images/Cutoff_Rate_By_Shader.PNG)
+![Cutoff Rate by Shader](images/presentation_images/Cutoff_Rate_By_Shader.PNG)
 
 Following the example above, when the black value is 255, then 0.0f (or transition step start) will be assigned to the variable, and when the black value is 0, the, the assigned value will be 1.0f.
 
@@ -336,7 +333,7 @@ A linear interpolation method interpolates two values and the value returned eac
 
 The calculus goes as shown in the picture below:
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/Lerp.PNG)
+![Linear Interpolation](images/system_core_elements/Lerp.PNG)
 
 #### Lerp() Characteristics
 - Rate can go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
@@ -345,7 +342,7 @@ The calculus goes as shown in the picture below:
 
 #### Graphical Representation of Lerp()
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/transition_math/Linear-Movement.gif)
+![Graphical Representation of Lerp](images/transition_gifs/transition_math/Linear-Movement.gif)
 
 ### Non-Linear Interpolation
 #### Non-Linear Interpolation Method
@@ -353,7 +350,7 @@ A non-linear interpolation method interpolates two values and the value returned
 
 The calculus goes as shown in the picture below:
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/docs/images/system_core_elements/N_Lerp.PNG)
+![Non-Linear Interpolation](images/system_core_elements/N_Lerp.PNG)
 
 #### N_Lerp() Characteristics
 - Rate can still go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
@@ -363,13 +360,13 @@ The calculus goes as shown in the picture below:
 
 #### Graphical Representation of N_Lerp()
 
-**Ease In, Smash Out**
+**Ease In, Smash Out (Slow Start, Fast End)**
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/transition_math/Non-Linear-Movement.gif)
+![Non-Linear Movement](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/transition_math/Non-Linear-Movement.gif)
 
-**Smash In, Ease Out**
+**Smash In, Ease Out (Fast Start, Slow End)**
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/transition_math/Non-Linear-Easing-Out.gif)
+![Non-Linear Easing Out](images/transition_gifs/transition_math/Non-Linear-Easing-Out.gif)
 
 
 ## My Transitions
@@ -379,49 +376,49 @@ All these transitions have been implemented in C++ using SDL and STL
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/Cut.cpp)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/Cut.gif)
+![Own Cut Transition](images/transition_gifs/own_transitions/Cut.gif)
 
 ### Fade To Colour
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/FadeToColour.cpp)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/FadeToColor.gif)
+![Own Fade To Colour Transition](images/transition_gifs/own_transitions/FadeToColor.gif)
 
 ### Slide
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/Slide.cpp)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/Slide.gif)
+![Own Slide Transition](images/transition_gifs/own_transitions/Slide.gif)
 
 ### Wipe
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/Wipe.cpp)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/Wipe.gif)
+![Own Wipe Transition](images/transition_gifs/own_transitions/Wipe.gif)
 
 ### Alternating Bars
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/AlternatingBars.cpp)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/AlternatingBars.gif)
+![Own Alternating Bars Transition](images/transition_gifs/own_transitions/AlternatingBars.gif)
 
 ### Expanding Bars
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/ExpandingBars.cpp)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/ExpandingBars.gif)
+![Own Expanding Bars Transition](images/transition_gifs/own_transitions/ExpandingBars.gif)
 
 ### Camera To Mouse
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/CameraToMouse.cpp)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/CameraToMouse.gif)
+![Own Camera To Mouse Transition](images/transition_gifs/own_transitions/CameraToMouse.gif)
 
 ### Zoom To Mouse
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/ZoomToMouse.cpp)
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/ZoomToMouse.gif)
+![Own Zoom To Mouse Transition](images/transition_gifs/own_transitions/ZoomToMouse.gif)
 
 
 ## Code Exercises
@@ -433,198 +430,198 @@ From here on it's your turn to implement some transitions. Have fun :)
 ## TODO 0
 For TODO 0 just check out the .h files where this statement is at.
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_0.PNG)
+![TODO 0](images/exercise_statements/TODO_0.PNG)
 
 
 ## TODO 1
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_1_Statement.PNG)
+![TODO 1](images/exercise_statements/TODO_1_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_1_Solution.PNG">
+     <img src="images/solutions/TODO_1_Solution.PNG">
   </p>
 </details>
 
 If you have done this TODO correctly, you should see this after pressing 1:
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/Cut.gif)
+![TODO 1 Result](images/transition_gifs/own_transitions/Cut.gif)
 
 ## TODO 2
 From here on you will not be able to see your progress until TODO 7B
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_2_Statement.PNG)
+![TODO 2](images/exercise_statements/TODO_2_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_2_Solution.PNG">
+     <img src="https:images/solutions/TODO_2_Solution.PNG">
   </p>
 </details>
 
 ## TODO 3
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_3_Statement.PNG)
+![TODO 3](images/exercise_statements/TODO_3_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_3_Solution.PNG">
+     <img src="images/solutions/TODO_3_Solution.PNG">
   </p>
 </details>
 
 ## TODO 4
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_4_Statement.PNG)
+![TODO 4](images/exercise_statements/TODO_4_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_4_Solution.PNG">
+     <img src="images/solutions/TODO_4_Solution.PNG">
   </p>
 </details>
 
 ## TODO 5
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_5_Statement.PNG)
+![TODO 5](images/exercise_statements/TODO_5_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_5_Solution.PNG">
+     <img src="images/solutions/TODO_5_Solution.PNG">
   </p>
 </details>
 
 ## TODO 6A
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_6A_Statement.PNG)
+![TODO 6A](images/exercise_statements/TODO_6A_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_6A_Solution.PNG">
+     <img src="images/solutions/TODO_6A_Solution.PNG">
   </p>
 </details>
 
 ## TODO 6B
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_6B_Statement.PNG)
+![TODO 6B](images/exercise_statements/TODO_6B_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_6B_Solution.PNG">
+     <img src="images/solutions/TODO_6B_Solution.PNG">
   </p>
 </details>
 
 ## TODO 7A
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_7A_Statement.PNG)
+![TODO 7A](docs/images/exercise_statements/TODO_7A_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_7A_Solution.PNG">
+     <img src="images/solutions/TODO_7A_Solution.PNG">
   </p>
 </details>
 
 ## TODO 7B
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_7B_Statement.PNG)
+![TODO 7B](images/exercise_statements/TODO_7B_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_7B_Solution.PNG">
+     <img src="images/solutions/TODO_7B_Solution.PNG">
   </p>
 </details>
 
 If you have done every TODO from TODO 2 to this one, you should see this after pressing 2:
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/FadeToColor.gif)
+![TODO 2-7B Result](images/transition_gifs/own_transitions/FadeToColor.gif)
 
 Congratulations! You have coded your own FadeToColour() metod. From here on out the TODOs will have their difficulty scalated quite steeply, but more challenge means more fun right? :)
 
 ## TODO 8
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_8_Statement.PNG)
+![TODO 8](images/exercise_statements/TODO_8_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_8_Solution.PNG">
+     <img src="images/solutions/TODO_8_Solution.PNG">
   </p>
 </details>
 
 If you have completed this TODO correcly, you should see this when you LEFT CLICK:
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/CameraToMouse.gif)
+![TODO 8 Result](images/transition_gifs/own_transitions/CameraToMouse.gif)
 
 Congratulations! You can now travel all over this massive map with just a few clicks. Sit tight, after this TODO come the big boys.
 
 ## TODO 9A
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_9A_Statement.PNG)
+![TODO 9A](images/exercise_statements/TODO_9A_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_9A_Solution.PNG">
+     <img src="images/solutions/TODO_9A_Solution.PNG">
   </p>
 </details>
 
 ## TODO 9B
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_9B_Statement.PNG)
+![TODO 9B](images/exercise_statements/TODO_9B_Statement.PNG)
 
 <details> 
   <summary>Solution (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_9B_Solution.PNG">
+     <img src="images/solutions/TODO_9B_Solution.PNG">
   </p>
 </details>
 
 If you have implemented both 9A and 9B correctly, you should see this after pressing 3 and 4:
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/Slide.gif)
+![TODO 9A & 9B Result](images/transition_gifs/own_transitions/Slide.gif)
 
 Congratulations! You have implemented your own Slide Transition. C'mon now, there only remain two steps to reach the summit :)
 
 ## TODO 10A
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_10A_Statement.PNG)
+![TODO 10A](images/exercise_statements/TODO_10A_Statement.PNG)
 
 <details> 
   <summary>Solution I (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_10A_L_Solution.PNG">
+     <img src="images/solutions/TODO_10A_L_Solution.PNG">
   </p>
 </details>
 
 <details> 
   <summary>Solution II (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_10A_NL_Solution.PNG">
+     <img src="images/solutions/TODO_10A_NL_Solution.PNG">
   </p>
 </details>
 
 ## TODO 10B
 
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/exercise_statements/TODO_10B_Statement.PNG)
+![TODO 10B](images/exercise_statements/TODO_10B_Statement.PNG)
 
 <details> 
   <summary>Solution I (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_10B_L_Solution.PNG">
+     <img src="images/solutions/TODO_10B_L_Solution.PNG">
   </p>
 </details>
 
 <details> 
   <summary>Solution II (click to open)</summary>
   <p> 
-     <img src="https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/solutions/TODO_10B_NL_Solution.PNG">
+     <img src="images/solutions/TODO_10B_NL_Solution.PNG">
   </p>
 </details>
 
 If you have implemented both 10A and 10B correctly, you should see this after pressing 5 and 6:
-![](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/v1.0/docs/images/transition_gifs/own_transitions/Wipe.gif)
+![TODO 10A & 10B Result](images/transition_gifs/own_transitions/Wipe.gif)
 
 Contraulations on keeping up until the end! I hope these exercises helped you in understanding how to code your very own Camera Transition System, or the at very least know how to make some simple transitions. Whichever the case, glad you reached all the way down here :)
 
