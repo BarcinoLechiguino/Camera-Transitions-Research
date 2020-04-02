@@ -139,6 +139,8 @@ Now, notice how cleverly an effect as simple as a Cut To Black can be used, agai
 
 **Source:** *Vagrant Story* (PSX)
 
+---
+
 ## Camera Transition Techniques
 ### Manipulating a geometrical form
 This technique consists "just" in manipulating the properties of geometrical shapes (often black rectangles) and usually the main properties that are manipulated are the shape's position and opacity.
@@ -148,6 +150,8 @@ Although it is quite a simple technique to implement code wise (in comparison to
 ![Pokemon Fire Red / Green Leaf GBA](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-FadeToBlack.gif "Pokemon Fire Red / Green Leaf (GBA)")
 
 **Source:** *Pokemon Fire Red / Green Leaf* (GBA)
+
+---
 
 ### Manipulating the scene's texture
 All the textures are blended together and re-rendered into a new texture, which is then manipulated. 
@@ -159,6 +163,8 @@ For reference take a look at the piece of media shown below:
 ![Xenosaga Epospde I Blender Distortion](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif "")
 
 **Source:** *Xenosaga Episode I* (PS2)
+
+---
 
 ### Shaders
 Shaders are chunks of code that are executed in the GPU, and they modify the way an image is rendered.
@@ -204,11 +210,15 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 **Source:** *Pokemon Fire Red / Green Leaf* (GBA)
 
+---
+
 #### Fancy Fade To Black (South Park: The Stick of Truth (PC/PS4/XBOX ONE/Nintendo Switch))
 
 ![South Park: The Stick of Truth](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-2-Lightning.gif "South Park: The Stick of Truth (PC/PS3&4/XBOX360&ONE/Nintendo Switch)")
 
 **Source:** *South Park: The Stick of Truth* (PC/PS3&4/XBOX360&ONE/Nintendo Switch)
+
+---
 
 #### Wipe (Pokemon Red/Blue (GBC))
 
@@ -216,11 +226,15 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 **Source:** *Pokemon Red/Blue* (GBC)
 
+---
+
 #### Horizontal Alternating Bars (Pokemon Red/Blue (GBC))
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif "Pokemon Red/Blue (GBC)")
 
 **Source:** *Pokemon Red/Blue* (GBC)
+
+---
 
 #### Vertical Alternating Bars (Pokemon Red/Blue (GBC))
 
@@ -228,17 +242,23 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 **Source:** *Pokemon Red/Blue* (GBC)
 
+---
+
 #### Camera Translation (Vagrant Story)
 
 ![Vagrant Story](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_To_Battle.gif "Vagrant Story (PSX)")
 
 **Source:** *Vagrant Story* (PSX)
 
+---
+
 #### Composition of Basics (Grandia II)
 
 ![Grandia II](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-5-FadeTurn.gif "Grandia II (PS2)")
 
 **Source:** *Grandia II* (PS2)
+
+---
 
 ### Advanced Transitions
 #### Sliding Quarters (Pokemon Red/Blue GBC)
@@ -247,11 +267,15 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 **Source:** *Pokemon Red/Blue* (GBC)
 
+---
+
 #### Texture Re-Scaling (Pokemon Red/Blue GBC)
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-4-Reduce-Text.gif "Pokemon Red/Blue (GBC)")
 
 **Source:** *Pokemon Red/Blue* (GBC)
+
+---
 
 #### Texture Manipulation: Flakes / Scales (Wild Arms 5)
 
@@ -259,17 +283,23 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 **Source:** *Wild Arms 5* (PS2)
 
+---
+
 #### Texture Manipulation: Blender Effect (Xenosaga Episode I)
 
 ![Xenosaga Episode I](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif "Xenosaga Episode I (PS2)")
 
 **Source:** *Xenosaga Episode I* (PS2)
 
+---
+
 #### Composition of Advanced (Chrono Cross)
 
 ![Chrono Cross](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-1-Sparks.gif "Crono Cross (PSX)")
 
 **Source:** *Chrono Cross* (PSX) 
+
+---
 
 ### Themed Transitions
 #### Pokemon: Battle against a Gym Leader Brock (Pokemon Fire Red / Green Leaf GBA)
@@ -278,17 +308,23 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 **Source:** *Pokemon Fire Red / Green Leaf* (GBA)
 
+---
+
 #### Pokemon: Battle against Zygarde (Pokemon X / Y)
 
 ![Pokemon X / Y](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-1-Zygarde.gif "Pokemon X / Y (3DS)")
 
 **Source:** *Pokemon X / Y* (3DS)
 
+---
+
 #### Resident Evil: Door Transition (Resident Evil PSX)
 
 ![Resident Evil PSX](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-6-RE-Door.gif)
 
 **Source:** *Resident Evil* (PSX)
+
+---
 
 #### Multiple Games: Mirror Break Effect (Shadow Heartsfrom the New World, Resonande of Fate, Fate/Extra, Tales of Symphonia, Dawn of the New World, Xenoblade Chronicles 2, Final Fantasy X)
 
