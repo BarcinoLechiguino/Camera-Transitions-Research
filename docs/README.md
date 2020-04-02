@@ -304,22 +304,24 @@ If you want to know more about JRPG battle transitions, consider checking out [T
 ### Scene Manager
 The scene manager will create update and change the current_scene.
 
-![SceneManager Class](images/system_core_elements/SceneManager.PNG)
+![Scene Manager Class](images/system_core_elements/SceneManager.PNG "Scene Manager Class")
 
 ### Scene Class
 Absbtract class from which all the scenes will inherit from.
 
-![Scene Class](images/system_core_elements/Scene.PNG)
+![Scene Class](images/system_core_elements/Scene.PNG "Scene Class")
 
 ### Transition Manager
 The transition manager creates, updates and destroys the active_transition.
 
-![Transition Manager Class](images/system_core_elements/TransitionManager.PNG)
+![Transition Manager Class](images/system_core_elements/TransitionManager.PNG "Transition Manager")
 
 ### Transition Class
-Will be responsible of calling the SceneManager's SwitchScene() method to switch scene when the CHANGING TRANSITION_STEP is "activated"
+Will be responsible calling the SceneManager's SwitchScene() method to switch scene when the CHANGING TRANSITION_STEP is "activated"
 
-![Transition Class](images/system_core_elements/Transition.PNG)
+![Transition Class](images/system_core_elements/Transition.PNG "Transition Class")
+
+Each transition will have their own module and will inherit from the Transition class, and their their overall structure will be laid out down below.
 
 ## Transition Structure
 Any given transition will be broken down in 3 steps:
@@ -336,7 +338,7 @@ On the other hand, the current_value can go from 0.0f to 1.0f, reset to 0.0f, sw
 
 Such would be the case of the Wipe, which, instead of returning back like the Slide, it needs to actually cross the screen.
 
-![Transition Structure](images/system_core_elements/TransitionStructure.PNG)
+![Transition Structure](images/system_core_elements/TransitionStructure.PNG "Transition Structure")
 
 ### Transition Step
 There are 4 transition steps:
@@ -352,44 +354,46 @@ There are 4 transition steps:
 ### Entering() Method
 The Entering() method will normally look like in the picture below:
 
-![Entering Method](images/solutions/TODO_3_Solution.PNG)
+![Entering Method](images/solutions/TODO_3_Solution.PNG "Entering() Method")
 
 ### Changing() Method
 The Changing() method will **ALWAYS** look like in the picture below:
 
-![Changing Method](images/presentation_images/ChangingMethod.PNG)
+![Changing Method](images/presentation_images/ChangingMethod.PNG "Changing() Method")
 
 ### Exiting() Method
 The Exiting() method will normally look like in the picture below:
 
-![Exiting Method](images/solutions/TODO_4_Solution.PNG)
+![Exiting Method](images/solutions/TODO_4_Solution.PNG "Exiting() Method")
 
 ## The mathematics behind the transitions
 ### Cutoff and its relation to transition time
 #### The Cutoff concept
-Technically, cutoff refers to the amount of screen that is being "cut off" by the transition. So it has nothing to do with **time**, for now at least. 
+Technically, cutoff refers to the amount of screen that is being "cut off" (or covered) by the transition. So it has nothing to do with **time**, for now at least. 
 
-The cutoff value can fluctuate between 0.0f and 1.0f, representing 0,0f that the screen is not being "cut off" at all and 1.0f representing that the screen has been completely cutoff. See the 2 example pictures down below:
+The cutoff value can fluctuate between 0.0f and 1.0f, with 0,0f representing that the screen is not being "cut off" at all and 1.0f representing that the screen has been completely cutoff. See the 2 example pictures down below:
 
-![Cutoff Explanation](images/presentation_images/Cutoff_Explanation.png)
+![Cutoff Explanation](images/presentation_images/Cutoff_Explanation.png "Cutoff Explanation")
 
-Notice that, as it was mentioned before, when the cutoff value is at 0.5f, then it means that the screen has been covered halfway through:
+Notice that, as it was mentioned before, when the cutoff value is at 0.5f, then it means that the screen has been covered halfway:
 
-![Cutoff Rate Example](images/transition_gifs/transition_math/Cutoff-Rate-Example.gif)
+![Cutoff Rate Example](images/transition_gifs/transition_math/Cutoff-Rate-Example.gif "Cutoff Rate Example")
+
+So, how can the cutoff be linked with time and apply it to camera transitions?
 
 #### Cutoff/Time Implementation
-The solution I propose to link the cutoff with the time is to take into account another parameter, the total time that a given transition step will take. So, in the end, two inputs are needed, the **timestep** input and the **transition time**.
+The solution I propose to link the cutoff with the time is to take into account another parameter, the total time that a given transition step will take. So, in the end, two inputs are needed, the **timestep (dt)** input and the **transition time**.
 
 The resulting equation is preety simple:
 
-![GetCutoffRate Method](images/system_core_elements/GetCutoffRate.PNG)
+![GetCutoffRate Method](images/system_core_elements/GetCutoffRate.PNG "GetCutoffRate() Method")
 
 The value resulting from dividing the dt by the step_duration, which the amount of time that a given transition step will take to finish, will be given the name of **Cutoff Rate**.
 
 **Cutoff Rate Characteristics**
 - Will be constant each step (given that the timestep does not fluctuate).
 - If the value of the Cutoff Rate is stored in a variable each iteration, when that variable reaches a value of 1.0f (starting from 0.0f) or 0.0f (starting from 1.0f), then it means that the current transition step has ended.
-- The value that defines the lifetime of a transition step will always be either 1.0f or 0.0f regardless of step_duration.
+- The value that defines the current state of a transition step will always be in the range of [0.0f, 1.0f] regardless of step_duration.
 
 In my implementation, I named the accumulating variable current_cutoff.
 
@@ -398,7 +402,7 @@ In the case of using shaders, we can tell the GPU how to interpret a texture, so
 
 Instead of calculating the cutoff rate by using dt / step_duration, the texture will be assigning a float value from 0.0f to 1.0f depending on the color value of the texture's pixels.
 
-![Cutoff Rate by Shader](images/presentation_images/Cutoff_Rate_By_Shader.PNG)
+![Cutoff Rate by Shader](images/presentation_images/Cutoff_Rate_By_Shader.PNG "Cutoff Rate by Shader")
 
 Following the example above, when the black value is 255, then 0.0f (or transition step start) will be assigned to the variable, and when the black value is 0, the, the assigned value will be 1.0f.
 
@@ -408,7 +412,7 @@ A linear interpolation method interpolates two values and the value returned eac
 
 The calculus goes as shown in the picture below:
 
-![Linear Interpolation](images/system_core_elements/Lerp.PNG)
+![Linear Interpolation](images/system_core_elements/Lerp.PNG "Linear Interpolation")
 
 #### Lerp() Characteristics
 - Rate can go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
@@ -417,7 +421,7 @@ The calculus goes as shown in the picture below:
 
 #### Graphical Representation of Lerp()
 
-![Graphical Representation of Lerp](images/transition_gifs/transition_math/Linear-Movement.gif)
+![Graphical Representation of Lerp](images/transition_gifs/transition_math/Linear-Movement.gif "Graphicla Representation of Lerp()")
 
 ### Non-Linear Interpolation
 #### Non-Linear Interpolation Method
@@ -425,7 +429,7 @@ A non-linear interpolation method interpolates two values and the value returned
 
 The calculus goes as shown in the picture below:
 
-![Non-Linear Interpolation](images/system_core_elements/N_Lerp.PNG)
+![Non-Linear Interpolation](images/system_core_elements/N_Lerp.PNG "Non-Linear Interpolation")
 
 #### N_Lerp() Characteristics
 - Rate can still go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
@@ -437,27 +441,33 @@ The calculus goes as shown in the picture below:
 
 **Ease In, Smash Out (Slow Start, Fast End)**
 
-![Non-Linear Movement](images/transition_gifs/transition_math/Non-Linear-Movement.gif)
+![Non-Linear Movement](images/transition_gifs/transition_math/Non-Linear-Movement.gif "Non-Linear Movement")
 
 **Smash In, Ease Out (Fast Start, Slow End)**
 
-![Non-Linear Easing Out](images/transition_gifs/transition_math/Non-Linear-Easing-Out.gif)
+![Non-Linear Easing Out](images/transition_gifs/transition_math/Non-Linear-Easing-Out.gif "Non-Linear Easing Out")
 
+---
+If you want to know more about Easing Functions and how to create a library of them, consider checking out [Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations](https://www.youtube.com/watch?v=mr5xkf6zSzk "Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations"). It does a really good job at introducing the basics of easing functions and multiple different easing functions are shown.
+
+---
 
 ## My Transitions
-All these transitions have been implemented in C++ using SDL and STL
+All these transitions have been implemented in C++ using SDL and STL. 
+
+All transitions can have custom step durations and custom colours. Moreover, all transitions except the Fade To Colour can have their transition defined by a linearly or non-linearly interpolated movement.
 
 ### Cut
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/Cut.cpp)
 
-![Own Cut Transition](images/transition_gifs/own_transitions/Cut.gif)
+![Own Cut Transition](images/transition_gifs/own_transitions/Cut.gif "Own Cut Transition")
 
 ### Fade To Colour
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/FadeToColour.cpp)
 
-![Own Fade To Colour Transition](images/transition_gifs/own_transitions/FadeToColor.gif)
+![Own Fade To Colour Transition](images/transition_gifs/own_transitions/FadeToColor.gif "Own Fade To Colour Transition")
 
 ### Slide
 
@@ -465,11 +475,15 @@ All these transitions have been implemented in C++ using SDL and STL
 
 ![Own Slide Transition](images/transition_gifs/own_transitions/Slide.gif)
 
+**Additional Characteristics:** The direction from which the slide transition from can be custom defined.
+
 ### Wipe
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/Wipe.cpp)
 
 ![Own Wipe Transition](images/transition_gifs/own_transitions/Wipe.gif)
+
+**Additional Characteristics:** The direction from which the wipe transition from can be custom defined.
 
 ### Alternating Bars
 
@@ -477,11 +491,15 @@ All these transitions have been implemented in C++ using SDL and STL
 
 ![Own Alternating Bars Transition](images/transition_gifs/own_transitions/AlternatingBars.gif)
 
+**Additional Characteristics:** The number of bars, as well as the direction they come from, can be custom defined.
+
 ### Expanding Bars
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/ExpandingBars.cpp)
 
 ![Own Expanding Bars Transition](images/transition_gifs/own_transitions/ExpandingBars.gif)
+
+**Additional Characteristics:** The number of bars, as well as to which direction they expand to, can be custom defined.
 
 ### Camera To Mouse
 
@@ -489,12 +507,15 @@ All these transitions have been implemented in C++ using SDL and STL
 
 ![Own Camera To Mouse Transition](images/transition_gifs/own_transitions/CameraToMouse.gif)
 
+**Additional Characteristics:** The speed at which the camera transitions can be custom defined.
+
 ### Zoom To Mouse
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/ZoomToMouse.cpp)
 
 ![Own Zoom To Mouse Transition](images/transition_gifs/own_transitions/ZoomToMouse.gif)
 
+**Additional Characteristics:** The zoom amount can be custom defined.
 
 ## Code Exercises
 
