@@ -1,5 +1,9 @@
 # Camera Transitions
-This project was developed by [Ángel González J.]([https://www.linkedin.com/in/%C3%A1ngel-gonz%C3%A1lez-jim%C3%A9nez-147174196/?locale=es_ES](https://www.linkedin.com/in/ángel-gonzález-jiménez-147174196/?locale=es_ES)) , a second year student of the [Bachelor's degrees in Video Game Design and Development at CITM/TTC](<https://www.citm.upc.edu/ing/estudis/graus-videojocs/>) as of 31/03/2020. 
+This research project was developed by [Ángel González J.](https://www.linkedin.com/in/%C3%A1ngel-gonz%C3%A1lez-jim%C3%A9nez-147174196/?locale=es_ES) , a second year student of the [Bachelor's degrees in Video Game Design and Development at CITM/TTC](<https://www.citm.upc.edu/ing/estudis/graus-videojocs/>) as of 31/03/2020. 
+
+The project has two main goals:
+- To research about camera transitions and prepare a document and a presentation on the topic.
+- To produce a functional scene and transition system in C++ and make some coding exercices about the system.
 
 This content was generated for the Project II subject under the supervision of lecturer [Ramón Santamaria](<https://www.linkedin.com/in/raysan/>).
 
@@ -53,68 +57,83 @@ This content was generated for the Project II subject under the supervision of l
 
 
 ## What is a camera transition?
-Camera transitions are a post-production technique used to connect one shot/scene to another. With their origins being in the film industry, they are used to convey a mood, suggest the passage of time… In short, for aesthetic reasons.
+Camera transitions are a post-production technique used to connect one shot/scene to another. With their origins being in the film industry, they are used to convey a mood, suggest the passage of time… In short, for aesthetic reasons. Moreover, moving the camera through the scene can also be considered a camera transition. 
+
+So far so good, right? Let's see some transition examples.
 
 ## Basic Camera Transitions
 ### Cut
-Instantly connects one shot to another. These shots normally happen at the same time.
-This transition would be able to have a really parallel in video games, but, as it would go against the very reason they are implemented, cuts are ommited in video games
+A Cut instantly connects one shot to another, and is normally used to change the perspective or to advance the story. There are many types of cuts: Cutting on action, Cut Away, Cross Cut, Jump Cut... and each of them serve a particular purpose. 
 
-![Cut](images/transition_gifs/basic_transitions/Cut-Transition.gif "Aren't Cuts really cool?")
+Its the transition that is the most commonly seen.
+
+![Cut](images/transition_gifs/basic_transitions/Cut-Transition.gif)
 
 ### Fade In/Out
-The scene gradually turns to one colour, normally black, and comes back. Used to convey completion, the passage of a period of time and ascension  (Fade In/Out to White). The most common transition after the cut.
+In a Fade In, the scene gradually turns to one colour and in a Fade Out is the opposite happens. Although any colour can potentially be used in this transition, most of the times only two are used: black and white. Black conveys completion or the passage of a period of time. White, on the other hand, conveys ambiguity and hope. 
+
+Its the most common transition after the Cut.
 
 ![Fade In](images/transition_gifs/basic_transitions/Fade-In-Transition.gif)
 
 ### Wipe
-One shot replaces another, normally by traveling from one side of the screen to the other. Can also travel from anywhere on the screen.
+In a Wipe a shot replaces another, normally by traveling from one side of the frame to the other. They are often used to transition between storylines taking place in different locations and to establish tension or conflict. 
+
+Wipes can come in many forms and shapes, as can be seen in the media below:
 
 ![Wipe](images/transition_gifs/basic_transitions/Wipe-Transitions.gif)
 
 ### Dissolve
-Like the wipe, one shot replaces another. This time however, instead of gradually turning to a colour, the scene turns to another. Not that common nowadays.  
+In a Dissolve, one scene overlaps with another. The transitioning scene gradually loses opacity while the scene that's being transitioned to gradually gains it. Usually used at the end of one scene and the beginning of the next, it can show that there is a link between two narratives or scenes. This transition can also be implemented to show the passage of time or to move from one location to another.
+
+Although it was common some decades ago, nowadays it's a pretty rare transition to see.
 
 ![Dissolve](images/transition_gifs/basic_transitions/Dissolve-Transitions.gif)
 
 ### Zoom
-The zoom is incresaed in one scene and is decreased in the next one. Wants to convey a frenetic pace or emphasize on someone or something on the screen.
+In a Zoom, the camera smoothly transitions from a long shot to a close-up and viceversa, normally by increasing or decreasing the camera's zoom. It is normally used to convey a frenetic pace, to quickly change shots or to emphasize someone or something that's on-screen.
+
+Some zoom examples can be seen in the media below:
 
 ![Zoom](images/transition_gifs/basic_transitions/Zoom.gif)
 
 ## Why apply camera transitions to video games?
-To put it plainly, it's to hide different elements we do not want the players to see from them. One of the main reasons can be perfectly observed in the material below. Take a look and see what happens.
+Now to the main question, why should anyone go throught the trouble of implementing camera transitions in their games? 
 
-![Load Time Difference](images/transition_gifs/video_game_transitions/Load-Time-Difference.gif)
+Before answering that question, let's closely observe the material below and see what happens.
+
+![Load Time Difference](images/transition_gifs/video_game_transitions/Load-Time-Difference.gif "Comparison between the Steam and the PSX version of Chrono Trigger")
 
 ### The reasoning behind video game camera transitions
+To put it plainly, it's to hide different elements from the player's sight.
+
 Contrary to films, video games require time to load from one scene to another.
 
-This process can freeze the game for a period of time, as it has just been seen in the above picture. It can take from milliseconds to, at worst, minutes. To hide this “freeze time”, camera transitions are implemented.
+To transition from one scene to another, the current scene, and it's related information, needs to be unloaded and the next one to be loaded. This process can freeze the game for a period of time, as it has just been seen in the piece of media seen above above. This "freeze time" can be from milliseconds to, at worst, minutes long. 
+
+So, what would players think if the game just froze every time they triggered a scene change? If this process is not hidden from the players, they would have the impression that the game is bugged or that it was poorly developed.
 
 So, summarizing, while traditionally camera transitions are used for aesthetic purposes, in video games they serve a far more utilitarian purpose.
 
 ### Other uses for video game transitions
-Although originally camera transitions had to be implemented due to purely utilitarian reasons, nowadays video games have advanced enough to be able to afford to use camera transitions for non-utilitarian purposes such as to increase the feeling of immersion or to enhancethe narrative with it. 
+Although originally camera transitions had to be implemented for purely utilitarian reasons (due to technological limitations), nowadays, technology has advanced enough to allow video games to afford using them for non-utilitarian purposes such as to enhance the players' immersion or to spice up the narrative, among others. 
 
-One great example of how to use camera transitions to bring the narrative to far higher heights is Vagrant Story (PSX). See how the camera is translated and how that creates a "reveal" moment when there was none previously.
+One great example of how to use camera transitions to heighten both the narrative and it's emotional impact on the players is ***Vagrant Story (PSX)***. See how the camera is translated and, taking advantage of the time that the camera is covered by the main character, the game loads the model of the other character, creating a "reveal" moment when there was none previously.
 
 ![Vagrant Story Camera Translation I](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_Hiding.gif)
 
-Now, notice how an effect as simple as a Cut To Black can be used so cleverly. It should be noted that this segment of the game belongs to the introduction, not the end of the game.
+Now, notice how cleverly an effect as simple as a Cut To Black can be used, again, to enhance the narrative. It should be noted that this segment of the game belongs to the introduction, not the end of the game.
 
 ![Vagrant Story Cut To Credits](images/transition_gifs/video_game_transitions/RPG_Transitions/Cut_To_Credits.gif)
 
 
 ## Camera Transition Techniques
 ### Manipulating a geometrical form
-Just “moving" geometrical shapes around, normally rectangles.
+This technique consists "just" in manipulating the properties of geometrical shapes (often black rectangles) and usually the main properties that are manipulated are the shape's position and opacity.
 
-Although it is quite simple to move a rect, for example, which lowers the difficulty of making transitions with them, that simplicity is what really limits the possibilites they can offer.
+Although it is quite a simple technique to implement code wise (in comparison to the following two), that simplicity really limits the possibilites that it can offer.
 
-Again, this technique is really simple code wise (in comparison with the following two).
-
-![Pokemon Red/Blue Horizontal Bars](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif)
+![Pokemon Fire Red / Green Leaf GBA ](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-FadeToBlack.gif)
 
 ### Manipulating the scene's texture
 All the textures are blended together and manipulated.
