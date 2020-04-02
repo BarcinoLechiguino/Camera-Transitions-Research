@@ -463,11 +463,15 @@ All transitions can have custom step durations and custom colours. Moreover, all
 
 ![Own Cut Transition](images/transition_gifs/own_transitions/Cut.gif "Own Cut Transition")
 
+---
+
 ### Fade To Colour
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/FadeToColour.cpp)
 
 ![Own Fade To Colour Transition](images/transition_gifs/own_transitions/FadeToColor.gif "Own Fade To Colour Transition")
+
+---
 
 ### Slide
 
@@ -477,6 +481,8 @@ All transitions can have custom step durations and custom colours. Moreover, all
 
 **Additional Characteristics:** The direction from which the slide transition from can be custom defined.
 
+---
+
 ### Wipe
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/Wipe.cpp)
@@ -484,6 +490,8 @@ All transitions can have custom step durations and custom colours. Moreover, all
 ![Own Wipe Transition](images/transition_gifs/own_transitions/Wipe.gif)
 
 **Additional Characteristics:** The direction from which the wipe transition from can be custom defined.
+
+---
 
 ### Alternating Bars
 
@@ -493,6 +501,8 @@ All transitions can have custom step durations and custom colours. Moreover, all
 
 **Additional Characteristics:** The number of bars, as well as the direction they come from, can be custom defined.
 
+---
+
 ### Expanding Bars
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/ExpandingBars.cpp)
@@ -500,6 +510,8 @@ All transitions can have custom step durations and custom colours. Moreover, all
 ![Own Expanding Bars Transition](images/transition_gifs/own_transitions/ExpandingBars.gif)
 
 **Additional Characteristics:** The number of bars, as well as to which direction they expand to, can be custom defined.
+
+---
 
 ### Camera To Mouse
 
@@ -509,6 +521,8 @@ All transitions can have custom step durations and custom colours. Moreover, all
 
 **Additional Characteristics:** The speed at which the camera transitions can be custom defined.
 
+---
+
 ### Zoom To Mouse
 
 [Source Code](https://github.com/BarcinoLechiguino/Camera-Transitions-Research/blob/master/exercises/solution/Motor2D/ZoomToMouse.cpp)
@@ -516,6 +530,8 @@ All transitions can have custom step durations and custom colours. Moreover, all
 ![Own Zoom To Mouse Transition](images/transition_gifs/own_transitions/ZoomToMouse.gif)
 
 **Additional Characteristics:** The zoom amount can be custom defined.
+
+---
 
 ## Code Exercises
 
@@ -749,6 +765,7 @@ If you have implemented both 10A and 10B correctly, you should see this after pr
 
 Contraulations on keeping up until the end! I hope these exercises helped you in understanding how to code your very own Camera Transition System, or the at very least know how to make some simple transitions. Whichever the case, glad you reached all the way down here :)
 
+---
 
 ## Links and References
 #### **GIFS**
