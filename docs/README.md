@@ -1,11 +1,11 @@
 # Camera Transitions
-This research project was developed by [Ángel González J.](https://www.linkedin.com/in/%C3%A1ngel-gonz%C3%A1lez-jim%C3%A9nez-147174196/?locale=es_ES) , a second year student of the [Bachelor's degrees in Video Game Design and Development at CITM/TTC](<https://www.citm.upc.edu/ing/estudis/graus-videojocs/>) as of 31/03/2020. 
+This research project was developed by [Ángel González J.](https://www.linkedin.com/in/%C3%A1ngel-gonz%C3%A1lez-jim%C3%A9nez-147174196/?locale=es_ES "My LinkedIn") , a second year student of the [Bachelor's degree in Video Game Design and Development at CITM/TTC](<https://www.citm.upc.edu/ing/estudis/graus-videojocs/> "The Degree") as of 31/03/2020. 
 
 The project has two main goals:
 - To research about camera transitions and prepare a document and a presentation on the topic.
 - To produce a functional scene and transition system in C++ and make some coding exercices about the system.
 
-This content was generated for the Project II subject under the supervision of lecturer [Ramón Santamaria](<https://www.linkedin.com/in/raysan/>).
+This content was generated for the Project II subject under the supervision of lecturer [Ramón Santamaria](<https://www.linkedin.com/in/raysan/> "His LinkedIn").
 
 ## Table of contents
 - What is a camera transition?
@@ -62,40 +62,47 @@ Camera transitions are a post-production technique used to connect one shot/scen
 So far so good, right? Let's see some transition examples.
 
 ## Basic Camera Transitions
+- **Disclaimer:** Sources can be found after the **Zoom** section.
+
 ### Cut
 A Cut instantly connects one shot to another, and is normally used to change the perspective or to advance the story. There are many types of cuts: Cutting on action, Cut Away, Cross Cut, Jump Cut... and each of them serve a particular purpose. 
 
 Its the transition that is the most commonly seen.
 
-![Cut](images/transition_gifs/basic_transitions/Cut-Transition.gif)
+![Cut](images/transition_gifs/basic_transitions/Cut-Transition.gif "Cut Transition Examples")
 
 ### Fade In/Out
 In a Fade In, the scene gradually turns to one colour and in a Fade Out is the opposite happens. Although any colour can potentially be used in this transition, most of the times only two are used: black and white. Black conveys completion or the passage of a period of time. White, on the other hand, conveys ambiguity and hope. 
 
 Its the most common transition after the Cut.
 
-![Fade In](images/transition_gifs/basic_transitions/Fade-In-Transition.gif)
+![Fade In/Out](images/transition_gifs/basic_transitions/Fade-In-Transition.gif "Fade In/Out Transition Examples")
 
 ### Wipe
 In a Wipe a shot replaces another, normally by traveling from one side of the frame to the other. They are often used to transition between storylines taking place in different locations and to establish tension or conflict. 
 
 Wipes can come in many forms and shapes, as can be seen in the media below:
 
-![Wipe](images/transition_gifs/basic_transitions/Wipe-Transitions.gif)
+![Wipe](images/transition_gifs/basic_transitions/Wipe-Transitions.gif "Wipe Transition Examples")
 
 ### Dissolve
 In a Dissolve, one scene overlaps with another. The transitioning scene gradually loses opacity while the scene that's being transitioned to gradually gains it. Usually used at the end of one scene and the beginning of the next, it can show that there is a link between two narratives or scenes. This transition can also be implemented to show the passage of time or to move from one location to another.
 
 Although it was common some decades ago, nowadays it's a pretty rare transition to see.
 
-![Dissolve](images/transition_gifs/basic_transitions/Dissolve-Transitions.gif)
+![Dissolve](images/transition_gifs/basic_transitions/Dissolve-Transitions.gif "Dissolve Transition Examples")
 
 ### Zoom
 In a Zoom, the camera smoothly transitions from a long shot to a close-up and viceversa, normally by increasing or decreasing the camera's zoom. It is normally used to convey a frenetic pace, to quickly change shots or to emphasize someone or something that's on-screen.
 
 Some zoom examples can be seen in the media below:
 
-![Zoom](images/transition_gifs/basic_transitions/Zoom.gif)
+![Zoom](images/transition_gifs/basic_transitions/Zoom.gif "Zoom Transition Examples")
+
+---
+If you want to know more about these kind of transitions, consider taking a look at [Cuts & Transitions 101](https://www.youtube.com/watch?v=OAH0MoAv2CI "Cuts & Transitions 101"). It offers a more in-depth explanation on every transition that has been mentioned above and introduces some more.
+
+---
 
 ## Why apply camera transitions to video games?
 Now to the main question, why should anyone go throught the trouble of implementing camera transitions in their games? 
@@ -120,12 +127,15 @@ Although originally camera transitions had to be implemented for purely utilitar
 
 One great example of how to use camera transitions to heighten both the narrative and it's emotional impact on the players is ***Vagrant Story (PSX)***. See how the camera is translated and, taking advantage of the time that the camera is covered by the main character, the game loads the model of the other character, creating a "reveal" moment when there was none previously.
 
-![Vagrant Story Camera Translation I](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_Hiding.gif)
+![Vagrant Story Camera Translation I](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_Hiding.gif "Loading a model while the camera is obscured")
+
+**Source:** *Vagrant Story* (PSX)
 
 Now, notice how cleverly an effect as simple as a Cut To Black can be used, again, to enhance the narrative. It should be noted that this segment of the game belongs to the introduction, not the end of the game.
 
-![Vagrant Story Cut To Credits](images/transition_gifs/video_game_transitions/RPG_Transitions/Cut_To_Credits.gif)
+![Vagrant Story Cut To Credits](images/transition_gifs/video_game_transitions/RPG_Transitions/Cut_To_Credits.gif "Cut To Credits")
 
+**Source:** *Vagrant Story* (PSX)
 
 ## Camera Transition Techniques
 ### Manipulating a geometrical form
@@ -133,115 +143,161 @@ This technique consists "just" in manipulating the properties of geometrical sha
 
 Although it is quite a simple technique to implement code wise (in comparison to the following two), that simplicity really limits the possibilites that it can offer.
 
-![Pokemon Fire Red / Green Leaf GBA ](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-FadeToBlack.gif)
+![Pokemon Fire Red / Green Leaf GBA](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-FadeToBlack.gif "Pokemon Fire Red / Green Leaf (GBA)")
+
+**Source:** *Pokemon Fire Red / Green Leaf* (GBA)
 
 ### Manipulating the scene's texture
-All the textures are blended together and manipulated.
+All the textures are blended together and re-rendered into a new texture, which is then manipulated. 
 
-It's a really flexible way to make transitions as textures can be modified in a great deal of ways more than "geometrical forms".
+Although it is quite complex to implement this technique code wise, it's a really flexible way of making transitions as textures can be modified and tampered with in a great deal of ways. 
 
-Code wise its quite complex to make transitions like the one in the example.
+For reference take a look at the piece of media shown below:
 
-![Xenosaga Epospde I Blender Distortion](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif)
+![Xenosaga Epospde I Blender Distortion](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif "")
+
+**Source:** *Xenosaga Episode I* (PS2)
 
 ### Shaders
-Shaders are chunks of code that are executed in the GPU. They modify the way an image is rendered.
+Shaders are chunks of code that are executed in the GPU, and they modify the way an image is rendered.
 
-Using shaders to make transitions has become a widespread practice due to the possibilities they bring.
+Code wise, this technique entails an even higher level of complexity than manipulating a texture. However, using shaders to make transitions has become a widespread practice due to the sheer amount of possibilities that they bring.
 
 #### Shader Transition Examples
+- **Disclaimer:** Both shader transitions shown below were made in [Unity](https://unity.com/ "Unity Engine").
+- **Disclaimer II:** Sources can be found after the **Pokeball Transition** section.
 
 **Waves Transition**
 Original Texture:
 
-![Waves Shader Texture](images/presentation_images/Shader_Waves.PNG)
+![Waves Shader Texture](images/presentation_images/Shader_Waves.PNG "Waves transition grayscale texture")
 
 Transition:
 
-![Waves Shader Transition](images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-2-Waves.gif)
+![Waves Shader Transition](images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-2-Waves.gif "Waves transition end result")
 
 **Pokeball Transition**
 
 Original Texture:
 
-![Pokeball Shader Texture](images/presentation_images/Shader_Pokeball.PNG)
+![Pokeball Shader Texture](images/presentation_images/Shader_Pokeball.PNG "Pokeball transition grayscale texture")
 
 Transition:
 
-![Pokeball Shader Transition](images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-1-Pokeball.gif)
+![Pokeball Shader Transition](images/transition_gifs/video_game_transitions/Shader_Transtions/Shader-Transition-1-Pokeball.gif "Pokeball transition end result")
 
-If you want to know more about applying shaders to camera transitions, check [Shaders Case Study - Pokémon Battle Transitions](<https://www.youtube.com/watch?v=LnAoD7hgDxw>) out, it is really easy to understand and introduces you to a lot of the basics really easily.
+---
+If you want to know more about applying shaders to camera transitions, consider checking [Shaders Case Study - Pokémon Battle Transitions](<https://www.youtube.com/watch?v=LnAoD7hgDxw> "Shaders Case Study - Pokémon Battle Transitions") out, it is really easy to understand and does a great job at introducing the basics.
+
+---
 
 ## VG Transition Examples
 #### Disclaimer 
-The majority of the transitions that will be set as examples come from Pokemon and JRPG  games, in special from battle transitions. This is due to the fact that battle transitions are as diverse as they can be, and this particular segment of camera transitions reach out to all camera transition techniques to bring to reality really interesting transitions.
+The majority of the transitions that will be set as examples come from JRPG games, in special from battle transitions. This is due to the fact that battle transitions are as diverse as they can be, and this particular segment of camera transitions reach out to all camera transition techniques to bring to reality really interesting transitions.
 
 ### Basic transitions
-#### Fade To Black (Pokemon Fire Red / Green Leaf GBA)
+#### Fade To Black
 
-![Pokemon Fire Red / Green Leaf GBA ](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-FadeToBlack.gif)
+![Pokemon Fire Red / Green Leaf GBA ](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-FadeToBlack.gif "Pokemon Fire Red / Green Leaf (GBA)")
 
-#### Fancy Fade To Black (South Park: The Stick of Truth)
+**Source:** *Pokemon Fire Red / Green Leaf* (GBA)
 
-![ South Park: The Stick of Truth ](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-2-Lightning.gif)
+#### Fancy Fade To Black (South Park: The Stick of Truth (PC/PS4/XBOX ONE/Nintendo Switch))
 
-#### Wipe (Pokemon Red/Blue GBC)
+![South Park: The Stick of Truth](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-2-Lightning.gif "South Park: The Stick of Truth (PC/PS3&4/XBOX360&ONE/Nintendo Switch)")
 
-![ Pokemon Red/Blue GBC ](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-1-Circular-Wi.gif)
+**Source:** *South Park: The Stick of Truth* (PC/PS3&4/XBOX360&ONE/Nintendo Switch)
 
-#### Horizontal Alternating Bars (Pokemon Red/Blue GBC)
+#### Wipe (Pokemon Red/Blue (GBC))
 
-![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif)
+![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-1-Circular-Wi.gif "Pokemon Red/Blue (GBC)")
 
-#### Vertical Alternating Bars (Pokemon Red/Blue GBC)
+**Source:** *Pokemon Red/Blue* (GBC)
 
-![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-3-Vertical-Ba.gif)
+#### Horizontal Alternating Bars (Pokemon Red/Blue (GBC))
+
+![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif "Pokemon Red/Blue (GBC)")
+
+**Source:** *Pokemon Red/Blue* (GBC)
+
+#### Vertical Alternating Bars (Pokemon Red/Blue (GBC))
+
+![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-3-Vertical-Ba.gif "Pokemon Red/Blue (GBC)")
+
+**Source:** *Pokemon Red/Blue* (GBC)
 
 #### Camera Translation (Vagrant Story)
 
-![Vagrant Story](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_To_Battle.gif)
+![Vagrant Story](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_To_Battle.gif "Vagrant Story (PSX)")
+
+**Source:** *Vagrant Story* (PSX)
 
 #### Composition of Basics (Grandia II)
 
-![Grandia II](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-5-FadeTurn.gif)
+![Grandia II](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-5-FadeTurn.gif "Grandia II (PS2)")
+
+**Source:** *Grandia II* (PS2)
 
 ### Advanced Transitions
 #### Sliding Quarters (Pokemon Red/Blue GBC)
 
-![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-5-Slide-Quart.gif)
+![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-5-Slide-Quart.gif "Pokemon Red/Blue (GBC)")
+
+**Source:** *Pokemon Red/Blue* (GBC)
 
 #### Texture Re-Scaling (Pokemon Red/Blue GBC)
 
-![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-4-Reduce-Text.gif)
+![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-4-Reduce-Text.gif "Pokemon Red/Blue (GBC)")
+
+**Source:** *Pokemon Red/Blue* (GBC)
 
 #### Texture Manipulation: Flakes / Scales (Wild Arms 5)
 
-![Wild Arms 5](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-3-Flakes.gif)
+![Wild Arms 5](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-3-Flakes.gif "Wild Arms 5 (PS2)")
+
+**Source:** *Wild Arms 5* (PS2)
 
 #### Texture Manipulation: Blender Effect (Xenosaga Episode I)
 
-![Xenosaga Episode I](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif)
+![Xenosaga Episode I](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif "Xenosaga Episode I (PS2)")
+
+**Source:** *Xenosaga Episode I* (PS2)
 
 #### Composition of Advanced (Chrono Cross)
 
-![Chrono Cross](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-1-Sparks.gif)
+![Chrono Cross](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-1-Sparks.gif "Crono Cross (PSX)")
+
+**Source:** *Chrono Cross* (PSX) 
 
 ### Themed Transitions
 #### Pokemon: Battle against a Gym Leader Brock (Pokemon Fire Red / Green Leaf GBA)
 
-![Pokemon Fire Red / Green Leaf GBA](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-2-Brock-Battle.gif)
+![Pokemon Fire Red / Green Leaf GBA](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-2-Brock-Battle.gif "Pokemon Fire Red / Green Leaf (GBA)")
+
+**Source:** *Pokemon Fire Red / Green Leaf* (GBA)
 
 #### Pokemon: Battle against Zygarde (Pokemon X / Y)
 
-![Pokemon X / Y](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-1-Zygarde.gif)
+![Pokemon X / Y](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-1-Zygarde.gif "Pokemon X / Y (3DS)")
+
+**Source:** *Pokemon X / Y* (3DS)
 
 #### Resident Evil: Door Transition (Resident Evil PSX)
 
 ![Resident Evil PSX](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-6-RE-Door.gif)
 
+**Source:** *Resident Evil* (PSX)
+
 #### Multiple Games: Mirror Break Effect (Shadow Heartsfrom the New World, Resonande of Fate, Fate/Extra, Tales of Symphonia, Dawn of the New World, Xenoblade Chronicles 2, Final Fantasy X)
 
 ![Mirror Break Effect](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-7-Broken-Mirror.gif)
+
+**Source:** *Shadow Heartsfrom the New World, Resonande of Fate, Fate/Extra, Tales of Symphonia, Dawn of the New World, Xenoblade Chronicles 2, Final Fantasy X* (Multiple Platforms)
+
+---
+If you want to know more about JRPG battle transitions, consider checking out [The Art of the JRPG Battle Transition](https://www.youtube.com/watch?v=Bgx26kfXzlg "The Art of the JRPG Battle Transition - Desma") by Desma. It makes a point-by-point explanation about what makes a battle transition great along a wide variety of battle transitions from many JRPGs.
+
+---
 
 # Code Implementation
 ## The System's core elements
