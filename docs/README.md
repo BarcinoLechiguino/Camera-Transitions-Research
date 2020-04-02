@@ -212,7 +212,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Fancy Fade To Black (South Park: The Stick of Truth (PC/PS4/XBOX ONE/Nintendo Switch))
+#### Fancy Fade To Black
 
 ![South Park: The Stick of Truth](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-2-Lightning.gif "South Park: The Stick of Truth (PC/PS3&4/XBOX360&ONE/Nintendo Switch)")
 
@@ -220,7 +220,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Wipe (Pokemon Red/Blue (GBC))
+#### Wipe
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-1-Circular-Wi.gif "Pokemon Red/Blue (GBC)")
 
@@ -228,7 +228,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Horizontal Alternating Bars (Pokemon Red/Blue (GBC))
+#### Horizontal Alternating Bars
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif "Pokemon Red/Blue (GBC)")
 
@@ -236,7 +236,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Vertical Alternating Bars (Pokemon Red/Blue (GBC))
+#### Vertical Alternating Bars
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-3-Vertical-Ba.gif "Pokemon Red/Blue (GBC)")
 
@@ -244,7 +244,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Camera Translation (Vagrant Story)
+#### Camera Translation
 
 ![Vagrant Story](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_To_Battle.gif "Vagrant Story (PSX)")
 
@@ -252,7 +252,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Composition of Basics (Grandia II)
+#### Composition of Basics
 
 ![Grandia II](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-5-FadeTurn.gif "Grandia II (PS2)")
 
@@ -261,7 +261,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 ---
 
 ### Advanced Transitions
-#### Sliding Quarters (Pokemon Red/Blue GBC)
+#### Sliding Quarters
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-5-Slide-Quart.gif "Pokemon Red/Blue (GBC)")
 
@@ -269,7 +269,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Texture Re-Scaling (Pokemon Red/Blue GBC)
+#### Texture Re-Scaling
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-4-Reduce-Text.gif "Pokemon Red/Blue (GBC)")
 
@@ -277,7 +277,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Texture Manipulation: Flakes / Scales (Wild Arms 5)
+#### Texture Manipulation: Flakes / Scales
 
 ![Wild Arms 5](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-3-Flakes.gif "Wild Arms 5 (PS2)")
 
@@ -285,7 +285,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Texture Manipulation: Blender Effect (Xenosaga Episode I)
+#### Texture Manipulation: Blender Effect
 
 ![Xenosaga Episode I](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif "Xenosaga Episode I (PS2)")
 
@@ -293,7 +293,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Composition of Advanced (Chrono Cross)
+#### Composition of Advanced
 
 ![Chrono Cross](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-1-Sparks.gif "Crono Cross (PSX)")
 
@@ -302,7 +302,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 ---
 
 ### Themed Transitions
-#### Pokemon: Battle against a Gym Leader Brock (Pokemon Fire Red / Green Leaf GBA)
+#### Pokemon: Battle against a Gym Leader Brock
 
 ![Pokemon Fire Red / Green Leaf GBA](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-2-Brock-Battle.gif "Pokemon Fire Red / Green Leaf (GBA)")
 
@@ -310,7 +310,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Pokemon: Battle against Zygarde (Pokemon X / Y)
+#### Pokemon: Battle against Zygarde
 
 ![Pokemon X / Y](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-1-Zygarde.gif "Pokemon X / Y (3DS)")
 
@@ -318,7 +318,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Resident Evil: Door Transition (Resident Evil PSX)
+#### Resident Evil: Door Transition
 
 ![Resident Evil PSX](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-6-RE-Door.gif)
 
@@ -326,7 +326,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Multiple Games: Mirror Break Effect (Shadow Heartsfrom the New World, Resonande of Fate, Fate/Extra, Tales of Symphonia, Dawn of the New World, Xenoblade Chronicles 2, Final Fantasy X)
+#### Multiple Games: Mirror Break Effect
 
 ![Mirror Break Effect](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-7-Broken-Mirror.gif)
 
@@ -476,14 +476,14 @@ The calculus goes as shown in the picture below:
 
 ![Linear Interpolation](images/system_core_elements/Lerp.PNG "Linear Interpolation")
 
----
+
 
 #### Lerp() Characteristics
 - Rate can go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
 - If Lerp(0.0f, 10.0f, 1.0f), then the advancement per frame will be of 10.0f.
 - Rate can also increase over time if the parameter is current_cutoff i.e.
 
----
+
 
 #### Graphical Representation of Lerp()
 
@@ -499,7 +499,7 @@ The calculus goes as shown in the picture below:
 
 ![Non-Linear Interpolation](images/system_core_elements/N_Lerp.PNG "Non-Linear Interpolation")
 
----
+
 
 #### N_Lerp() Characteristics
 - Rate can still go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
@@ -507,7 +507,7 @@ The calculus goes as shown in the picture below:
   - To start with a slower velocity and end with a higher one (Ease In, Smash Out).
   - To start with a higher velocity and end with a lower one (Smash In, Ease Out). 
 
----
+
 
 #### Graphical Representation of N_Lerp()
 
