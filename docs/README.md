@@ -111,6 +111,8 @@ Before answering that question, let's closely observe the material below and see
 
 ![Load Time Difference](images/transition_gifs/video_game_transitions/Load-Time-Difference.gif "Comparison between the Steam and the PSX version of Chrono Trigger")
 
+**Source:** *Chrono Trigger* (PSX)
+
 ### The reasoning behind video game camera transitions
 To put it plainly, it's to hide different elements from the player's sight.
 
@@ -306,15 +308,21 @@ The scene manager will create update and change the current_scene.
 
 ![Scene Manager Class](images/system_core_elements/SceneManager.PNG "Scene Manager Class")
 
+---
+
 ### Scene Class
 Absbtract class from which all the scenes will inherit from.
 
 ![Scene Class](images/system_core_elements/Scene.PNG "Scene Class")
 
+---
+
 ### Transition Manager
 The transition manager creates, updates and destroys the active_transition.
 
 ![Transition Manager Class](images/system_core_elements/TransitionManager.PNG "Transition Manager")
+
+---
 
 ### Transition Class
 Will be responsible calling the SceneManager's SwitchScene() method to switch scene when the CHANGING TRANSITION_STEP is "activated"
@@ -322,6 +330,8 @@ Will be responsible calling the SceneManager's SwitchScene() method to switch sc
 ![Transition Class](images/system_core_elements/Transition.PNG "Transition Class")
 
 Each transition will have their own module and will inherit from the Transition class, and their their overall structure will be laid out down below.
+
+---
 
 ## Transition Structure
 Any given transition will be broken down in 3 steps:
@@ -340,6 +350,8 @@ Such would be the case of the Wipe, which, instead of returning back like the Sl
 
 ![Transition Structure](images/system_core_elements/TransitionStructure.PNG "Transition Structure")
 
+---
+
 ### Transition Step
 There are 4 transition steps:
 
@@ -351,20 +363,28 @@ There are 4 transition steps:
 
 - **NONE:** Step that should be used to prevent step errors. Not used that much.
 
+---
+
 ### Entering() Method
 The Entering() method will normally look like in the picture below:
 
 ![Entering Method](images/solutions/TODO_3_Solution.PNG "Entering() Method")
+
+---
 
 ### Changing() Method
 The Changing() method will **ALWAYS** look like in the picture below:
 
 ![Changing Method](images/presentation_images/ChangingMethod.PNG "Changing() Method")
 
+---
+
 ### Exiting() Method
 The Exiting() method will normally look like in the picture below:
 
 ![Exiting Method](images/solutions/TODO_4_Solution.PNG "Exiting() Method")
+
+---
 
 ## The mathematics behind the transitions
 ### Cutoff and its relation to transition time
@@ -380,6 +400,8 @@ Notice that, as it was mentioned before, when the cutoff value is at 0.5f, then 
 ![Cutoff Rate Example](images/transition_gifs/transition_math/Cutoff-Rate-Example.gif "Cutoff Rate Example")
 
 So, how can the cutoff be linked with time and apply it to camera transitions?
+
+---
 
 #### Cutoff/Time Implementation
 The solution I propose to link the cutoff with the time is to take into account another parameter, the total time that a given transition step will take. So, in the end, two inputs are needed, the **timestep (dt)** input and the **transition time**.
@@ -397,6 +419,8 @@ The value resulting from dividing the dt by the step_duration, which the amount 
 
 In my implementation, I named the accumulating variable current_cutoff.
 
+---
+
 #### Implementing cutoff by using shader textures.
 In the case of using shaders, we can tell the GPU how to interpret a texture, so the calculation of the cutoff rate changes but the characteristics remain the same.
 
@@ -406,6 +430,8 @@ Instead of calculating the cutoff rate by using dt / step_duration, the texture 
 
 Following the example above, when the black value is 255, then 0.0f (or transition step start) will be assigned to the variable, and when the black value is 0, the, the assigned value will be 1.0f.
 
+---
+
 ### Linear Interpolation
 #### Linear Interpolation Method
 A linear interpolation method interpolates two values and the value returned each frame  by the interpolation will be exactly the same.
@@ -414,14 +440,20 @@ The calculus goes as shown in the picture below:
 
 ![Linear Interpolation](images/system_core_elements/Lerp.PNG "Linear Interpolation")
 
+---
+
 #### Lerp() Characteristics
 - Rate can go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
 - If Lerp(0.0f, 10.0f, 1.0f), then the advancement per frame will be of 10.0f.
 - Rate can also increase over time if the parameter is current_cutoff i.e.
 
+---
+
 #### Graphical Representation of Lerp()
 
 ![Graphical Representation of Lerp](images/transition_gifs/transition_math/Linear-Movement.gif "Graphicla Representation of Lerp()")
+
+---
 
 ### Non-Linear Interpolation
 #### Non-Linear Interpolation Method
@@ -431,11 +463,15 @@ The calculus goes as shown in the picture below:
 
 ![Non-Linear Interpolation](images/system_core_elements/N_Lerp.PNG "Non-Linear Interpolation")
 
+---
+
 #### N_Lerp() Characteristics
 - Rate can still go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
 - While an object being interpolated by Lerp() will always have the same speed, another object interpolated by N_Lerp() can show one of two behaviours: 
   - To start with a slower velocity and end with a higher one (Ease In, Smash Out).
   - To start with a higher velocity and end with a lower one (Smash In, Ease Out). 
+
+---
 
 #### Graphical Representation of N_Lerp()
 
