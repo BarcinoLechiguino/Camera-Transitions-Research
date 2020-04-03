@@ -55,6 +55,9 @@ This content was generated for the Project II subject under the supervision of l
   
   - Links and References
 
+---
+
+---
 
 # What is a camera transition?
 Camera transitions are a post-production technique used to connect one shot/scene to another. With their origins being in the film industry, they are used to convey a mood, suggest the passage of time… In short, for aesthetic reasons. Moreover, moving the camera through the scene can also be considered a camera transition. 
