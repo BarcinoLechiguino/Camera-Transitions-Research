@@ -56,7 +56,7 @@ This content was generated for the Project II subject under the supervision of l
   - Links and References
 
 
-## What is a camera transition?
+# What is a camera transition?
 Camera transitions are a post-production technique used to connect one shot/scene to another. With their origins being in the film industry, they are used to convey a mood, suggest the passage of time… In short, for aesthetic reasons. Moreover, moving the camera through the scene can also be considered a camera transition. 
 
 So far so good, right? Let's see some transition examples.
@@ -104,7 +104,7 @@ If you want to know more about these kind of transitions, consider taking a look
 
 ---
 
-## Why apply camera transitions to video games?
+# Why apply camera transitions to video games?
 Now to the main question, why should anyone go throught the trouble of implementing camera transitions in their games? 
 
 Before answering that question, let's closely observe the material below and see what happens.
@@ -113,7 +113,7 @@ Before answering that question, let's closely observe the material below and see
 
 **Source:** *Chrono Trigger* (PSX)
 
-### The reasoning behind video game camera transitions
+## The reasoning behind video game camera transitions
 To put it plainly, it's to hide different elements from the player's sight.
 
 Contrary to films, video games require time to load from one scene to another.
@@ -124,7 +124,7 @@ So, what would players think if the game just froze every time they triggered a 
 
 So, summarizing, while traditionally camera transitions are used for aesthetic purposes, in video games they serve a far more utilitarian purpose.
 
-### Other uses for video game transitions
+## Other uses for video game transitions
 Although originally camera transitions had to be implemented for purely utilitarian reasons (due to technological limitations), nowadays, technology has advanced enough to allow video games to afford using them for non-utilitarian purposes such as to enhance the players' immersion or to spice up the narrative, among others. 
 
 One great example of how to use camera transitions to heighten both the narrative and it's emotional impact on the players is ***Vagrant Story (PSX)***. See how the camera is translated and, taking advantage of the time that the camera is covered by the main character, the game loads the model of the other character, creating a "reveal" moment when there was none previously.
@@ -141,8 +141,8 @@ Now, notice how cleverly an effect as simple as a Cut To Black can be used, agai
 
 ---
 
-## Camera Transition Techniques
-### Manipulating a geometrical form
+# Camera Transition Techniques
+## Manipulating a geometrical form
 This technique consists "just" in manipulating the properties of geometrical shapes (often black rectangles) and usually the main properties that are manipulated are the shape's position and opacity.
 
 Although it is quite a simple technique to implement code wise (in comparison to the following two), that simplicity really limits the possibilites that it can offer.
@@ -153,25 +153,25 @@ Although it is quite a simple technique to implement code wise (in comparison to
 
 ---
 
-### Manipulating the scene's texture
+## Manipulating the scene's texture
 All the textures are blended together and re-rendered into a new texture, which is then manipulated. 
 
 Although it is quite complex to implement this technique code wise, it's a really flexible way of making transitions as textures can be modified and tampered with in a great deal of ways. 
 
 For reference take a look at the piece of media shown below:
 
-![Xenosaga Epospde I Blender Distortion](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif "")
+![Xenosaga Epospde I Blender Distortion](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif "Xenosaga Episode I (PS2)")
 
 **Source:** *Xenosaga Episode I* (PS2)
 
 ---
 
-### Shaders
+## Shaders
 Shaders are chunks of code that are executed in the GPU, and they modify the way an image is rendered.
 
 Code wise, this technique entails an even higher level of complexity than manipulating a texture. However, using shaders to make transitions has become a widespread practice due to the sheer amount of possibilities that they bring.
 
-#### Shader Transition Examples
+### Shader Transition Examples
 - **Disclaimer:** Both shader transitions shown below were made in [Unity](https://unity.com/ "Unity Engine").
 - **Disclaimer II:** Sources can be found after the **Pokeball Transition** section.
 
@@ -199,12 +199,12 @@ If you want to know more about applying shaders to camera transitions, consider 
 
 ---
 
-## VG Transition Examples
-#### Disclaimer 
+# VG Transition Examples
+### Disclaimer 
 The majority of the transitions that will be set as examples come from JRPG games, in special from battle transitions. This is due to the fact that battle transitions are as diverse as they can be, and this particular segment of camera transitions reach out to all camera transition techniques to bring to reality really interesting transitions.
 
-### Basic transitions
-#### Fade To Black
+## **Basic transitions**
+### Fade To Black
 
 ![Pokemon Fire Red / Green Leaf GBA ](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-FadeToBlack.gif "Pokemon Fire Red / Green Leaf (GBA)")
 
@@ -212,7 +212,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Fancy Fade To Black
+### Fancy Fade To Black
 
 ![South Park: The Stick of Truth](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-2-Lightning.gif "South Park: The Stick of Truth (PC/PS3&4/XBOX360&ONE/Nintendo Switch)")
 
@@ -220,7 +220,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Wipe
+### Wipe
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-1-Circular-Wi.gif "Pokemon Red/Blue (GBC)")
 
@@ -228,7 +228,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Horizontal Alternating Bars
+### Horizontal Alternating Bars
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-2-Horizontal.gif "Pokemon Red/Blue (GBC)")
 
@@ -236,7 +236,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Vertical Alternating Bars
+### Vertical Alternating Bars
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-3-Vertical-Ba.gif "Pokemon Red/Blue (GBC)")
 
@@ -244,7 +244,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Camera Translation
+### Camera Translation
 
 ![Vagrant Story](images/transition_gifs/video_game_transitions/RPG_Transitions/Camera_Translation_To_Battle.gif "Vagrant Story (PSX)")
 
@@ -252,7 +252,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Composition of Basics
+### Composition of Basics
 
 ![Grandia II](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-5-FadeTurn.gif "Grandia II (PS2)")
 
@@ -261,7 +261,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 ---
 
 ### Advanced Transitions
-#### Sliding Quarters
+### Sliding Quarters
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-5-Slide-Quart.gif "Pokemon Red/Blue (GBC)")
 
@@ -269,7 +269,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Texture Re-Scaling
+### Texture Re-Scaling
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-4-Reduce-Text.gif "Pokemon Red/Blue (GBC)")
 
@@ -277,7 +277,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Texture Manipulation: Flakes / Scales
+### Texture Manipulation: Flakes / Scales
 
 ![Wild Arms 5](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-3-Flakes.gif "Wild Arms 5 (PS2)")
 
@@ -285,7 +285,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Texture Manipulation: Blender Effect
+### Texture Manipulation: Blender Effect
 
 ![Xenosaga Episode I](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-8-Blender-Distortion.gif "Xenosaga Episode I (PS2)")
 
@@ -293,7 +293,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Composition of Advanced
+### Composition of Advanced
 
 ![Chrono Cross](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-1-Sparks.gif "Crono Cross (PSX)")
 
@@ -301,8 +301,8 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-### Themed Transitions
-#### Pokemon: Battle against a Gym Leader Brock
+## Themed Transitions
+### Pokemon: Battle against a Gym Leader Brock
 
 ![Pokemon Fire Red / Green Leaf GBA](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-2-Brock-Battle.gif "Pokemon Fire Red / Green Leaf (GBA)")
 
@@ -310,7 +310,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Pokemon: Battle against Zygarde
+### Pokemon: Battle against Zygarde
 
 ![Pokemon X / Y](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Misc/Pokemon-Misc-BT-1-Zygarde.gif "Pokemon X / Y (3DS)")
 
@@ -318,7 +318,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Resident Evil: Door Transition
+### Resident Evil: Door Transition
 
 ![Resident Evil PSX](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-6-RE-Door.gif)
 
@@ -326,7 +326,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-#### Multiple Games: Mirror Break Effect
+### Multiple Games: Mirror Break Effect
 
 ![Mirror Break Effect](images/transition_gifs/video_game_transitions/RPG_Transitions/RPG-BT-7-Broken-Mirror.gif)
 
@@ -422,9 +422,9 @@ The Exiting() method will normally look like in the picture below:
 
 ---
 
-## The mathematics behind the transitions
-### Cutoff and its relation to transition time
-#### The Cutoff concept
+# The mathematics behind the transitions
+## Cutoff and its relation to transition time
+### The Cutoff concept
 Technically, cutoff refers to the amount of screen that is being "cut off" (or covered) by the transition. So it has nothing to do with **time**, for now at least. 
 
 The cutoff value can fluctuate between 0.0f and 1.0f, with 0,0f representing that the screen is not being "cut off" at all and 1.0f representing that the screen has been completely cutoff. See the 2 example pictures down below:
@@ -439,7 +439,7 @@ So, how can the cutoff be linked with time and apply it to camera transitions?
 
 ---
 
-#### Cutoff/Time Implementation
+### Cutoff/Time Implementation
 The solution I propose to link the cutoff with the time is to take into account another parameter, the total time that a given transition step will take. So, in the end, two inputs are needed, the **timestep (dt)** input and the **transition time**.
 
 The resulting equation is preety simple:
@@ -457,7 +457,7 @@ In my implementation, I named the accumulating variable current_cutoff.
 
 ---
 
-#### Implementing cutoff by using shader textures.
+### Implementing cutoff by using shader textures.
 In the case of using shaders, we can tell the GPU how to interpret a texture, so the calculation of the cutoff rate changes but the characteristics remain the same.
 
 Instead of calculating the cutoff rate by using dt / step_duration, the texture will be assigning a float value from 0.0f to 1.0f depending on the color value of the texture's pixels.
@@ -468,8 +468,8 @@ Following the example above, when the black value is 255, then 0.0f (or transiti
 
 ---
 
-### Linear Interpolation
-#### Linear Interpolation Method
+## Linear Interpolation
+### Linear Interpolation Method
 A linear interpolation method interpolates two values and the value returned each frame  by the interpolation will be exactly the same.
 
 The calculus goes as shown in the picture below:
@@ -478,21 +478,21 @@ The calculus goes as shown in the picture below:
 
 
 
-#### Lerp() Characteristics
+### Lerp() Characteristics
 - Rate can go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
 - If Lerp(0.0f, 10.0f, 1.0f), then the advancement per frame will be of 10.0f.
 - Rate can also increase over time if the parameter is current_cutoff i.e.
 
 
 
-#### Graphical Representation of Lerp()
+### Graphical Representation of Lerp()
 
 ![Graphical Representation of Lerp](images/transition_gifs/transition_math/Linear-Movement.gif "Graphicla Representation of Lerp()")
 
 ---
 
-### Non-Linear Interpolation
-#### Non-Linear Interpolation Method
+## Non-Linear Interpolation
+### Non-Linear Interpolation Method
 A non-linear interpolation method interpolates two values and the value returned by the interpolation will vary each frame.
 
 The calculus goes as shown in the picture below:
@@ -501,7 +501,7 @@ The calculus goes as shown in the picture below:
 
 
 
-#### N_Lerp() Characteristics
+### N_Lerp() Characteristics
 - Rate can still go from 0.0f (0 %) to 1.0f (100 %) advancement per frame.
 - While an object being interpolated by Lerp() will always have the same speed, another object interpolated by N_Lerp() can show one of two behaviours: 
   - To start with a slower velocity and end with a higher one (Ease In, Smash Out).
@@ -509,7 +509,7 @@ The calculus goes as shown in the picture below:
 
 
 
-#### Graphical Representation of N_Lerp()
+### Graphical Representation of N_Lerp()
 
 **Ease In, Smash Out (Slow Start, Fast End)**
 
@@ -524,7 +524,7 @@ If you want to know more about Easing Functions and how to create a library of t
 
 ---
 
-## My Transitions
+# My Transitions
 All these transitions have been implemented in C++ using SDL and STL. 
 
 All transitions can have custom step durations and custom colours. Moreover, all transitions except the Fade To Colour can have their transition defined by a linearly or non-linearly interpolated movement.
@@ -605,7 +605,7 @@ All transitions can have custom step durations and custom colours. Moreover, all
 
 ---
 
-## Code Exercises
+# Code Exercises
 
 Disclaimer: There are various solutions to the exercises (Lerp() & N_Lerp()), and so the solutions reflect that. In each solution there will be 2 possible solutions for each of the TODOs.
 
