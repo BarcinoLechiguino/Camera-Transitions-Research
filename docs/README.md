@@ -263,7 +263,7 @@ The majority of the transitions that will be set as examples come from JRPG game
 
 ---
 
-### Advanced Transitions
+## Advanced Transitions
 ### Sliding Quarters
 
 ![Pokemon Red/Blue GBC](images/transition_gifs/video_game_transitions/Pokemon_Transitions/Pokemon_Red_Blue/Pokemon-RedBlue-BT-5-Slide-Quart.gif "Pokemon Red/Blue (GBC)")
