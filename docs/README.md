@@ -75,28 +75,34 @@ It's the transition that is the most commonly seen.
 ![Cut](images/transition_gifs/basic_transitions/Cut-Transition.gif "Cut Transition Examples")
 
 ### Fade In/Out
-In a Fade In, the scene gradually turns to one colour and in a Fade Out is the opposite happens. Although any colour can potentially be used in this transition, most of the times only two are used: black and white. Black conveys completion or the passage of a period of time. White, on the other hand, conveys ambiguity and hope. 
+In a Fade In, the scene gradually turns to one colour and in a Fade Out is the opposite happens. 
 
-Its the most common transition after the Cut.
+Although any colour can potentially be used in this transition, most of the times only two are used: black and white. Black conveys completion or the passage of a period of time. White, on the other hand, conveys ambiguity and hope. 
+
+It's the most common transition after the Cut.
 
 ![Fade In/Out](images/transition_gifs/basic_transitions/Fade-In-Transition.gif "Fade In/Out Transition Examples")
 
 ### Wipe
-In a Wipe a shot replaces another, normally by traveling from one side of the frame to the other. They are often used to transition between storylines taking place in different locations and to establish tension or conflict. 
+In a Wipe a shot replaces another, normally by traveling from one side of the frame to the other. 
 
-Wipes can come in many forms and shapes, as can be seen in the media below:
+Often used to transition between storylines taking place in different locations and to establish tension or conflict, Wipes can come in many forms and shapes, as can be seen in the media below:
 
 ![Wipe](images/transition_gifs/basic_transitions/Wipe-Transitions.gif "Wipe Transition Examples")
 
 ### Dissolve
-In a Dissolve, one scene overlaps with another. The transitioning scene gradually loses opacity while the scene that's being transitioned to gradually gains it. Usually used at the end of one scene and the beginning of the next, it can show that there is a link between two narratives or scenes. This transition can also be implemented to show the passage of time or to move from one location to another.
+In a Dissolve, one scene overlaps with another. The transitioning scene gradually loses opacity while the scene that's being transitioned to gradually gains it. 
+
+Usually used at the end of one scene and the beginning of the next, it can show that there is a link between two narratives or scenes. This transition can also be implemented to show the passage of time or to move from one location to another.
 
 Although it was common some decades ago, nowadays it's a pretty rare transition to see.
 
 ![Dissolve](images/transition_gifs/basic_transitions/Dissolve-Transitions.gif "Dissolve Transition Examples")
 
 ### Zoom
-In a Zoom, the camera smoothly transitions from a long shot to a close-up and viceversa, normally by increasing or decreasing the camera's zoom. It is normally used to convey a frenetic pace, to quickly change shots or to emphasize someone or something that's on-screen.
+In a Zoom, the camera smoothly transitions from a long shot to a close-up and viceversa, normally by increasing or decreasing the camera's zoom. 
+
+It is normally used to convey a frenetic pace, to quickly change shots or to emphasize someone or something that's on-screen.
 
 Some zoom examples can be seen in the media below:
 
