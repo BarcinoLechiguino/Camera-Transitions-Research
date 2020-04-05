@@ -70,7 +70,7 @@ So far so good, right? Let's see some transition examples.
 ### Cut
 A Cut instantly connects one shot to another, and is normally used to change the perspective or to advance the story. There are many types of cuts: Cutting on action, Cut Away, Cross Cut, Jump Cut... and each of them serve a particular purpose. 
 
-Its the transition that is the most commonly seen.
+It's the transition that is the most commonly seen.
 
 ![Cut](images/transition_gifs/basic_transitions/Cut-Transition.gif "Cut Transition Examples")
 
