@@ -40,9 +40,8 @@ void FadeToColour::StepTransition()
 
 void FadeToColour::Entering()
 {
-	// TODO 3: Add the cutoff_rate to the current_cutoff each loop.
-	// Moreover, change the transition step when the current_cutoff
-	// reaches the MAX limit value. Remember to keep that limit value.
+	// TODO 3: Add the cutoff_rate to the cutoff_rate each loop.
+	// Moreover, change the transition step when the current_cutoff reaches the MAX limit value.
 	// Tip: Check what current_cutoff and current_rate is.
 	
 

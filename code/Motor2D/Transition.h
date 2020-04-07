@@ -43,13 +43,13 @@ public:
 	SCENES			next_scene;														// The scene that will be transitioned to.
 
 	float			step_duration;													// The duration of each transtion step in seconds.
-	float			current_cutoff;													// The amount of time that has elapsed since the start of the transition step.
+	float			current_cutoff;													// The current amount of accumulated cutoff. Ranges from 0.0f to 1.0f. (0.0 = step start & 1.0f = step end)
 
 	bool			non_lerp;														// Bool that defines whether or not a transition is linearly or non-linearly interpolated.
 
 private:
-	float			cutoff_rate;													// The rate at which the transition will elapse.
-																					// Ranges from 0.0f to 1.0f  0.0 == step_start & 1.0f == step_end.
+	float			cutoff_rate;													// The rate at which transition will elapse. See GetCutoffRate().
+																					
 };
 
 #endif // !__TRANSITION_H__

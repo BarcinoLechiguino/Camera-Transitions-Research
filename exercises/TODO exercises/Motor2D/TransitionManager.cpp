@@ -64,7 +64,8 @@ Transition* TransitionManager::CreateCut(SCENES next_scene)
 	return active_transition;
 }
 
-// TODO 6B: Code a Create method that creates FadeToColour transitions.
+	// TODO 6B: Code the FadeToColour Create method definition.
+	// Tip: It's very similar to the other Create method definitions.
 
 
 

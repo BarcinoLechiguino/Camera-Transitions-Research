@@ -98,7 +98,7 @@ void Wipe::TranslateWipe()
 
 void Wipe::HorizontalWipe()
 {
-	// TODO 10A: Recreate the wipe effect by makin the screen rect cross from either of both sides to the other using Lerp() or N_Lerp().
+	// TODO 10A: Recreate the wipe effect by making the screen rect cross from either of both sides to the other using Lerp() or N_Lerp().
 	// To make the rect cross the screen, the transition needs to be broken down into two steps using the transition steps.
 	// Tip: Be careful with current_step. It will range from 0 to 1 differently from other transitions.
 	 
@@ -133,7 +133,7 @@ void Wipe::VerticalWipe()
 {
 	// TODO 10B: Again, similar to it's horizontal counterpart, but taking into account that
 	// the wipe will happen from top to bottom and from bottom to top.
-	// Now you have to put the step breakdown yourself.
+	// Now you have to code the step breakdown yourself.
 
 	if (!wipe_from_bottom)
 	{

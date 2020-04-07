@@ -92,7 +92,7 @@ void Slide::TranslateSlide()
 void Slide::HorizontalSlide()
 {	
 	// TODO 9A: Recreate the Slide effect by making use of either Lerp() or N_Lerp() like in the previous TODO. 
-	// Use the screen rect variable. Current_cutoff still behaves like in the previously seen transitions.
+	// Use the screen rect variable. current_cutoff still behaves like in the previously seen transitions.
 	// Tip: Only one line of code is needed for each case.
 	
 	if (!slide_from_right)
