@@ -64,10 +64,10 @@ Download the [release](<https://github.com/BarcinoLechiguino/Camera-Transitions-
 
 
 
-## About Author
+## About the Author
 
 * [GitHub](<https://github.com/BarcinoLechiguino>)
-* [LinkedIn]([https://www.linkedin.com/in/%C3%A1ngel-gonz%C3%A1lez-jim%C3%A9nez-147174196](https://www.linkedin.com/in/ángel-gonzález-jiménez-147174196))
+* [LinkedIn](https://www.linkedin.com/in/ángel-gonzález-jiménez-147174196)
 
 
 
